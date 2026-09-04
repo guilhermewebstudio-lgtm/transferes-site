@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const { pool } = require('../config/db');
-const { sendEmail } = require('../utils/email');
+const { sendEmail, brandedEmailTemplate } = require('../utils/email');
 
 router.get('/registo', (req, res) => {
   if (req.session.user) return res.redirect('/conta');
@@ -38,7 +38,10 @@ router.post('/registo', async (req, res) => {
     sendEmail({
       to: user.email,
       subject: 'Bem-vindo à Transferes',
-      html: `<p>Olá ${user.nome},</p><p>A tua conta foi criada com sucesso. Já podes reservar transfers e acompanhar o histórico das tuas viagens.</p>`
+      html: brandedEmailTemplate({
+        title: `Bem-vindo, ${user.nome}`,
+        bodyHtml: `<p style="margin:0;">A tua conta foi criada com sucesso. Já podes reservar transfers e acompanhar o histórico das tuas viagens.</p>`
+      })
     }).catch(() => {});
 
     res.redirect('/conta');
@@ -103,15 +106,17 @@ router.post('/esqueci-password', async (req, res) => {
       sendEmail({
         to: user.email,
         subject: 'Redefinir a tua password — Transferes',
-        html: `<div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto;">
-          <h2 style="color:#101a2b;">Redefinir password</h2>
-          <p>Olá ${user.nome},</p>
-          <p>Recebemos um pedido para redefinir a password da tua conta Transferes. Clica no botão abaixo para escolher uma nova password. Este link expira dentro de 1 hora.</p>
-          <p style="text-align:center; margin: 30px 0;">
-            <a href="${resetLink}" style="background:#3d7dfb; color:#050810; padding:12px 28px; border-radius:999px; text-decoration:none; font-weight:bold;">Redefinir password</a>
-          </p>
-          <p style="color:#888; font-size:13px;">Se não pediste isto, ignora este email — a tua password mantém-se inalterada.</p>
-        </div>`
+        html: brandedEmailTemplate({
+          title: 'Redefinir password',
+          bodyHtml: `
+            <p style="margin:0 0 12px;">Olá ${user.nome},</p>
+            <p style="margin:0 0 20px;">Recebemos um pedido para redefinir a password da tua conta Transferes. Clica no botão abaixo para escolher uma nova password. Este link expira dentro de 1 hora.</p>
+            <p style="text-align:center; margin: 28px 0;">
+              <a href="${resetLink}" style="background:#3d7dfb; color:#050810; padding:14px 32px; border-radius:999px; text-decoration:none; font-weight:bold; display:inline-block;">Redefinir password</a>
+            </p>
+            <p style="color:#7c8aa3; font-size:13px; margin:0;">Se não pediste isto, ignora este email — a tua password mantém-se inalterada.</p>
+          `
+        })
       }).catch(() => {});
     }
 

@@ -15,6 +15,15 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+button {
+  font-family: inherit;
+  font-size: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -225,6 +234,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: 0.98rem;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
   border: 1px solid transparent;
+  background: transparent;
 }
 .btn-primary { background: var(--blue); color: #050810; }
 .btn-primary:hover { background: #5c93fc; transform: translateY(-2px); }
@@ -312,7 +322,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .booking-section { max-width: 720px; margin: 0 auto; padding: 0 32px 120px; }
 .booking-form { display: flex; flex-direction: column; gap: 20px; }
 .form-row { display: flex; gap: 20px; flex-wrap: wrap; }
-.form-row label, .booking-form > label.full { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.form-row label { flex: 1; min-width: 220px; }
 input, select, textarea {
   background: var(--surface);
   border: 1px solid rgba(185,196,214,0.14);
@@ -321,6 +338,7 @@ input, select, textarea {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.98rem;
+  width: 100%;
 }
 input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 .booking-form button { align-self: flex-start; }
@@ -398,6 +416,40 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .post, .scene-car, .scene-car .beam, .route-transition.active .transition-car, .route-transition.active .dash-line {
     animation: none !important;
   }
+}
+
+/* ---------- Responsividade geral: tablet e telemóvel ---------- */
+@media (max-width: 900px) {
+  .header-inner { padding: 18px 20px; }
+  .hero-content { padding: 120px 24px 60px; }
+  .page-hero { padding: 130px 24px 50px; }
+  .services-strip { padding: 60px 20px; }
+  .cta-band { padding: 60px 20px; }
+  .services-detail { padding: 10px 20px 70px; gap: 60px; }
+  .fleet-grid { padding: 0 20px 70px; }
+  .about-content { padding: 0 20px 70px; gap: 40px; }
+  .booking-section { padding: 0 20px 80px; }
+  .site-footer { padding: 50px 20px 24px; }
+}
+
+@media (max-width: 600px) {
+  .header-inner { padding: 14px 16px; }
+  .brand-word { font-size: 1rem; }
+  .hero-content { padding: 110px 18px 50px; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .hero-lede { font-size: 1rem; }
+  .hero-actions { gap: 12px; }
+  .btn { padding: 12px 22px; font-size: 0.92rem; }
+  .hero-stats { gap: 24px; }
+  .page-hero { padding: 110px 18px 40px; }
+  .page-hero h1 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+  .services-strip, .cta-band { padding: 44px 18px; }
+  .services-detail, .fleet-grid, .about-content, .booking-section { padding-left: 18px; padding-right: 18px; }
+  .form-row { flex-direction: column; gap: 14px; }
+  .form-row label { min-width: 0; }
+  .footer-inner { flex-direction: column; gap: 30px; }
+  .footer-cols { gap: 36px; }
+  .chat-panel { width: calc(100vw - 24px); }
 }
 
 /* ---------- Chat widget ---------- */

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/db');
-const { sendEmail } = require('../utils/email');
+const { sendEmail, brandedEmailTemplate } = require('../utils/email');
 
 const SYSTEM_PROMPT = `És o assistente virtual da Transferes, uma empresa de transfers executivos e de aeroporto em Lisboa, Portugal.
 Respostas curtas, simpáticas e profissionais. Responde sempre na mesma língua em que o cliente escreveu (português ou inglês), nunca misturando as duas.
@@ -79,14 +79,32 @@ router.post('/reserva', async (req, res) => {
     sendEmail({
       to: email,
       subject: 'Recebemos o teu pedido de reserva — Transferes',
-      html: `<p>Olá ${nome},</p><p>Recebemos o teu pedido de transfer de <strong>${origem}</strong> para <strong>${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>`
+      html: brandedEmailTemplate({
+        title: 'Reserva recebida',
+        bodyHtml: `
+          <p style="margin:0 0 12px;">Olá ${nome},</p>
+          <p style="margin:0 0 12px;">Recebemos o teu pedido de transfer de <strong style="color:#eef2f8;">${origem}</strong> para <strong style="color:#eef2f8;">${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>
+        `
+      })
     }).catch(() => {});
 
     if (process.env.ADMIN_EMAIL) {
       sendEmail({
         to: process.env.ADMIN_EMAIL,
         subject: `Nova reserva: ${nome}`,
-        html: `<p>Nova reserva recebida.</p><p><strong>Nome:</strong> ${nome}<br><strong>Email:</strong> ${email}<br><strong>Telefone:</strong> ${telefone || '-'}<br><strong>Serviço:</strong> ${tipo_servico || '-'}<br><strong>Trajeto:</strong> ${origem} → ${destino}<br><strong>Data:</strong> ${data_hora || '-'}<br><strong>Passageiros:</strong> ${passageiros || 1}<br><strong>Notas:</strong> ${notas || '-'}</p>`,
+        html: brandedEmailTemplate({
+          title: 'Nova reserva recebida',
+          bodyHtml: `
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Nome:</strong> ${nome}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Email:</strong> ${email}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Telefone:</strong> ${telefone || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Serviço:</strong> ${tipo_servico || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Trajeto:</strong> ${origem} → ${destino}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Data:</strong> ${data_hora || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Passageiros:</strong> ${passageiros || 1}</p>
+            <p style="margin:0;"><strong style="color:#eef2f8;">Notas:</strong> ${notas || '-'}</p>
+          `
+        }),
         replyTo: email
       }).catch(() => {});
     }
