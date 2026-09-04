@@ -17,6 +17,7 @@
       <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
       <% if (typeof user !== 'undefined' && user) { %>
         <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
+        <a href="/minhas-reservas" data-nav>Reservas</a>
         <a href="/conta" data-nav><%= t('nav.conta') %></a>
       <% } else { %>
         <a href="/login" data-nav><%= t('nav.entrar') %></a>
@@ -37,6 +38,7 @@
     <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
     <% if (typeof user !== 'undefined' && user) { %>
       <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
+      <a href="/minhas-reservas" data-nav>Reservas</a>
       <a href="/conta" data-nav><%= t('nav.conta') %></a>
     <% } else { %>
       <a href="/login" data-nav><%= t('nav.entrar') %></a>

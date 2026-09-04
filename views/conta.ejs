@@ -11,7 +11,9 @@
 </section>
 <section class="booking-section">
   <p style="color:var(--muted);margin-bottom:30px;">Email associado: <%= user.email %></p>
-  <form method="POST" action="/logout">
+  <a href="/minhas-reservas" class="btn btn-ghost" data-nav style="margin-bottom:16px; display:inline-flex;">Ver as minhas reservas</a>
+  <br>
+  <form method="POST" action="/logout" style="margin-top:16px;">
     <button type="submit" class="btn btn-ghost">Terminar sessão</button>
   </form>
 </section>

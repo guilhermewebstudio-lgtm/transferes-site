@@ -559,49 +559,52 @@ html.preloading, html.preloading body { overflow: hidden; height: 100%; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 22px;
-  transition: opacity 0.7s ease;
+  gap: 20px;
+  transition: opacity 0.6s ease;
 }
 .site-preloader.fade-out { opacity: 0; pointer-events: none; }
-.preloader-scene { display: block; }
-.pre-beam {
+
+.preloader-mark {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader-ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+.preloader-ring-progress {
+  stroke-dasharray: 327;
+  stroke-dashoffset: 327;
+  animation: ringProgress 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes ringProgress {
+  to { stroke-dashoffset: 40; }
+}
+.preloader-car {
   opacity: 0;
-  animation: preBeamIn 1s ease-out forwards;
+  transform: scale(0.85);
+  animation: carPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
 }
-.pre-beam-2 { animation-delay: 0.1s; }
-@keyframes preBeamIn {
-  0% { opacity: 0; transform: scaleX(0.3); transform-origin: left center; }
-  100% { opacity: 0.75; transform: scaleX(1); }
+@keyframes carPop {
+  to { opacity: 1; transform: scale(1); }
 }
-.pre-light {
-  opacity: 0;
-  animation: preLightIn 0.5s ease-out 0.2s forwards;
-}
-@keyframes preLightIn { to { opacity: 1; } }
+
 .preloader-word {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.6rem;
-  letter-spacing: 0.04em;
-  color: var(--text);
-  display: flex;
-}
-.preloader-word span {
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
   opacity: 0;
-  transform: translateY(10px);
-  animation: letterIn 0.4s ease-out forwards;
+  transform: translateY(6px);
+  animation: wordIn 0.5s ease-out 0.75s forwards;
 }
-.preloader-word span:nth-child(1) { animation-delay: 0.35s; }
-.preloader-word span:nth-child(2) { animation-delay: 0.39s; }
-.preloader-word span:nth-child(3) { animation-delay: 0.43s; }
-.preloader-word span:nth-child(4) { animation-delay: 0.47s; }
-.preloader-word span:nth-child(5) { animation-delay: 0.51s; }
-.preloader-word span:nth-child(6) { animation-delay: 0.55s; }
-.preloader-word span:nth-child(7) { animation-delay: 0.59s; }
-.preloader-word span:nth-child(8) { animation-delay: 0.63s; }
-.preloader-word span:nth-child(9) { animation-delay: 0.67s; }
-.preloader-word span:nth-child(10) { animation-delay: 0.71s; }
-@keyframes letterIn {
+@keyframes wordIn {
   to { opacity: 1; transform: translateY(0); }
 }
 

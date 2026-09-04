@@ -77,6 +77,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
     });
 
     await sendEmail({ to: reserva.email, subject: assunto, html, replyTo: process.env.ADMIN_EMAIL });
+    await pool.query('UPDATE reservas SET respondida = true, respondida_em = NOW() WHERE id = $1', [reserva.id]);
 
     res.render('admin/responder', {
       title: 'Responder à reserva | Transferes',

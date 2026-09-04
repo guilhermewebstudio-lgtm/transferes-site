@@ -40,9 +40,13 @@ async function initDb() {
       notas TEXT,
       estado VARCHAR(30) DEFAULT 'pendente',
       pagamento_estado VARCHAR(30) DEFAULT 'nao_aplicavel',
+      respondida BOOLEAN DEFAULT FALSE,
+      respondida_em TIMESTAMP,
       criado_em TIMESTAMP DEFAULT NOW()
     );
   `);
+  await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS respondida BOOLEAN DEFAULT FALSE;`);
+  await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS respondida_em TIMESTAMP;`);
 
   await ensureDefaultAdmin();
   console.log('Base de dados pronta.');

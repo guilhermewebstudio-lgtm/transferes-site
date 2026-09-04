@@ -4,20 +4,19 @@
     const pre = document.createElement('div');
     pre.className = 'site-preloader';
     pre.innerHTML = `
-      <svg class="preloader-scene" viewBox="0 0 400 200" width="260">
-        <defs>
-          <linearGradient id="preBeam" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.7"/>
-            <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <path class="pre-beam pre-beam-1" d="M180 96 L400 40 L400 96 Z" fill="url(#preBeam)"/>
-        <path class="pre-beam pre-beam-2" d="M180 104 L400 104 L400 160 Z" fill="url(#preBeam)"/>
-        <circle class="pre-light" cx="176" cy="100" r="5" fill="#ffe9b0"/>
-      </svg>
-      <div class="preloader-word">
-        <span>T</span><span>r</span><span>a</span><span>n</span><span>s</span><span>f</span><span>e</span><span>r</span><span>e</span><span>s</span>
+      <div class="preloader-mark">
+        <svg class="preloader-ring" viewBox="0 0 120 120" width="88" height="88">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(61,125,251,0.15)" stroke-width="1.5"/>
+          <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#3d7dfb" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <svg class="preloader-car" viewBox="0 0 40 24" width="38" height="23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 17c0-2 1.5-3.4 3.6-3.8L9 12.4l3-4.6c.6-.9 1.6-1.4 2.7-1.4h9.4c1.2 0 2.3.6 2.9 1.7l2.6 4.6 3.2.7c1.6.4 2.6 1.8 2.6 3.4v2.2c0 .9-.7 1.6-1.6 1.6H35" stroke="#eef2f8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="11" cy="18.4" r="2.4" stroke="#3d7dfb" stroke-width="1.6"/>
+          <circle cx="27" cy="18.4" r="2.4" stroke="#3d7dfb" stroke-width="1.6"/>
+          <path d="M2 17H7" stroke="#eef2f8" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
       </div>
+      <div class="preloader-word">Transferes</div>
     `;
     document.documentElement.classList.add('preloading');
     document.body.prepend(pre);
@@ -26,8 +25,8 @@
       setTimeout(() => {
         pre.classList.add('fade-out');
         document.documentElement.classList.remove('preloading');
-        setTimeout(() => pre.remove(), 700);
-      }, 1400);
+        setTimeout(() => pre.remove(), 600);
+      }, 1100);
     });
 
     sessionStorage.setItem('site_entered', '1');

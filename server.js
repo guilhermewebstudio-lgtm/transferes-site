@@ -48,6 +48,14 @@ app.get('/conta', requireAuth, (req, res) => {
   res.render('conta', { title: 'A minha conta | Transferes', user: req.session.user });
 });
 
+app.get('/minhas-reservas', requireAuth, async (req, res) => {
+  const result = await pool.query(
+    'SELECT * FROM reservas WHERE user_id = $1 ORDER BY criado_em DESC',
+    [req.session.user.id]
+  );
+  res.render('minhas-reservas', { title: 'As minhas reservas | Transferes', reservas: result.rows });
+});
+
 app.get('/lang/:code', (req, res) => {
   const code = req.params.code === 'en' ? 'en' : 'pt';
   res.cookie('lang', code, { maxAge: 1000 * 60 * 60 * 24 * 365, sameSite: 'lax' });
