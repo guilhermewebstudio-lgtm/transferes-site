@@ -105,19 +105,52 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .scene-car {
   position: absolute;
   left: 50%;
-  bottom: 9%;
-  transform: translateX(-50%);
-  animation: idleBob 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  bottom: 8%;
+  transform: translateX(-50%) translateX(-38vw);
+  opacity: 0;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));
+  animation:
+    carArrive 2.6s cubic-bezier(0.22, 0.8, 0.28, 1) forwards,
+    idleBob 2.6s ease-in-out 2.6s infinite;
+}
+
+/* Entrada cinematográfica: o carro conduz até à posição quando a página carrega */
+@keyframes carArrive {
+  0% { transform: translateX(-50%) translateX(-42vw) scale(0.94); opacity: 0; }
+  8% { opacity: 1; }
+  70% { transform: translateX(-50%) translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) translateX(0) scale(1); opacity: 1; }
 }
 @keyframes idleBob {
   0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-4px); }
+  50% { transform: translateX(-50%) translateY(-3px); }
 }
-.scene-car .beam { animation: beamFlicker 3.6s ease-in-out infinite; }
+
+.scene-car .beam {
+  opacity: 0;
+  animation: beamOn 2.6s ease-out forwards, beamFlicker 4.2s ease-in-out 3s infinite;
+}
+.scene-car .beam-soft { animation-delay: 0.15s, 3.15s; }
+@keyframes beamOn {
+  0%, 55% { opacity: 0; }
+  75% { opacity: 0.85; }
+  100% { opacity: 0.6; }
+}
 @keyframes beamFlicker {
-  0%, 100% { opacity: 0.9; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.4; }
+}
+.car-shadow {
+  opacity: 0;
+  animation: shadowIn 2.6s ease-out forwards;
+}
+@keyframes shadowIn {
+  0%, 20% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .scene-car { width: 220px; height: 82px; bottom: 6%; }
 }
 
 .hero-content {
@@ -284,7 +317,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 .transition-car {
   position: absolute;
   top: 50%;
-  left: -160px;
+  left: -260px;
   transform: translateY(-50%);
 }
 .route-transition.active .transition-car {
@@ -294,8 +327,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   animation: dashMove 0.7s linear forwards;
 }
 @keyframes carDash {
-  0% { left: -160px; }
-  100% { left: 110%; }
+  0% { left: -260px; filter: blur(0); }
+  55% { filter: blur(1.5px); }
+  100% { left: 110%; filter: blur(0.5px); }
 }
 @keyframes dashMove {
   0% { stroke-dashoffset: 0; }

@@ -25,8 +25,18 @@
         </radialGradient>
       </defs>
       <rect width="1600" height="900" fill="url(#skyGrad)"/>
-      <circle cx="1320" cy="150" r="120" fill="url(#moonGlow)"/>
-      <circle cx="1320" cy="150" r="46" fill="#e7edf8"/>
+      <circle cx="1400" cy="110" r="70" fill="url(#moonGlow)"/>
+      <circle cx="1400" cy="110" r="30" fill="#e7edf8"/>
+      <circle cx="1391" cy="103" r="4" fill="#c7d2e0" opacity="0.5"/>
+      <circle cx="1408" cy="116" r="3" fill="#c7d2e0" opacity="0.4"/>
+      <g class="stars">
+        <circle cx="120" cy="90" r="1.6" fill="#c7d2e0" opacity="0.6"/>
+        <circle cx="260" cy="160" r="1.2" fill="#c7d2e0" opacity="0.5"/>
+        <circle cx="420" cy="80" r="1.6" fill="#c7d2e0" opacity="0.7"/>
+        <circle cx="700" cy="130" r="1.2" fill="#c7d2e0" opacity="0.4"/>
+        <circle cx="980" cy="70" r="1.6" fill="#c7d2e0" opacity="0.6"/>
+        <circle cx="1150" cy="200" r="1.2" fill="#c7d2e0" opacity="0.5"/>
+      </g>
       <g class="skyline" fill="#0a1120">
         <rect x="60" y="520" width="60" height="240"/>
         <rect x="140" y="470" width="46" height="290"/>
@@ -60,24 +70,62 @@
       </g>
     </svg>
 
-    <svg class="scene-car" viewBox="0 0 240 100" width="240" height="100">
+    <svg class="scene-car" id="hero-car" viewBox="0 0 320 120" width="320" height="120">
       <defs>
         <linearGradient id="beamGrad2" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.5"/>
+          <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.55"/>
           <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
         </linearGradient>
+        <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a2740"/>
+          <stop offset="55%" stop-color="#101a2b"/>
+          <stop offset="100%" stop-color="#0a121f"/>
+        </linearGradient>
+        <linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8ea6d6" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#3d7dfb" stop-opacity="0.12"/>
+        </linearGradient>
       </defs>
-      <path class="beam" d="M212 60 L400 20 L400 100 Z" fill="url(#beamGrad2)"/>
-      <path class="beam" d="M212 66 L400 90 L400 160 Z" fill="url(#beamGrad2)" opacity="0.5"/>
-      <ellipse cx="120" cy="92" rx="94" ry="8" fill="rgba(0,0,0,0.4)"/>
-      <path d="M16 68 C20 40 44 24 68 22 L156 22 C180 24 200 40 208 60 L220 60 C228 60 232 64 232 70 L232 72 C232 78 228 82 222 82 L204 82 C200 90 192 94 184 94 C176 94 168 90 164 82 L80 82 C76 90 68 94 60 94 C52 94 44 90 40 82 L22 82 C16 82 12 78 12 72 L12 70 C12 68.8 14 68 16 68 Z" fill="#101a2b" stroke="#3d7dfb" stroke-width="2"/>
-      <path d="M72 30 L140 30 C152 30 162 38 168 48 L68 48 C66 42 68 34 72 30 Z" fill="rgba(190,208,235,0.16)"/>
-      <circle cx="60" cy="82" r="14" fill="#080c14" stroke="#b9c4d6" stroke-width="2"/>
-      <circle cx="60" cy="82" r="5" fill="#3d7dfb"/>
-      <circle cx="184" cy="82" r="14" fill="#080c14" stroke="#b9c4d6" stroke-width="2"/>
-      <circle cx="184" cy="82" r="5" fill="#3d7dfb"/>
-      <circle cx="218" cy="64" r="4" fill="#ffe9b0"/>
-      <circle cx="14" cy="70" r="3" fill="#ff5252" opacity="0.85"/>
+
+      <ellipse class="car-shadow" cx="165" cy="103" rx="118" ry="7" fill="rgba(0,0,0,0.45)"/>
+
+      <path class="beam" d="M282 68 L420 30 L420 96 Z" fill="url(#beamGrad2)"/>
+      <path class="beam beam-soft" d="M282 74 L420 100 L420 150 Z" fill="url(#beamGrad2)" opacity="0.45"/>
+
+      <path d="M18 76
+               C 20 66 30 60 40 59
+               L 70 58
+               C 80 40 96 27 116 25
+               L 190 25
+               C 212 27 228 41 236 58
+               L 262 59
+               C 278 60 292 66 298 78
+               C 300 82 299 88 294 90
+               L 282 90
+               C 279 96 271 100 262 100
+               C 253 100 245 96 242 90
+               L 96 90
+               C 93 96 85 100 76 100
+               C 67 100 59 96 56 90
+               L 30 90
+               C 22 89 16 84 18 76 Z"
+            fill="url(#bodyGrad)" stroke="#3d7dfb" stroke-width="1.6"/>
+
+      <path d="M40 60 L272 62" stroke="#5c93fc" stroke-width="1" opacity="0.35"/>
+
+      <path d="M120 30 C 132 29 178 29 188 30 C 200 32 210 42 215 54 L 122 54 C 118 46 117 37 120 30 Z"
+            fill="url(#glassGrad)"/>
+      <line x1="167" y1="30" x2="167" y2="54" stroke="#0a121f" stroke-width="1.4" opacity="0.6"/>
+
+      <circle cx="76" cy="90" r="17" fill="#070b12" stroke="#b9c4d6" stroke-width="2"/>
+      <circle cx="76" cy="90" r="7" fill="#1c2740" stroke="#8a94a8" stroke-width="1"/>
+      <circle cx="262" cy="90" r="17" fill="#070b12" stroke="#b9c4d6" stroke-width="2"/>
+      <circle cx="262" cy="90" r="7" fill="#1c2740" stroke="#8a94a8" stroke-width="1"/>
+
+      <ellipse cx="292" cy="72" rx="6" ry="4" fill="#ffe9b0"/>
+      <ellipse cx="21" cy="72" rx="4" ry="3.4" fill="#ff5252" opacity="0.9"/>
+
+      <path d="M214 46 L222 43 L223 49 L215 51 Z" fill="#0a121f" stroke="#3d7dfb" stroke-width="0.8"/>
     </svg>
   </div>
 
