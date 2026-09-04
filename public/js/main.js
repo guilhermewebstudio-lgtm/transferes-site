@@ -42,6 +42,19 @@
     });
   }
 
+  // Olho para mostrar/esconder password
+  document.querySelectorAll('.pw-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const field = btn.closest('.pw-field');
+      const input = field.querySelector('.pw-input');
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      field.querySelector('.pw-eye-open').style.display = isHidden ? 'none' : 'block';
+      field.querySelector('.pw-eye-closed').style.display = isHidden ? 'block' : 'none';
+      btn.setAttribute('aria-label', isHidden ? 'Esconder password' : 'Mostrar password');
+    });
+  });
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const overlay = document.querySelector('.route-transition');
 

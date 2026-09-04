@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Admin · <a href="/admin" data-nav style="color:var(--blue);">voltar</a></p>
+  <h1>Responder a <%= reserva.nome %></h1>
+  <p class="page-lede"><%= reserva.origem %> → <%= reserva.destino %> · <%= reserva.email %></p>
+</section>
+
+<section class="booking-section" style="max-width:640px;">
+  <% if (enviado) { %>
+    <p class="form-feedback success" style="margin-bottom:20px;">Email enviado com sucesso para <%= reserva.email %>.</p>
+  <% } %>
+  <% if (erro) { %>
+    <p class="form-feedback error" style="margin-bottom:20px;"><%= erro %></p>
+  <% } %>
+
+  <form method="POST" action="/admin/reservas/<%= reserva.id %>/responder" class="booking-form">
+    <label>Assunto
+      <input type="text" name="assunto" value="<%= assunto %>" required>
+    </label>
+    <label>Mensagem
+      <textarea name="mensagem" rows="10" required><%= mensagem %></textarea>
+    </label>
+    <label>Valor total (opcional, ex: 45€)
+      <input type="text" name="preco" value="<%= preco %>" placeholder="45€">
+    </label>
+    <button type="submit" class="btn btn-primary">Enviar email</button>
+  </form>
+
+  <p style="margin-top:24px; color:var(--muted); font-size:0.85rem;">
+    O email é enviado com o design do site (fundo escuro, logótipo Transferes). Se preencheres "Valor total", aparece destacado no email.
+  </p>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

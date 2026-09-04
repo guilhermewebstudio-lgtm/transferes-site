@@ -17,9 +17,13 @@ async function initDb() {
       email VARCHAR(150) UNIQUE NOT NULL,
       password_hash VARCHAR(255) NOT NULL,
       is_admin BOOLEAN DEFAULT FALSE,
+      reset_token VARCHAR(255),
+      reset_token_expires TIMESTAMP,
       criado_em TIMESTAMP DEFAULT NOW()
     );
   `);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS reset_token VARCHAR(255);`);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS reset_token_expires TIMESTAMP;`);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS reservas (

@@ -32,14 +32,17 @@
           <td style="padding:10px;color:var(--muted);"><%= r.origem %> → <%= r.destino %></td>
           <td style="padding:10px;color:var(--muted);"><%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT') : '-' %></td>
           <td style="padding:10px;">
-            <form method="POST" action="/admin/reservas/<%= r.id %>/estado" style="display:flex;gap:6px;">
-              <select name="estado" onchange="this.form.submit()" style="padding:6px;font-size:0.85rem;">
-                <option value="pendente" <%= r.estado === 'pendente' ? 'selected' : '' %>>Pendente</option>
-                <option value="confirmada" <%= r.estado === 'confirmada' ? 'selected' : '' %>>Confirmada</option>
-                <option value="concluida" <%= r.estado === 'concluida' ? 'selected' : '' %>>Concluída</option>
-                <option value="cancelada" <%= r.estado === 'cancelada' ? 'selected' : '' %>>Cancelada</option>
-              </select>
-            </form>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <form method="POST" action="/admin/reservas/<%= r.id %>/estado" style="display:flex;">
+                <select name="estado" onchange="this.form.submit()" style="padding:6px;font-size:0.85rem;">
+                  <option value="pendente" <%= r.estado === 'pendente' ? 'selected' : '' %>>Pendente</option>
+                  <option value="confirmada" <%= r.estado === 'confirmada' ? 'selected' : '' %>>Confirmada</option>
+                  <option value="concluida" <%= r.estado === 'concluida' ? 'selected' : '' %>>Concluída</option>
+                  <option value="cancelada" <%= r.estado === 'cancelada' ? 'selected' : '' %>>Cancelada</option>
+                </select>
+              </form>
+              <a href="/admin/reservas/<%= r.id %>/responder" data-nav style="font-size:0.85rem; color:var(--blue); white-space:nowrap;">Responder</a>
+            </div>
           </td>
         </tr>
         <% }) %>
