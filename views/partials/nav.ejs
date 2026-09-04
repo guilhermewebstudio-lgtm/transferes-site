@@ -15,6 +15,12 @@
       <a href="/servicos" data-nav>Serviços</a>
       <a href="/frota" data-nav>Frota</a>
       <a href="/sobre" data-nav>Sobre</a>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <% if (user.is_admin) { %><a href="/admin" data-nav>Admin</a><% } %>
+        <a href="/conta" data-nav>Conta</a>
+      <% } else { %>
+        <a href="/login" data-nav>Entrar</a>
+      <% } %>
       <a href="/contacto" class="nav-cta" data-nav>Reservar</a>
     </nav>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
@@ -25,6 +31,12 @@
     <a href="/servicos" data-nav>Serviços</a>
     <a href="/frota" data-nav>Frota</a>
     <a href="/sobre" data-nav>Sobre</a>
+    <% if (typeof user !== 'undefined' && user) { %>
+      <% if (user.is_admin) { %><a href="/admin" data-nav>Admin</a><% } %>
+      <a href="/conta" data-nav>Conta</a>
+    <% } else { %>
+      <a href="/login" data-nav>Entrar</a>
+    <% } %>
     <a href="/contacto" data-nav>Reservar</a>
   </div>
 </header>

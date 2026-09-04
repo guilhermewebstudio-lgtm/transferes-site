@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Bem-vindo, <%= user.nome %></p>
+  <h1>A tua conta</h1>
+</section>
+<section class="booking-section">
+  <p style="color:var(--muted);margin-bottom:30px;">Email associado: <%= user.email %></p>
+  <form method="POST" action="/logout">
+    <button type="submit" class="btn btn-ghost">Terminar sessão</button>
+  </form>
+</section>
+<%- include('partials/footer') %>
+</body>
+</html>

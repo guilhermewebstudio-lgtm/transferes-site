@@ -29,11 +29,20 @@ app.use(session({
 
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
+  res.locals.user = req.session.user || null;
   next();
 });
 
+const { requireAuth } = require('./middleware/auth');
+
 app.use('/', require('./routes/pages'));
+app.use('/', require('./routes/auth'));
+app.use('/admin', require('./routes/admin'));
 app.use('/api', require('./routes/api'));
+
+app.get('/conta', requireAuth, (req, res) => {
+  res.render('conta', { title: 'A minha conta | Transferes', user: req.session.user });
+});
 
 app.get('/api/health', (req, res) => res.status(200).send('ok'));
 
