@@ -1,0 +1,50 @@
+{
+  "nav.servicos": "Services",
+  "nav.frota": "Fleet",
+  "nav.sobre": "About",
+  "nav.entrar": "Sign in",
+  "nav.conta": "Account",
+  "nav.admin": "Admin",
+  "nav.reservar": "Book now",
+
+  "hero.eyebrow": "Executive & airport transfers",
+  "hero.title1": "Arrive on time.",
+  "hero.title2": "Arrive in style.",
+  "hero.lede": "Professional drivers, immaculately kept vehicles, and a booking that takes less than a minute — for those who can't leave anything to chance.",
+  "hero.cta.reservar": "Book a transfer",
+  "hero.cta.servicos": "View services",
+  "hero.stat.disponibilidade": "Availability",
+  "hero.stat.experiencia": "Of experience",
+  "hero.stat.pontualidade": "On-time record",
+
+  "strip.aeroporto.title": "Airport",
+  "strip.aeroporto.desc": "Real-time flight monitoring, waiting time included, and unhurried luggage pickup.",
+  "strip.executivo.title": "Executive",
+  "strip.executivo.desc": "Professional travel with discretion, on-board wi-fi, and premium vehicles.",
+  "strip.eventos.title": "Private events",
+  "strip.eventos.desc": "Weddings, dinners, and special occasions handled with the same care every time.",
+
+  "cta.home.title": "Book your trip in under a minute",
+  "cta.home.btn": "Make a booking",
+
+  "footer.tagline": "Executive and airport transport, on your schedule, without surprises.",
+  "footer.nav": "Navigation",
+  "footer.contacto": "Contact",
+  "footer.rights": "All rights reserved.",
+
+  "page.servicos.eyebrow": "What we do",
+  "page.servicos.title": "Services designed for every trip",
+  "page.servicos.lede": "From the airport to your most important meeting of the year, every detail is arranged before you leave home.",
+
+  "page.frota.eyebrow": "Our fleet",
+  "page.frota.title": "Vehicles chosen down to the detail",
+  "page.frota.lede": "Regular servicing, cleaning before every trip, and comfort built for long or short journeys.",
+
+  "page.sobre.eyebrow": "Who we are",
+  "page.sobre.title": "Punctuality isn't a promise, it's a habit",
+  "page.sobre.lede": "We started by solving the problem of always arriving late to schedules that don't forgive delays. We keep doing it, trip after trip.",
+
+  "page.contacto.eyebrow": "Book now",
+  "page.contacto.title": "Tell us where you're headed",
+  "page.contacto.lede": "Fill in your trip details and we'll get in touch to confirm everything."
+}

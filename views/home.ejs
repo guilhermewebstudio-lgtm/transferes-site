@@ -70,77 +70,110 @@
       </g>
     </svg>
 
-    <svg class="scene-car" id="hero-car" viewBox="0 0 320 120" width="320" height="120">
+    <svg class="scene-car" id="hero-car" viewBox="0 0 340 120" width="340" height="120">
       <defs>
         <linearGradient id="beamGrad2" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.55"/>
           <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
         </linearGradient>
         <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1a2740"/>
-          <stop offset="55%" stop-color="#101a2b"/>
-          <stop offset="100%" stop-color="#0a121f"/>
+          <stop offset="0%" stop-color="#22314f"/>
+          <stop offset="45%" stop-color="#101a2b"/>
+          <stop offset="100%" stop-color="#080e18"/>
         </linearGradient>
         <linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8ea6d6" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#3d7dfb" stop-opacity="0.12"/>
+          <stop offset="0%" stop-color="#9fb4dd" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#3d7dfb" stop-opacity="0.1"/>
         </linearGradient>
+        <radialGradient id="wheelGrad" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#2a3a58"/>
+          <stop offset="100%" stop-color="#050810"/>
+        </radialGradient>
       </defs>
 
-      <ellipse class="car-shadow" cx="165" cy="103" rx="118" ry="7" fill="rgba(0,0,0,0.45)"/>
+      <ellipse class="car-shadow" cx="172" cy="101" rx="130" ry="7" fill="rgba(0,0,0,0.45)"/>
 
-      <path class="beam" d="M282 68 L420 30 L420 96 Z" fill="url(#beamGrad2)"/>
-      <path class="beam beam-soft" d="M282 74 L420 100 L420 150 Z" fill="url(#beamGrad2)" opacity="0.45"/>
+      <path class="beam" d="M300 64 L440 26 L440 92 Z" fill="url(#beamGrad2)"/>
+      <path class="beam beam-soft" d="M300 70 L440 96 L440 146 Z" fill="url(#beamGrad2)" opacity="0.45"/>
 
-      <path d="M18 76
-               C 20 66 30 60 40 59
-               L 70 58
-               C 80 40 96 27 116 25
-               L 190 25
-               C 212 27 228 41 236 58
-               L 262 59
-               C 278 60 292 66 298 78
-               C 300 82 299 88 294 90
-               L 282 90
-               C 279 96 271 100 262 100
-               C 253 100 245 96 242 90
-               L 96 90
-               C 93 96 85 100 76 100
-               C 67 100 59 96 56 90
-               L 30 90
-               C 22 89 16 84 18 76 Z"
+      <!-- carroçaria: coupé executivo baixo, capô longo, tejadilho recuado -->
+      <path d="M14 74
+               C 15 63 26 56 38 55
+               L 66 54
+               C 78 34 100 22 130 21
+               L 178 22
+               C 202 24 218 36 226 54
+               L 278 55
+               C 296 56 312 62 320 76
+               C 322 81 320 87 314 89
+               L 300 89
+               C 297 96 288 100 278 100
+               C 268 100 259 96 256 89
+               L 100 89
+               C 97 96 88 100 78 100
+               C 68 100 59 96 56 89
+               L 26 89
+               C 18 87 12 82 14 74 Z"
             fill="url(#bodyGrad)" stroke="#3d7dfb" stroke-width="1.6"/>
 
-      <path d="M40 60 L272 62" stroke="#5c93fc" stroke-width="1" opacity="0.35"/>
+      <!-- vinco lateral -->
+      <path d="M40 56 L288 58" stroke="#5c93fc" stroke-width="1" opacity="0.3"/>
+      <path d="M40 66 L288 68" stroke="#050810" stroke-width="1" opacity="0.4"/>
 
-      <path d="M120 30 C 132 29 178 29 188 30 C 200 32 210 42 215 54 L 122 54 C 118 46 117 37 120 30 Z"
+      <!-- vidros: para-brisas + laterais + traseira -->
+      <path d="M132 26 C 156 24 178 25 190 27 C 204 30 216 40 222 52 L 132 52 C 128 44 128 34 132 26 Z"
             fill="url(#glassGrad)"/>
-      <line x1="167" y1="30" x2="167" y2="54" stroke="#0a121f" stroke-width="1.4" opacity="0.6"/>
+      <line x1="178" y1="26" x2="178" y2="52" stroke="#080e18" stroke-width="1.3" opacity="0.55"/>
 
-      <circle cx="76" cy="90" r="17" fill="#070b12" stroke="#b9c4d6" stroke-width="2"/>
-      <circle cx="76" cy="90" r="7" fill="#1c2740" stroke="#8a94a8" stroke-width="1"/>
-      <circle cx="262" cy="90" r="17" fill="#070b12" stroke="#b9c4d6" stroke-width="2"/>
-      <circle cx="262" cy="90" r="7" fill="#1c2740" stroke="#8a94a8" stroke-width="1"/>
+      <!-- puxador -->
+      <rect x="150" y="58" width="14" height="3" rx="1.5" fill="#5c93fc" opacity="0.6"/>
 
-      <ellipse cx="292" cy="72" rx="6" ry="4" fill="#ffe9b0"/>
-      <ellipse cx="21" cy="72" rx="4" ry="3.4" fill="#ff5252" opacity="0.9"/>
+      <!-- badge -->
+      <circle cx="304" cy="70" r="3" fill="none" stroke="#8ea6d6" stroke-width="1" opacity="0.7"/>
 
-      <path d="M214 46 L222 43 L223 49 L215 51 Z" fill="#0a121f" stroke="#3d7dfb" stroke-width="0.8"/>
+      <!-- rodas com jantes -->
+      <circle cx="82" cy="89" r="18" fill="url(#wheelGrad)" stroke="#b9c4d6" stroke-width="2"/>
+      <g stroke="#8a94a8" stroke-width="1.2" opacity="0.8">
+        <line x1="82" y1="89" x2="82" y2="75"/>
+        <line x1="82" y1="89" x2="94" y2="82"/>
+        <line x1="82" y1="89" x2="94" y2="96"/>
+        <line x1="82" y1="89" x2="70" y2="96"/>
+        <line x1="82" y1="89" x2="70" y2="82"/>
+      </g>
+      <circle cx="82" cy="89" r="4" fill="#1c2740"/>
+
+      <circle cx="270" cy="89" r="18" fill="url(#wheelGrad)" stroke="#b9c4d6" stroke-width="2"/>
+      <g stroke="#8a94a8" stroke-width="1.2" opacity="0.8">
+        <line x1="270" y1="89" x2="270" y2="75"/>
+        <line x1="270" y1="89" x2="282" y2="82"/>
+        <line x1="270" y1="89" x2="282" y2="96"/>
+        <line x1="270" y1="89" x2="258" y2="96"/>
+        <line x1="270" y1="89" x2="258" y2="82"/>
+      </g>
+      <circle cx="270" cy="89" r="4" fill="#1c2740"/>
+
+      <!-- luzes -->
+      <ellipse cx="313" cy="70" rx="6.5" ry="4.2" fill="#ffe9b0"/>
+      <ellipse cx="313" cy="70" rx="3" ry="2" fill="#fff6de"/>
+      <ellipse cx="16" cy="70" rx="4.4" ry="3.4" fill="#ff5252" opacity="0.9"/>
+
+      <!-- espelho -->
+      <path d="M224 44 L233 41 L234 47 L225 49 Z" fill="#080e18" stroke="#3d7dfb" stroke-width="0.8"/>
     </svg>
   </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Transfers executivos &amp; aeroporto</p>
-    <h1>Chega a horas.<br>Chegue em estilo.</h1>
-    <p class="hero-lede">Condutores profissionais, viaturas cuidadas ao detalhe e uma reserva que demora menos de um minuto — para quem não pode deixar nada ao acaso.</p>
+    <p class="hero-eyebrow"><%= t('hero.eyebrow') %></p>
+    <h1><%= t('hero.title1') %><br><%= t('hero.title2') %></h1>
+    <p class="hero-lede"><%= t('hero.lede') %></p>
     <div class="hero-actions">
-      <a href="/contacto" class="btn btn-primary" data-nav>Reservar transfer</a>
-      <a href="/servicos" class="btn btn-ghost" data-nav>Ver serviços</a>
+      <a href="/contacto" class="btn btn-primary" data-nav><%= t('hero.cta.reservar') %></a>
+      <a href="/servicos" class="btn btn-ghost" data-nav><%= t('hero.cta.servicos') %></a>
     </div>
     <div class="hero-stats">
-      <div><strong>24/7</strong><span>Disponibilidade</span></div>
-      <div><strong>+8 anos</strong><span>De experiência</span></div>
-      <div><strong>100%</strong><span>Pontualidade</span></div>
+      <div><strong>24/7</strong><span><%= t('hero.stat.disponibilidade') %></span></div>
+      <div><strong>+8 anos</strong><span><%= t('hero.stat.experiencia') %></span></div>
+      <div><strong>100%</strong><span><%= t('hero.stat.pontualidade') %></span></div>
     </div>
   </div>
 </section>
@@ -148,24 +181,24 @@
 <section class="services-strip">
   <div class="strip-inner">
     <article class="strip-card">
-      <h3>Aeroporto</h3>
-      <p>Monitorização do voo em tempo real, espera incluída e recolha de bagagem sem pressas.</p>
+      <h3><%= t('strip.aeroporto.title') %></h3>
+      <p><%= t('strip.aeroporto.desc') %></p>
     </article>
     <article class="strip-card">
-      <h3>Executivo</h3>
-      <p>Deslocações profissionais com discrição, wi-fi a bordo e viaturas de gama alta.</p>
+      <h3><%= t('strip.executivo.title') %></h3>
+      <p><%= t('strip.executivo.desc') %></p>
     </article>
     <article class="strip-card">
-      <h3>Eventos privados</h3>
-      <p>Casamentos, jantares e ocasiões especiais tratadas com o mesmo rigor de sempre.</p>
+      <h3><%= t('strip.eventos.title') %></h3>
+      <p><%= t('strip.eventos.desc') %></p>
     </article>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="cta-inner">
-    <h2>Marque a sua viagem em menos de um minuto</h2>
-    <a href="/contacto" class="btn btn-primary" data-nav>Fazer reserva</a>
+    <h2><%= t('cta.home.title') %></h2>
+    <a href="/contacto" class="btn btn-primary" data-nav><%= t('cta.home.btn') %></a>
   </div>
 </section>
 

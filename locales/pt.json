@@ -1,0 +1,50 @@
+{
+  "nav.servicos": "Serviços",
+  "nav.frota": "Frota",
+  "nav.sobre": "Sobre",
+  "nav.entrar": "Entrar",
+  "nav.conta": "Conta",
+  "nav.admin": "Admin",
+  "nav.reservar": "Reservar",
+
+  "hero.eyebrow": "Transfers executivos & aeroporto",
+  "hero.title1": "Chega a horas.",
+  "hero.title2": "Chegue em estilo.",
+  "hero.lede": "Condutores profissionais, viaturas cuidadas ao detalhe e uma reserva que demora menos de um minuto — para quem não pode deixar nada ao acaso.",
+  "hero.cta.reservar": "Reservar transfer",
+  "hero.cta.servicos": "Ver serviços",
+  "hero.stat.disponibilidade": "Disponibilidade",
+  "hero.stat.experiencia": "De experiência",
+  "hero.stat.pontualidade": "Pontualidade",
+
+  "strip.aeroporto.title": "Aeroporto",
+  "strip.aeroporto.desc": "Monitorização do voo em tempo real, espera incluída e recolha de bagagem sem pressas.",
+  "strip.executivo.title": "Executivo",
+  "strip.executivo.desc": "Deslocações profissionais com discrição, wi-fi a bordo e viaturas de gama alta.",
+  "strip.eventos.title": "Eventos privados",
+  "strip.eventos.desc": "Casamentos, jantares e ocasiões especiais tratadas com o mesmo rigor de sempre.",
+
+  "cta.home.title": "Marque a sua viagem em menos de um minuto",
+  "cta.home.btn": "Fazer reserva",
+
+  "footer.tagline": "Transporte executivo e de aeroporto, à sua hora, sem imprevistos.",
+  "footer.nav": "Navegação",
+  "footer.contacto": "Contacto",
+  "footer.rights": "Todos os direitos reservados.",
+
+  "page.servicos.eyebrow": "O que fazemos",
+  "page.servicos.title": "Serviços pensados para cada viagem",
+  "page.servicos.lede": "Do aeroporto à reunião mais importante do ano, cada detalhe é preparado antes de sair de casa.",
+
+  "page.frota.eyebrow": "A nossa frota",
+  "page.frota.title": "Viaturas escolhidas ao detalhe",
+  "page.frota.lede": "Revisão regular, limpeza antes de cada serviço e conforto pensado para viagens longas ou curtas.",
+
+  "page.sobre.eyebrow": "Quem somos",
+  "page.sobre.title": "Pontualidade não é promessa, é hábito",
+  "page.sobre.lede": "Começámos por resolver o problema de sempre chegar tarde a horários que não perdoam atrasos. Continuamos a fazê-lo, viagem após viagem.",
+
+  "page.contacto.eyebrow": "Reservar",
+  "page.contacto.title": "Diga-nos para onde vai",
+  "page.contacto.lede": "Preencha os dados da viagem e entramos em contacto para confirmar tudo."
+}

@@ -12,31 +12,39 @@
       <span class="brand-word">Transferes</span>
     </a>
     <nav class="main-nav">
-      <a href="/servicos" data-nav>Serviços</a>
-      <a href="/frota" data-nav>Frota</a>
-      <a href="/sobre" data-nav>Sobre</a>
+      <a href="/servicos" data-nav><%= t('nav.servicos') %></a>
+      <a href="/frota" data-nav><%= t('nav.frota') %></a>
+      <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
       <% if (typeof user !== 'undefined' && user) { %>
-        <% if (user.is_admin) { %><a href="/admin" data-nav>Admin</a><% } %>
-        <a href="/conta" data-nav>Conta</a>
+        <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
+        <a href="/conta" data-nav><%= t('nav.conta') %></a>
       <% } else { %>
-        <a href="/login" data-nav>Entrar</a>
+        <a href="/login" data-nav><%= t('nav.entrar') %></a>
       <% } %>
-      <a href="/contacto" class="nav-cta" data-nav>Reservar</a>
+      <div class="lang-switch" role="group" aria-label="Idioma">
+        <a href="/lang/pt" class="lang-btn <%= lang === 'pt' ? 'active' : '' %>">PT</a>
+        <a href="/lang/en" class="lang-btn <%= lang === 'en' ? 'active' : '' %>">EN</a>
+      </div>
+      <a href="/contacto" class="nav-cta" data-nav><%= t('nav.reservar') %></a>
     </nav>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="mobile-nav">
-    <a href="/servicos" data-nav>Serviços</a>
-    <a href="/frota" data-nav>Frota</a>
-    <a href="/sobre" data-nav>Sobre</a>
+    <a href="/servicos" data-nav><%= t('nav.servicos') %></a>
+    <a href="/frota" data-nav><%= t('nav.frota') %></a>
+    <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
     <% if (typeof user !== 'undefined' && user) { %>
-      <% if (user.is_admin) { %><a href="/admin" data-nav>Admin</a><% } %>
-      <a href="/conta" data-nav>Conta</a>
+      <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
+      <a href="/conta" data-nav><%= t('nav.conta') %></a>
     <% } else { %>
-      <a href="/login" data-nav>Entrar</a>
+      <a href="/login" data-nav><%= t('nav.entrar') %></a>
     <% } %>
-    <a href="/contacto" data-nav>Reservar</a>
+    <a href="/contacto" data-nav><%= t('nav.reservar') %></a>
+    <div class="lang-switch" role="group" aria-label="Idioma">
+      <a href="/lang/pt" class="lang-btn <%= lang === 'pt' ? 'active' : '' %>">PT</a>
+      <a href="/lang/en" class="lang-btn <%= lang === 'en' ? 'active' : '' %>">EN</a>
+    </div>
   </div>
 </header>

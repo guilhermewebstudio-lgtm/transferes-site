@@ -2,18 +2,18 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="brand-word">Transferes</span>
-      <p>Transporte executivo e de aeroporto, à sua hora, sem imprevistos.</p>
+      <p><%= t('footer.tagline') %></p>
     </div>
     <div class="footer-cols">
       <div>
-        <h4>Navegação</h4>
-        <a href="/servicos" data-nav>Serviços</a>
-        <a href="/frota" data-nav>Frota</a>
-        <a href="/sobre" data-nav>Sobre</a>
-        <a href="/contacto" data-nav>Reservar</a>
+        <h4><%= t('footer.nav') %></h4>
+        <a href="/servicos" data-nav><%= t('nav.servicos') %></a>
+        <a href="/frota" data-nav><%= t('nav.frota') %></a>
+        <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
+        <a href="/contacto" data-nav><%= t('nav.reservar') %></a>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h4><%= t('footer.contacto') %></h4>
         <a href="tel:+351900000000">+351 900 000 000</a>
         <a href="mailto:reservas@transferes.pt">reservas@transferes.pt</a>
         <span>Lisboa, Portugal</span>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; <%= new Date().getFullYear() %> Transferes. Todos os direitos reservados.</span>
+    <span>&copy; <%= new Date().getFullYear() %> Transferes. <%= t('footer.rights') %></span>
   </div>
 </footer>
 
