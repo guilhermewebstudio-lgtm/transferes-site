@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <p class="hero-eyebrow">Reservar</p>
+  <h1>Diga-nos para onde vai</h1>
+  <p class="page-lede">Preencha os dados da viagem e entramos em contacto para confirmar tudo.</p>
+</section>
+
+<section class="booking-section">
+  <form id="booking-form" class="booking-form">
+    <div class="form-row">
+      <label>Nome
+        <input type="text" name="nome" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Telefone
+        <input type="tel" name="telefone">
+      </label>
+      <label>Tipo de serviço
+        <select name="tipo_servico">
+          <option value="aeroporto">Aeroporto</option>
+          <option value="executivo">Executivo</option>
+          <option value="evento">Evento privado</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Origem
+        <input type="text" name="origem" required>
+      </label>
+      <label>Destino
+        <input type="text" name="destino" required>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Data e hora
+        <input type="datetime-local" name="data_hora">
+      </label>
+      <label>Passageiros
+        <input type="number" name="passageiros" min="1" max="8" value="1">
+      </label>
+    </div>
+    <label class="full">Notas adicionais
+      <textarea name="notas" rows="3" placeholder="Bagagem extra, cadeira de bebé, etc."></textarea>
+    </label>
+    <button type="submit" class="btn btn-primary">Pedir reserva</button>
+    <p id="form-feedback" class="form-feedback" role="status"></p>
+  </form>
+</section>
+
+<%- include('partials/footer') %>
+
+<script>
+document.getElementById('booking-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const feedback = document.getElementById('form-feedback');
+  const data = Object.fromEntries(new FormData(form).entries());
+  feedback.textContent = 'A enviar...';
+  feedback.className = 'form-feedback';
+  try {
+    const res = await fetch('/api/reserva', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    feedback.textContent = result.mensagem || result.erro;
+    feedback.className = 'form-feedback ' + (result.ok ? 'success' : 'error');
+    if (result.ok) form.reset();
+  } catch (err) {
+    feedback.textContent = 'Erro de ligação. Tenta novamente.';
+    feedback.className = 'form-feedback error';
+  }
+});
+</script>
+</body>
+</html>
