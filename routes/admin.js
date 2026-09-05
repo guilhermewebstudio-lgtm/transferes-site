@@ -30,6 +30,11 @@ router.post('/reservas/:id/estado', requireAdmin, async (req, res) => {
   res.redirect('/admin');
 });
 
+router.post('/reservas/:id/apagar', requireAdmin, async (req, res) => {
+  await pool.query('DELETE FROM reservas WHERE id = $1', [req.params.id]);
+  res.redirect('/admin');
+});
+
 router.get('/reservas/:id/responder', requireAdmin, async (req, res) => {
   const result = await pool.query('SELECT * FROM reservas WHERE id = $1', [req.params.id]);
   const reserva = result.rows[0];

@@ -43,6 +43,9 @@
                 </select>
               </form>
               <a href="/admin/reservas/<%= r.id %>/responder" data-nav style="font-size:0.85rem; color:var(--blue); white-space:nowrap;">Responder</a>
+              <form method="POST" action="/admin/reservas/<%= r.id %>/apagar" onsubmit="return confirm('Apagar esta reserva? Esta ação não pode ser desfeita.');" style="display:flex;">
+                <button type="submit" style="font-size:0.85rem; color:#ff8a8a; white-space:nowrap; background:none; border:none; cursor:pointer; padding:0;">Apagar</button>
+              </form>
             </div>
           </td>
         </tr>
