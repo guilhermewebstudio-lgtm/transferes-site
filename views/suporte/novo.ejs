@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Suporte · <a href="/suporte" data-nav style="color:var(--blue);">voltar</a></p>
+  <h1>Novo pedido de suporte</h1>
+</section>
+
+<section class="booking-section" style="max-width:600px;">
+  <% if (erro) { %><p class="form-feedback error" style="margin-bottom:16px;"><%= erro %></p><% } %>
+  <form method="POST" action="/suporte/novo" class="booking-form">
+    <label>Assunto
+      <input type="text" name="assunto" placeholder="Ex: Dúvida sobre a minha reserva" required>
+    </label>
+    <label>Mensagem
+      <textarea name="mensagem" rows="6" placeholder="Explica com detalhe o que precisas" required></textarea>
+    </label>
+    <button type="submit" class="btn btn-primary">Enviar pedido</button>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

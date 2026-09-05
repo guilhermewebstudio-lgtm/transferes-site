@@ -49,6 +49,28 @@ async function initDb() {
   await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS respondida_em TIMESTAMP;`);
 
   await ensureDefaultAdmin();
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS tickets (
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+      assunto VARCHAR(200) NOT NULL,
+      estado VARCHAR(20) DEFAULT 'aberto',
+      criado_em TIMESTAMP DEFAULT NOW(),
+      atualizado_em TIMESTAMP DEFAULT NOW()
+    );
+  `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS ticket_mensagens (
+      id SERIAL PRIMARY KEY,
+      ticket_id INTEGER REFERENCES tickets(id) ON DELETE CASCADE,
+      autor VARCHAR(10) NOT NULL,
+      mensagem TEXT NOT NULL,
+      criado_em TIMESTAMP DEFAULT NOW()
+    );
+  `);
+
   console.log('Base de dados pronta.');
 }
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Suporte</p>
+  <h1>Os meus tickets</h1>
+  <p class="page-lede">Fala diretamente com a nossa equipa sobre qualquer dúvida ou problema.</p>
+</section>
+
+<section class="booking-section" style="max-width:760px;">
+  <a href="/suporte/novo" class="btn btn-primary" data-nav style="margin-bottom:28px; display:inline-flex;">Novo pedido de suporte</a>
+
+  <% if (tickets.length === 0) { %>
+    <p style="color:var(--muted);">Ainda não tens nenhum ticket aberto.</p>
+  <% } else { %>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <% tickets.forEach(t => { %>
+        <a href="/suporte/<%= t.id %>" data-nav style="text-decoration:none;">
+          <div style="background:var(--surface); border:1px solid rgba(185,196,214,0.1); border-radius:14px; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <strong style="color:var(--text); font-size:0.98rem;"><%= t.assunto %></strong>
+              <p style="margin:4px 0 0; color:var(--muted); font-size:0.85rem;">Atualizado em <%= new Date(t.atualizado_em).toLocaleString('pt-PT') %></p>
+            </div>
+            <span style="padding:5px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;
+              background: <%= t.estado === 'fechado' ? 'rgba(185,196,214,0.12)' : 'rgba(61,125,251,0.15)' %>;
+              color: <%= t.estado === 'fechado' ? 'var(--silver)' : 'var(--blue)' %>;">
+              <%= t.estado === 'fechado' ? 'Fechado' : 'Aberto' %>
+            </span>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

@@ -14,6 +14,16 @@ router.get('/', requireAdmin, async (req, res) => {
   });
 });
 
+router.get('/suporte', requireAdmin, async (req, res) => {
+  const result = await pool.query(`
+    SELECT t.*, u.nome AS user_nome, u.email AS user_email
+    FROM tickets t
+    JOIN users u ON u.id = t.user_id
+    ORDER BY t.atualizado_em DESC
+  `);
+  res.render('admin/suporte', { title: 'Suporte | Admin | Transferes', tickets: result.rows });
+});
+
 router.post('/reservas/:id/estado', requireAdmin, async (req, res) => {
   const { estado } = req.body;
   await pool.query('UPDATE reservas SET estado = $1 WHERE id = $2', [estado, req.params.id]);

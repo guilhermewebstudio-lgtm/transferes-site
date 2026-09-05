@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Suporte · <a href="<%= voltarLink %>" data-nav style="color:var(--blue);">voltar</a></p>
+  <h1><%= ticket.assunto %></h1>
+  <p class="page-lede">
+    Ticket #<%= ticket.id %> ·
+    <span style="color: <%= ticket.estado === 'fechado' ? 'var(--silver)' : 'var(--blue)' %>;">
+      <%= ticket.estado === 'fechado' ? 'Fechado' : 'Aberto' %>
+    </span>
+  </p>
+</section>
+
+<section class="booking-section" style="max-width:700px;">
+  <% if (typeof user !== 'undefined' && user && user.is_admin) { %>
+  <form method="POST" action="/suporte/<%= ticket.id %>/estado" style="margin-bottom:20px;">
+    <select name="estado" onchange="this.form.submit()" style="padding:8px 12px; width:auto;">
+      <option value="aberto" <%= ticket.estado === 'aberto' ? 'selected' : '' %>>Aberto</option>
+      <option value="fechado" <%= ticket.estado === 'fechado' ? 'selected' : '' %>>Fechado</option>
+    </select>
+  </form>
+  <% } %>
+
+  <div class="ticket-thread">
+    <% mensagens.forEach(m => { %>
+      <div class="ticket-msg <%= m.autor %>">
+        <div class="ticket-msg-bubble">
+          <span class="ticket-msg-author"><%= m.autor === 'admin' ? 'Equipa Transferes' : 'Tu' %></span>
+          <p><%= m.mensagem %></p>
+          <span class="ticket-msg-time"><%= new Date(m.criado_em).toLocaleString('pt-PT') %></span>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <% if (ticket.estado !== 'fechado') { %>
+  <form method="POST" action="/suporte/<%= ticket.id %>/responder" class="booking-form" style="margin-top:24px;">
+    <label>Responder
+      <textarea name="mensagem" rows="4" required></textarea>
+    </label>
+    <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+  </form>
+  <% } else { %>
+    <p style="margin-top:24px; color:var(--muted);">Este ticket está fechado. Se precisares de continuar, abre um novo pedido de suporte.</p>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

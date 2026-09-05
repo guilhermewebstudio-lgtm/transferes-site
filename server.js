@@ -41,6 +41,7 @@ const { requireAuth } = require('./middleware/auth');
 
 app.use('/', require('./routes/pages'));
 app.use('/', require('./routes/auth'));
+app.use('/', require('./routes/suporte'));
 app.use('/admin', require('./routes/admin'));
 app.use('/api', require('./routes/api'));
 

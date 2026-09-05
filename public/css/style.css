@@ -346,6 +346,26 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 .form-feedback.success { color: #6be3a3; }
 .form-feedback.error { color: #ff8a8a; }
 
+/* ---------- Ticket thread (suporte) ---------- */
+.ticket-thread { display: flex; flex-direction: column; gap: 14px; }
+.ticket-msg { display: flex; }
+.ticket-msg.admin { justify-content: flex-start; }
+.ticket-msg.user { justify-content: flex-end; }
+.ticket-msg-bubble {
+  max-width: 78%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface);
+}
+.ticket-msg.admin .ticket-msg-bubble { border-bottom-left-radius: 4px; }
+.ticket-msg.user .ticket-msg-bubble { background: var(--blue); border-bottom-right-radius: 4px; }
+.ticket-msg-author { font-size: 0.78rem; font-weight: 700; color: var(--muted); display: block; margin-bottom: 4px; }
+.ticket-msg.user .ticket-msg-author { color: rgba(5,8,16,0.6); }
+.ticket-msg-bubble p { margin: 0 0 6px; color: var(--text); font-size: 0.94rem; white-space: pre-wrap; }
+.ticket-msg.user .ticket-msg-bubble p { color: #050810; }
+.ticket-msg-time { font-size: 0.75rem; color: var(--muted); }
+.ticket-msg.user .ticket-msg-time { color: rgba(5,8,16,0.55); }
+
 .pw-field { position: relative; display: flex; }
 .pw-field .pw-input { padding-right: 44px; width: 100%; }
 .pw-toggle {
