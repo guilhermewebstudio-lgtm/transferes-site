@@ -31,7 +31,7 @@
           <td style="padding:10px;color:var(--muted);"><%= r.email %><br><%= r.telefone || '' %></td>
           <td style="padding:10px;"><%= r.tipo_servico %></td>
           <td style="padding:10px;color:var(--muted);"><%= r.origem %> → <%= r.destino %></td>
-          <td style="padding:10px;color:var(--muted);"><%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT') : '-' %></td>
+          <td style="padding:10px;color:var(--muted);"><%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT', { timeZone: 'Europe/Lisbon' }) : '-' %></td>
           <td style="padding:10px;">
             <div style="display:flex; gap:8px; align-items:center;">
               <form method="POST" action="/admin/reservas/<%= r.id %>/estado" style="display:flex;">

@@ -23,7 +23,7 @@
             <div>
               <strong style="font-size:1rem;"><%= r.origem %> → <%= r.destino %></strong>
               <p style="margin:4px 0 0; color:var(--muted); font-size:0.88rem;">
-                <%= r.tipo_servico %> · <%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT') : 'data a combinar' %>
+                <%= r.tipo_servico %> · <%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT', { timeZone: 'Europe/Lisbon' }) : 'data a combinar' %>
               </p>
             </div>
             <span style="padding:5px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;
@@ -36,7 +36,7 @@
           <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(185,196,214,0.08);">
             <% if (r.respondida) { %>
               <p style="margin:0; color:#6be3a3; font-size:0.9rem;">
-                ✓ Já respondemos ao teu pedido — vai ao teu email para veres os detalhes<%= r.respondida_em ? ' (enviado a ' + new Date(r.respondida_em).toLocaleDateString('pt-PT') + ')' : '' %>.
+                ✓ Já respondemos ao teu pedido — vai ao teu email para veres os detalhes<%= r.respondida_em ? ' (enviado a ' + new Date(r.respondida_em).toLocaleDateString('pt-PT', { timeZone: 'Europe/Lisbon' }) + ')' : '' %>.
               </p>
             <% } else { %>
               <p style="margin:0; color:var(--muted); font-size:0.9rem;">
