@@ -17,7 +17,11 @@
   function addMessage(text, who) {
     const div = document.createElement('div');
     div.className = 'chat-msg ' + who;
-    div.textContent = text;
+    if (who === 'bot') {
+      div.innerHTML = text; // respostas do bot são sempre conteúdo nosso, pré-definido
+    } else {
+      div.textContent = text;
+    }
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
