@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/nav') %>
+<section class="page-hero" style="padding-bottom:0;">
+  <p class="hero-eyebrow">Admin · <a href="/admin" data-nav style="color:var(--blue);">voltar ao painel</a></p>
+  <h1>Conteúdo do site</h1>
+  <p class="page-lede">Edita o texto da página pública <a href="/precos-horarios" data-nav style="color:var(--blue);">/precos-horarios</a>.</p>
+</section>
+
+<section class="booking-section" style="max-width:640px;">
+  <% if (sucesso) { %>
+    <p class="form-feedback success" style="margin-bottom:20px;">Conteúdo atualizado com sucesso.</p>
+  <% } %>
+  <form method="POST" action="/admin/conteudo" class="booking-form">
+    <label>Texto de preços
+      <textarea name="precos" rows="6"><%= precos %></textarea>
+    </label>
+    <label>Texto de horários
+      <textarea name="horarios" rows="4"><%= horarios %></textarea>
+    </label>
+    <button type="submit" class="btn btn-primary">Guardar alterações</button>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

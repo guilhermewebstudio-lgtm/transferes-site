@@ -71,7 +71,27 @@ async function initDb() {
     );
   `);
 
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS site_settings (
+      chave VARCHAR(100) PRIMARY KEY,
+      valor TEXT
+    );
+  `);
+
   console.log('Base de dados pronta.');
+}
+
+async function getSetting(chave, valorDefault = '') {
+  const result = await pool.query('SELECT valor FROM site_settings WHERE chave = $1', [chave]);
+  return result.rows[0] ? result.rows[0].valor : valorDefault;
+}
+
+async function setSetting(chave, valor) {
+  await pool.query(
+    `INSERT INTO site_settings (chave, valor) VALUES ($1, $2)
+     ON CONFLICT (chave) DO UPDATE SET valor = $2`,
+    [chave, valor]
+  );
 }
 
 async function ensureDefaultAdmin() {
@@ -96,4 +116,4 @@ async function ensureDefaultAdmin() {
   }
 }
 
-module.exports = { pool, initDb };
+module.exports = { pool, initDb, getSetting, setSetting };

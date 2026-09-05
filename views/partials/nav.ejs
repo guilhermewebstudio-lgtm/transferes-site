@@ -14,6 +14,7 @@
     <nav class="main-nav">
       <a href="/servicos" data-nav><%= t('nav.servicos') %></a>
       <a href="/frota" data-nav><%= t('nav.frota') %></a>
+      <a href="/precos-horarios" data-nav>Preços</a>
       <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
       <% if (typeof user !== 'undefined' && user) { %>
         <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
@@ -36,6 +37,7 @@
   <div class="mobile-nav">
     <a href="/servicos" data-nav><%= t('nav.servicos') %></a>
     <a href="/frota" data-nav><%= t('nav.frota') %></a>
+    <a href="/precos-horarios" data-nav>Preços</a>
     <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
     <% if (typeof user !== 'undefined' && user) { %>
       <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>

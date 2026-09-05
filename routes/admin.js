@@ -1,17 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const { pool } = require('../config/db');
+const { pool, getSetting, setSetting } = require('../config/db');
 const { requireAdmin } = require('../middleware/auth');
 const { sendEmail, brandedEmailTemplate } = require('../utils/email');
 
 router.get('/', requireAdmin, async (req, res) => {
   const reservas = await pool.query('SELECT * FROM reservas ORDER BY criado_em DESC LIMIT 100');
   const totalUsers = await pool.query('SELECT COUNT(*) FROM users');
+  const ticketsAbertos = await pool.query("SELECT COUNT(*) FROM tickets WHERE estado = 'aberto'");
+  const reservasPendentes = await pool.query("SELECT COUNT(*) FROM reservas WHERE estado = 'pendente'");
   res.render('admin/dashboard', {
     title: 'Admin | Transferes',
     reservas: reservas.rows,
-    totalUsers: totalUsers.rows[0].count
+    totalUsers: totalUsers.rows[0].count,
+    ticketsAbertos: ticketsAbertos.rows[0].count,
+    reservasPendentes: reservasPendentes.rows[0].count
   });
+});
+
+router.get('/conteudo', requireAdmin, async (req, res) => {
+  const precos = await getSetting('precos_texto', 'O valor de cada viagem depende da origem, do destino e do tipo de serviço escolhido. Peça já o seu orçamento sem compromisso através do formulário de reserva.');
+  const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
+  res.render('admin/conteudo', { title: 'Conteúdo do site | Admin | Transferes', precos, horarios, sucesso: false });
+});
+
+router.post('/conteudo', requireAdmin, async (req, res) => {
+  const { precos, horarios } = req.body;
+  await setSetting('precos_texto', precos || '');
+  await setSetting('horarios_texto', horarios || '');
+  res.render('admin/conteudo', { title: 'Conteúdo do site | Admin | Transferes', precos, horarios, sucesso: true });
 });
 
 router.get('/suporte', requireAdmin, async (req, res) => {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <p class="hero-eyebrow">Informação prática</p>
+  <h1>Preços & Horários</h1>
+  <p class="page-lede">Tudo o que precisas de saber antes de reservar.</p>
+</section>
+
+<section class="services-detail" style="gap:50px;">
+  <article class="service-row">
+    <div class="service-text" style="flex:1 1 100%;">
+      <h2>Preços</h2>
+      <p style="white-space:pre-wrap;"><%= precos %></p>
+    </div>
+  </article>
+
+  <article class="service-row">
+    <div class="service-text" style="flex:1 1 100%;">
+      <h2>Horários</h2>
+      <p style="white-space:pre-wrap;"><%= horarios %></p>
+    </div>
+  </article>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Pronto para reservar o teu transfer?</h2>
+    <a href="/contacto" class="btn btn-primary" data-nav>Pedir orçamento</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

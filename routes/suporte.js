@@ -128,4 +128,10 @@ router.post('/suporte/:id/estado', requireAuth, async (req, res) => {
   res.redirect(`/suporte/${req.params.id}`);
 });
 
+router.post('/suporte/:id/apagar', requireAuth, async (req, res) => {
+  if (!req.session.user.is_admin) return res.redirect('/suporte');
+  await pool.query('DELETE FROM tickets WHERE id = $1', [req.params.id]);
+  res.redirect('/admin/suporte');
+});
+
 module.exports = router;

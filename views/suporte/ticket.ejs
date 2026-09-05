@@ -18,12 +18,17 @@
 
 <section class="booking-section" style="max-width:700px;">
   <% if (typeof user !== 'undefined' && user && user.is_admin) { %>
-  <form method="POST" action="/suporte/<%= ticket.id %>/estado" style="margin-bottom:20px;">
-    <select name="estado" onchange="this.form.submit()" style="padding:8px 12px; width:auto;">
-      <option value="aberto" <%= ticket.estado === 'aberto' ? 'selected' : '' %>>Aberto</option>
-      <option value="fechado" <%= ticket.estado === 'fechado' ? 'selected' : '' %>>Fechado</option>
-    </select>
-  </form>
+  <div style="display:flex; gap:12px; margin-bottom:20px; align-items:center;">
+    <form method="POST" action="/suporte/<%= ticket.id %>/estado">
+      <select name="estado" onchange="this.form.submit()" style="padding:8px 12px; width:auto;">
+        <option value="aberto" <%= ticket.estado === 'aberto' ? 'selected' : '' %>>Aberto</option>
+        <option value="fechado" <%= ticket.estado === 'fechado' ? 'selected' : '' %>>Fechado</option>
+      </select>
+    </form>
+    <form method="POST" action="/suporte/<%= ticket.id %>/apagar" onsubmit="return confirm('Apagar este ticket e toda a conversa? Esta ação não pode ser desfeita.');">
+      <button type="submit" style="color:#ff8a8a; background:none; border:1px solid rgba(255,138,138,0.3); border-radius:999px; padding:8px 16px; cursor:pointer; font-size:0.88rem;">Apagar ticket</button>
+    </form>
+  </div>
   <% } %>
 
   <div class="ticket-thread">

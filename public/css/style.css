@@ -472,6 +472,57 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .chat-panel { width: calc(100vw - 24px); }
 }
 
+/* ---------- Painel de admin ---------- */
+.admin-panel { max-width: 1100px; margin: 0 auto; padding: 20px 32px 100px; }
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.admin-stat-card {
+  background: var(--surface);
+  border: 1px solid rgba(185,196,214,0.1);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.admin-stat-value { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; }
+.admin-stat-label { color: var(--muted); font-size: 0.85rem; }
+
+.admin-quick-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.admin-quick-link {
+  background: var(--bg-alt);
+  border: 1px solid rgba(185,196,214,0.12);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.admin-quick-link:hover { border-color: var(--blue); transform: translateY(-2px); }
+.admin-quick-link strong { font-size: 1rem; color: var(--text); }
+.admin-quick-link span { font-size: 0.85rem; color: var(--muted); }
+
+.admin-section-header { margin-bottom: 16px; }
+.admin-section-header h2 { font-family: var(--font-display); font-size: 1.2rem; margin: 0; }
+
+@media (max-width: 760px) {
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .admin-quick-links { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .admin-panel { padding: 20px 18px 80px; }
+}
+
 /* ---------- Chat widget ---------- */
 .chat-widget {
   position: fixed;
