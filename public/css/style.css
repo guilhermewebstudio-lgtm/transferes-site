@@ -1,12 +1,12 @@
 :root {
-  --bg: #060a12;
-  --bg-alt: #0b1220;
-  --surface: #101a2b;
-  --blue: #3d7dfb;
-  --blue-soft: rgba(61, 125, 251, 0.16);
-  --silver: #b9c4d6;
-  --text: #eef2f8;
-  --muted: #8a94a8;
+  --bg: #0d0b08;
+  --bg-alt: #17130f;
+  --surface: #201a14;
+  --blue: #c9a16a;
+  --blue-soft: rgba(201, 161, 106, 0.16);
+  --silver: #b9ac98;
+  --text: #f3ede1;
+  --muted: #948676;
   --amber: #ffe9b0;
   --font-display: 'Unbounded', sans-serif;
   --font-body: 'Manrope', sans-serif;
@@ -59,6 +59,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   justify-content: space-between;
 }
 .brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo { height: 32px; width: auto; display: block; }
 .brand-word {
   font-family: var(--font-display);
   font-weight: 600;
@@ -75,7 +76,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: 999px;
   font-weight: 600;
 }
-.nav-cta:hover { background: #5c93fc; }
+.nav-cta:hover { background: #d8b989; }
 
 .lang-switch {
   display: flex;
@@ -237,7 +238,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: transparent;
 }
 .btn-primary { background: var(--blue); color: #050810; }
-.btn-primary:hover { background: #5c93fc; transform: translateY(-2px); }
+.btn-primary:hover { background: #d8b989; transform: translateY(-2px); }
 .btn-ghost { border-color: rgba(185,196,214,0.35); color: var(--text); }
 .btn-ghost:hover { border-color: var(--silver); transform: translateY(-2px); }
 
@@ -541,7 +542,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(61,125,251,0.4);
+  box-shadow: 0 10px 30px rgba(201,161,106,0.4);
   transition: transform 0.2s ease;
 }
 .chat-toggle:hover { transform: scale(1.06); }
@@ -681,4 +682,64 @@ html.preloading, html.preloading body { overflow: hidden; height: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .site-preloader { display: none; }
+}
+
+/* ---------- Simulador de preço ---------- */
+.sim-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 32px 100px;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.sim-form-card {
+  background: var(--surface);
+  border: 1px solid rgba(185,196,214,0.1);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.sim-form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.sim-map {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.sim-result {
+  border-top: 1px solid rgba(185,196,214,0.1);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sim-result-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.sim-result-row strong { color: var(--text); }
+.sim-result-price {
+  border-top: 1px solid rgba(185,196,214,0.1);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.sim-result-price strong { color: var(--blue); font-size: 1.3rem; font-family: var(--font-display); }
+.sim-disclaimer { font-size: 0.78rem; color: var(--muted); margin: 4px 0 0; }
+
+@media (max-width: 860px) {
+  .sim-section { grid-template-columns: 1fr; padding: 10px 20px 80px; }
+  .sim-map { height: 320px; }
 }

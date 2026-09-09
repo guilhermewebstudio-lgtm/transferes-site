@@ -29,8 +29,8 @@ const INTENTS = [
     id: 'saudacao',
     keywords: ['ola', 'oi', 'boa tarde', 'bom dia', 'boa noite', 'hello', 'hi', 'hey', 'good morning', 'good afternoon'],
     responses: {
-      pt: 'Olá! Sou o assistente da Transferes. Posso ajudar com dúvidas sobre serviços, frota, preços ou como fazer uma reserva. O que precisas de saber?',
-      en: "Hi there! I'm the Transferes assistant. I can help with questions about services, fleet, pricing, or how to book. What would you like to know?"
+      pt: 'Olá! Sou o assistente da Sr Transferes. Posso ajudar com dúvidas sobre serviços, frota, preços ou como fazer uma reserva. O que precisas de saber?',
+      en: "Hi there! I'm the Sr Transferes assistant. I can help with questions about services, fleet, pricing, or how to book. What would you like to know?"
     }
   },
   {

@@ -3,29 +3,36 @@ const router = express.Router();
 const { getSetting } = require('../config/db');
 
 router.get('/', (req, res) => {
-  res.render('home', { title: 'Transferes | Aeroporto & Executivo' });
+  res.render('home', { title: 'Sr Transferes | Aeroporto & Executivo' });
 });
 
 router.get('/servicos', (req, res) => {
-  res.render('servicos', { title: 'Serviços | Transferes' });
+  res.render('servicos', { title: 'Serviços | Sr Transferes' });
 });
 
 router.get('/frota', (req, res) => {
-  res.render('frota', { title: 'Frota | Transferes' });
+  res.render('frota', { title: 'Frota | Sr Transferes' });
 });
 
 router.get('/sobre', (req, res) => {
-  res.render('sobre', { title: 'Sobre | Transferes' });
+  res.render('sobre', { title: 'Sobre | Sr Transferes' });
 });
 
 router.get('/contacto', (req, res) => {
-  res.render('contacto', { title: 'Reservar | Transferes' });
+  res.render('contacto', { title: 'Reservar | Sr Transferes' });
 });
 
 router.get('/precos-horarios', async (req, res) => {
   const precos = await getSetting('precos_texto', 'O valor de cada viagem depende da origem, do destino e do tipo de serviço escolhido. Peça já o seu orçamento sem compromisso através do formulário de reserva.');
   const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
-  res.render('precos-horarios', { title: 'Preços & Horários | Transferes', precos, horarios });
+  res.render('precos-horarios', { title: 'Preços & Horários | Sr Transferes', precos, horarios });
+});
+
+router.get('/simulador', (req, res) => {
+  res.render('simulador', {
+    title: 'Simulador de Preço | Sr Transferes',
+    googleMapsKey: process.env.GOOGLE_MAPS_API_KEY || ''
+  });
 });
 
 module.exports = router;

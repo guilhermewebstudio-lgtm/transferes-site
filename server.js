@@ -48,7 +48,7 @@ app.use('/admin', require('./routes/admin'));
 app.use('/api', require('./routes/api'));
 
 app.get('/conta', requireAuth, (req, res) => {
-  res.render('conta', { title: 'A minha conta | Transferes', user: req.session.user });
+  res.render('conta', { title: 'A minha conta | Sr Transferes', user: req.session.user });
 });
 
 app.get('/minhas-reservas', requireAuth, async (req, res) => {
@@ -56,7 +56,7 @@ app.get('/minhas-reservas', requireAuth, async (req, res) => {
     'SELECT * FROM reservas WHERE user_id = $1 ORDER BY criado_em DESC',
     [req.session.user.id]
   );
-  res.render('minhas-reservas', { title: 'As minhas reservas | Transferes', reservas: result.rows });
+  res.render('minhas-reservas', { title: 'As minhas reservas | Sr Transferes', reservas: result.rows });
 });
 
 app.get('/lang/:code', (req, res) => {

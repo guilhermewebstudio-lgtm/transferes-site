@@ -35,7 +35,7 @@ router.post('/reserva', async (req, res) => {
 
     sendEmail({
       to: email,
-      subject: 'Recebemos o teu pedido de reserva — Transferes',
+      subject: 'Recebemos o teu pedido de reserva — Sr Transferes',
       html: brandedEmailTemplate({
         title: 'Reserva recebida',
         bodyHtml: `

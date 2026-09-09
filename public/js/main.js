@@ -6,17 +6,12 @@
     pre.innerHTML = `
       <div class="preloader-mark">
         <svg class="preloader-ring" viewBox="0 0 120 120" width="88" height="88">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(61,125,251,0.15)" stroke-width="1.5"/>
-          <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#3d7dfb" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,161,106,0.15)" stroke-width="1.5"/>
+          <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#c9a16a" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <svg class="preloader-car" viewBox="0 0 40 24" width="38" height="23" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 17c0-2 1.5-3.4 3.6-3.8L9 12.4l3-4.6c.6-.9 1.6-1.4 2.7-1.4h9.4c1.2 0 2.3.6 2.9 1.7l2.6 4.6 3.2.7c1.6.4 2.6 1.8 2.6 3.4v2.2c0 .9-.7 1.6-1.6 1.6H35" stroke="#eef2f8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="11" cy="18.4" r="2.4" stroke="#3d7dfb" stroke-width="1.6"/>
-          <circle cx="27" cy="18.4" r="2.4" stroke="#3d7dfb" stroke-width="1.6"/>
-          <path d="M2 17H7" stroke="#eef2f8" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
+        <img class="preloader-car" src="/img/logo.png" alt="" width="40" height="40">
       </div>
-      <div class="preloader-word">Transferes</div>
+      <div class="preloader-word">Sr Transferes</div>
     `;
     document.documentElement.classList.add('preloading');
     document.body.prepend(pre);

@@ -6,7 +6,7 @@ function brandedEmailTemplate({ title, bodyHtml }) {
   <div style="background:#060a12; padding:32px 16px; font-family: Arial, Helvetica, sans-serif;">
     <div style="max-width:520px; margin:0 auto; background:#0b1220; border-radius:16px; overflow:hidden; border:1px solid #1c2740;">
       <div style="background:#0d1526; padding:24px 28px; border-bottom:1px solid #1c2740;">
-        <span style="font-size:20px; font-weight:800; color:#eef2f8; letter-spacing:0.02em;">Transferes</span>
+        <span style="font-size:20px; font-weight:800; color:#eef2f8; letter-spacing:0.02em;">Sr Transferes</span>
       </div>
       <div style="padding:28px; color:#eef2f8;">
         <h2 style="margin:0 0 16px; font-size:20px; color:#eef2f8;">${title}</h2>
@@ -15,7 +15,7 @@ function brandedEmailTemplate({ title, bodyHtml }) {
         </div>
       </div>
       <div style="padding:18px 28px; background:#080e18; border-top:1px solid #1c2740; color:#7c8aa3; font-size:12px;">
-        Transferes — transfers executivos e de aeroporto em Lisboa.
+        Sr Transferes — transfers executivos e de aeroporto em Lisboa.
       </div>
     </div>
   </div>`;
@@ -39,7 +39,7 @@ async function sendEmail({ to, subject, html, replyTo }) {
         Accept: 'application/json'
       },
       body: JSON.stringify({
-        sender: { email: sender, name: 'Transferes' },
+        sender: { email: sender, name: 'Sr Transferes' },
         to: [{ email: to }],
         subject,
         htmlContent: html,

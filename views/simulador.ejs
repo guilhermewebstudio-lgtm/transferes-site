@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/nav') %>
+
+<section class="page-hero">
+  <p class="hero-eyebrow">Simulador</p>
+  <h1>Calcula o preço da tua viagem</h1>
+  <p class="page-lede">Indica a origem, o destino e a categoria de viatura — mostramos logo a distância, o preço estimado e o trajeto no mapa.</p>
+</section>
+
+<section class="sim-section">
+  <div class="sim-form-card">
+    <label>Origem
+      <input type="text" id="sim-origem" placeholder="Ex: Aeroporto de Lisboa" autocomplete="off">
+    </label>
+    <label>Destino
+      <input type="text" id="sim-destino" placeholder="Ex: Cascais" autocomplete="off">
+    </label>
+    <label>Categoria
+      <select id="sim-categoria">
+        <option value="0.90">Económico — 0,90€/km</option>
+        <option value="1.20" selected>Conforto — 1,20€/km</option>
+        <option value="1.60">Luxo — 1,60€/km</option>
+        <option value="1.30">Van de Grupo — 1,30€/km</option>
+      </select>
+    </label>
+    <button id="sim-calcular" class="btn btn-primary" type="button">Calcular preço</button>
+    <p id="sim-erro" class="form-feedback error" style="display:none;"></p>
+
+    <div id="sim-resultado" class="sim-result" style="display:none;">
+      <div class="sim-result-row">
+        <span>Distância</span>
+        <strong id="sim-distancia">—</strong>
+      </div>
+      <div class="sim-result-row">
+        <span>Duração estimada</span>
+        <strong id="sim-duracao">—</strong>
+      </div>
+      <div class="sim-result-row sim-result-price">
+        <span>Preço estimado</span>
+        <strong id="sim-preco">—</strong>
+      </div>
+      <p class="sim-disclaimer">Este valor é uma estimativa baseada na distância. O preço final é confirmado após a reserva.</p>
+      <a href="/contacto" class="btn btn-primary" data-nav style="margin-top:14px;">Reservar esta viagem</a>
+    </div>
+  </div>
+
+  <div id="sim-map" class="sim-map"></div>
+</section>
+
+<%- include('partials/footer') %>
+
+<% if (googleMapsKey) { %>
+<script>window.SIM_MAPS_KEY = "<%= googleMapsKey %>";</script>
+<script src="/js/simulador.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsKey %>&callback=initSimMap" async defer></script>
+<% } else { %>
+<div style="max-width:700px; margin:0 auto 60px; padding:0 32px;">
+  <p style="color:var(--muted); text-align:center;">O mapa ainda não está configurado neste site.</p>
+</div>
+<% } %>
+</body>
+</html>

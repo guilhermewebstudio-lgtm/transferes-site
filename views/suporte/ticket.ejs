@@ -35,7 +35,7 @@
     <% mensagens.forEach(m => { %>
       <div class="ticket-msg <%= m.autor %>">
         <div class="ticket-msg-bubble">
-          <span class="ticket-msg-author"><%= m.autor === 'admin' ? 'Equipa Transferes' : 'Tu' %></span>
+          <span class="ticket-msg-author"><%= m.autor === 'admin' ? 'Equipa Sr Transferes' : 'Tu' %></span>
           <p><%= m.mensagem %></p>
           <span class="ticket-msg-time"><%= new Date(m.criado_em).toLocaleString('pt-PT', { timeZone: 'Europe/Lisbon' }) %></span>
         </div>

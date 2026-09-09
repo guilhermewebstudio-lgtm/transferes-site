@@ -10,17 +10,17 @@ router.get('/suporte', requireAuth, async (req, res) => {
     'SELECT * FROM tickets WHERE user_id = $1 ORDER BY atualizado_em DESC',
     [req.session.user.id]
   );
-  res.render('suporte/lista', { title: 'Suporte | Transferes', tickets: result.rows });
+  res.render('suporte/lista', { title: 'Suporte | Sr Transferes', tickets: result.rows });
 });
 
 router.get('/suporte/novo', requireAuth, (req, res) => {
-  res.render('suporte/novo', { title: 'Novo pedido de suporte | Transferes', erro: null });
+  res.render('suporte/novo', { title: 'Novo pedido de suporte | Sr Transferes', erro: null });
 });
 
 router.post('/suporte/novo', requireAuth, async (req, res) => {
   const { assunto, mensagem } = req.body;
   if (!assunto || !mensagem) {
-    return res.render('suporte/novo', { title: 'Novo pedido de suporte | Transferes', erro: 'Preenche o assunto e a mensagem.' });
+    return res.render('suporte/novo', { title: 'Novo pedido de suporte | Sr Transferes', erro: 'Preenche o assunto e a mensagem.' });
   }
   try {
     const ticketResult = await pool.query(
@@ -49,7 +49,7 @@ router.post('/suporte/novo', requireAuth, async (req, res) => {
     res.redirect(`/suporte/${ticketId}`);
   } catch (err) {
     console.error('Erro ao criar ticket:', err);
-    res.render('suporte/novo', { title: 'Novo pedido de suporte | Transferes', erro: 'Erro inesperado. Tenta novamente.' });
+    res.render('suporte/novo', { title: 'Novo pedido de suporte | Sr Transferes', erro: 'Erro inesperado. Tenta novamente.' });
   }
 });
 
@@ -68,7 +68,7 @@ router.get('/suporte/:id', requireAuth, async (req, res) => {
   );
 
   res.render('suporte/ticket', {
-    title: `Ticket #${ticket.id} | Transferes`,
+    title: `Ticket #${ticket.id} | Sr Transferes`,
     ticket,
     mensagens: mensagens.rows,
     voltarLink: isAdmin && !isOwner ? '/admin/suporte' : '/suporte'
