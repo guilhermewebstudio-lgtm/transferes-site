@@ -29,10 +29,7 @@ router.get('/precos-horarios', async (req, res) => {
 });
 
 router.get('/simulador', (req, res) => {
-  res.render('simulador', {
-    title: 'Simulador de Preço | Sr Transferes',
-    googleMapsKey: process.env.GOOGLE_MAPS_API_KEY || ''
-  });
+  res.render('simulador', { title: 'Simulador de Preço | Sr Transferes' });
 });
 
 module.exports = router;

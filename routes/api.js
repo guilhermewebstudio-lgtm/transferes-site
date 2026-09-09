@@ -41,7 +41,7 @@ router.post('/simulador', async (req, res) => {
       return res.status(422).json({ ok: false, erro: 'Não conseguimos localizar um dos endereços indicados. Tenta ser mais específico (ex: incluir a cidade).' });
     }
 
-    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=false`;
+    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=full&geometries=geojson`;
     const rotaResposta = await fetch(osrmUrl);
     const rotaDados = await rotaResposta.json();
 
@@ -53,11 +53,17 @@ router.post('/simulador', async (req, res) => {
     const duracaoMin = Math.round(rotaDados.routes[0].duration / 60);
     const preco = distanciaKm * taxa;
 
+    // GeoJSON vem em [lon, lat]; convertemos para [lat, lon] (formato Leaflet)
+    const rotaCoords = rotaDados.routes[0].geometry.coordinates.map(([lon, lat]) => [lat, lon]);
+
     res.json({
       ok: true,
       distanciaKm: Math.round(distanciaKm * 10) / 10,
       duracaoMin,
-      preco: Math.round(preco * 100) / 100
+      preco: Math.round(preco * 100) / 100,
+      origem: origemCoords,
+      destino: destinoCoords,
+      rota: rotaCoords
     });
   } catch (err) {
     console.error('Erro no simulador de preço:', err);
