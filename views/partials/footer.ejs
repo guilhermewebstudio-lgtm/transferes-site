@@ -26,70 +26,7 @@
 </footer>
 
 <!-- Overlay de transição entre páginas -->
-<div class="route-transition" aria-hidden="true">
-  <svg class="transition-road" viewBox="0 0 1600 200" preserveAspectRatio="none">
-    <rect x="0" y="0" width="1600" height="200" fill="var(--bg)"></rect>
-    <line x1="0" y1="100" x2="1600" y2="100" class="dash-line"></line>
-  </svg>
-  <svg class="transition-car" viewBox="0 0 340 120" width="240" height="85">
-    <defs>
-      <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.55"/>
-        <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="transBodyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#0d1526"/>
-        <stop offset="100%" stop-color="#03060b"/>
-      </linearGradient>
-      <linearGradient id="transGlassGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3a4d72"/>
-        <stop offset="100%" stop-color="#0a0f1a"/>
-      </linearGradient>
-      <radialGradient id="transWheelGrad" cx="38%" cy="32%" r="70%">
-        <stop offset="0%" stop-color="#151f32"/>
-        <stop offset="100%" stop-color="#020306"/>
-      </radialGradient>
-      <radialGradient id="transHeadGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
-      </radialGradient>
-      <filter id="transBlur" x="-100%" y="-100%" width="300%" height="300%">
-        <feGaussianBlur stdDeviation="6"/>
-      </filter>
-    </defs>
-    <ellipse cx="172" cy="102" rx="128" ry="6" fill="rgba(0,0,0,0.5)"></ellipse>
-    <path class="headlight-beam" d="M300 64 L460 20 L460 90 Z" fill="url(#beamGrad)"></path>
-    <path d="M10 78
-             C 12 68 22 61 32 59
-             L 57 57
-             C 71 34 96 22 126 21
-             L 170 22
-             C 198 24 216 39 224 57
-             L 277 59
-             C 297 60 312 68 318 78
-             C 320 83 317 88 310 89
-             L 296 89
-             C 293 97 284 101 274 101
-             C 264 101 255 97 252 89
-             L 92 89
-             C 89 97 80 101 70 101
-             C 60 101 51 97 48 89
-             L 22 89
-             C 14 88 8 84 10 78 Z"
-          fill="url(#transBodyGrad)"></path>
-    <path d="M32 59 C 46 36 74 24 104 22 L 168 22 C 194 24 212 37 222 56"
-          fill="none" stroke="#6f96e8" stroke-width="1.1" opacity="0.6"></path>
-    <path d="M128 26 C 152 24 176 25 190 28 C 204 31 214 41 220 56 L 130 56 C 126 46 125 35 128 26 Z"
-          fill="url(#transGlassGrad)"></path>
-    <circle cx="82" cy="89" r="18" fill="url(#transWheelGrad)"></circle>
-    <circle cx="82" cy="89" r="8.5" fill="none" stroke="#5c6b8c" stroke-width="1" opacity="0.7"></circle>
-    <circle cx="270" cy="89" r="18" fill="url(#transWheelGrad)"></circle>
-    <circle cx="270" cy="89" r="8.5" fill="none" stroke="#5c6b8c" stroke-width="1" opacity="0.7"></circle>
-    <ellipse cx="315" cy="70" rx="13" ry="10" fill="url(#transHeadGlow)" filter="url(#transBlur)"></ellipse>
-    <ellipse cx="315" cy="70" rx="5" ry="3.6" fill="#fff3d6"></ellipse>
-    <ellipse cx="14" cy="70" rx="2.6" ry="2" fill="#ff5c5c" opacity="0.9"></ellipse>
-  </svg>
-</div>
+<div class="route-transition" aria-hidden="true"></div>
 
 <script src="/js/main.js"></script>
 

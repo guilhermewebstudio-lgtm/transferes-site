@@ -9,7 +9,7 @@
           <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,161,106,0.15)" stroke-width="1.5"/>
           <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#c9a16a" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <img class="preloader-car" src="/img/logo.png" alt="" width="40" height="40">
+        <img class="preloader-car" src="/img/logo-transparent.png" alt="" width="40" height="40">
       </div>
       <div class="preloader-word">Sr Transferes</div>
     `;
@@ -68,7 +68,7 @@
       overlay.classList.add('active');
       setTimeout(() => {
         window.location.href = href;
-      }, 850);
+      }, 380);
     });
   });
 })();
