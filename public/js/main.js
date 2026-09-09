@@ -1,6 +1,6 @@
 (function () {
-  // Animação de entrada do site: mostra-se uma vez por sessão do browser
-  if (!sessionStorage.getItem('site_entered')) {
+  // Animação de entrada do site: mostra-se sempre que se acede à página inicial
+  if (window.location.pathname === '/') {
     const pre = document.createElement('div');
     pre.className = 'site-preloader';
     pre.innerHTML = `
@@ -9,7 +9,7 @@
           <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,161,106,0.15)" stroke-width="1.5"/>
           <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#c9a16a" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <img class="preloader-car" src="/img/logo-icon.png" alt="" style="max-height:52px; max-width:64px; width:auto; height:auto; object-fit:contain;">
+        <img class="preloader-car" src="/img/logo-icon-transparent.png" alt="" style="max-height:44px; max-width:70px; width:auto; height:auto; object-fit:contain;">
       </div>
       <div class="preloader-word">Sr Transferes</div>
     `;
@@ -23,8 +23,6 @@
         setTimeout(() => pre.remove(), 600);
       }, 1350);
     });
-
-    sessionStorage.setItem('site_entered', '1');
   }
 
   const header = document.querySelector('.site-header');
