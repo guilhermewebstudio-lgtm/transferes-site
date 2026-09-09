@@ -18,6 +18,53 @@ router.post('/chat', (req, res) => {
   }
 });
 
+router.post('/simulador', async (req, res) => {
+  const { origem, destino, taxaKm } = req.body;
+  const taxa = parseFloat(taxaKm);
+
+  if (!origem || !destino || !taxa) {
+    return res.status(400).json({ ok: false, erro: 'Preenche a origem, o destino e a categoria.' });
+  }
+
+  try {
+    const geocode = async (endereco) => {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(endereco)}`;
+      const resposta = await fetch(url, { headers: { 'User-Agent': 'SrTransferes-Site/1.0' } });
+      const dados = await resposta.json();
+      if (!dados || dados.length === 0) return null;
+      return { lat: parseFloat(dados[0].lat), lon: parseFloat(dados[0].lon) };
+    };
+
+    const [origemCoords, destinoCoords] = await Promise.all([geocode(origem), geocode(destino)]);
+
+    if (!origemCoords || !destinoCoords) {
+      return res.status(422).json({ ok: false, erro: 'Não conseguimos localizar um dos endereços indicados. Tenta ser mais específico (ex: incluir a cidade).' });
+    }
+
+    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=false`;
+    const rotaResposta = await fetch(osrmUrl);
+    const rotaDados = await rotaResposta.json();
+
+    if (!rotaDados.routes || rotaDados.routes.length === 0) {
+      return res.status(422).json({ ok: false, erro: 'Não foi possível calcular uma rota de carro entre estes dois locais.' });
+    }
+
+    const distanciaKm = rotaDados.routes[0].distance / 1000;
+    const duracaoMin = Math.round(rotaDados.routes[0].duration / 60);
+    const preco = distanciaKm * taxa;
+
+    res.json({
+      ok: true,
+      distanciaKm: Math.round(distanciaKm * 10) / 10,
+      duracaoMin,
+      preco: Math.round(preco * 100) / 100
+    });
+  } catch (err) {
+    console.error('Erro no simulador de preço:', err);
+    res.status(500).json({ ok: false, erro: 'Erro inesperado ao calcular. Tenta novamente.' });
+  }
+});
+
 router.post('/reserva', async (req, res) => {
   const { nome, email, telefone, tipo_servico, origem, destino, data_hora, passageiros, notas } = req.body;
 

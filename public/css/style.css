@@ -710,13 +710,11 @@ html.preloading, html.preloading body { overflow: hidden; height: 100%; }
   font-size: 0.9rem;
   color: var(--muted);
 }
-.sim-map {
-  width: 100%;
-  height: 480px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--surface);
+.sim-section-single {
+  grid-template-columns: 1fr;
+  max-width: 480px;
 }
+.sim-map { display: none; }
 .sim-result {
   border-top: 1px solid rgba(185,196,214,0.1);
   padding-top: 16px;
