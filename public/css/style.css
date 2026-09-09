@@ -779,7 +779,17 @@ html.preloading, html.preloading body { overflow: hidden; height: 100%; }
   grid-template-columns: 1fr;
   max-width: 480px;
 }
-.sim-map { display: none; }
+.sim-map {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sim-map-placeholder { color: var(--muted); font-size: 0.9rem; padding: 20px; text-align: center; }
 .sim-result {
   border-top: 1px solid rgba(201,161,106,0.1);
   padding-top: 16px;

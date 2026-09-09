@@ -9,10 +9,10 @@
 <section class="page-hero">
   <p class="hero-eyebrow">Simulador</p>
   <h1>Calcula o preço da tua viagem</h1>
-  <p class="page-lede">Indica a origem, o destino e a categoria de viatura — mostramos logo a distância e o preço estimado.</p>
+  <p class="page-lede">Indica a origem, o destino e a categoria de viatura — mostramos a distância, o preço estimado e o trajeto no mapa.</p>
 </section>
 
-<section class="sim-section sim-section-single">
+<section class="sim-section">
   <div class="sim-form-card">
     <label>Origem
       <input type="text" id="sim-origem" placeholder="Ex: Aeroporto de Lisboa" autocomplete="off">
@@ -48,9 +48,19 @@
       <a href="/contacto" class="btn btn-primary" data-nav style="margin-top:14px;">Reservar esta viagem</a>
     </div>
   </div>
+
+  <div id="sim-map" class="sim-map">
+    <% if (!googleMapsKey) { %>
+      <div class="sim-map-placeholder">O mapa ainda não está ativado neste site.</div>
+    <% } %>
+  </div>
 </section>
 
 <%- include('partials/footer') %>
+
+<% if (googleMapsKey) { %>
 <script src="/js/simulador.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsKey %>&libraries=places&callback=initSimMap" async defer></script>
+<% } %>
 </body>
 </html>
