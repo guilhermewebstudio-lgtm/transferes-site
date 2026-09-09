@@ -41,7 +41,7 @@ router.post('/simulador', async (req, res) => {
       return res.status(422).json({ ok: false, erro: 'Não conseguimos localizar um dos endereços indicados. Tenta ser mais específico (ex: incluir a cidade).' });
     }
 
-    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=full&geometries=geojson`;
+    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=full&geometries=geojson&steps=true`;
     const rotaResposta = await fetch(osrmUrl);
     const rotaDados = await rotaResposta.json();
 
@@ -56,6 +56,46 @@ router.post('/simulador', async (req, res) => {
     // GeoJSON vem em [lon, lat]; convertemos para [lat, lon] (formato Leaflet)
     const rotaCoords = rotaDados.routes[0].geometry.coordinates.map(([lon, lat]) => [lat, lon]);
 
+    // Construir lista de instruções passo a passo a partir dos "steps" do OSRM
+    const tipoTexto = {
+      depart: 'Siga',
+      arrive: 'Chegada ao destino',
+      turn: 'Vire',
+      'new name': 'Continue',
+      continue: 'Continue',
+      merge: 'Junte-se à via',
+      roundabout: 'Na rotunda, saia',
+      rotary: 'Na rotunda, saia',
+      fork: 'Na bifurcação, siga',
+      'end of road': 'No final da via, vire',
+      ramp: 'Siga pela rampa'
+    };
+    const modificadorTexto = {
+      left: 'à esquerda',
+      right: 'à direita',
+      'slight left': 'ligeiramente à esquerda',
+      'slight right': 'ligeiramente à direita',
+      'sharp left': 'acentuadamente à esquerda',
+      'sharp right': 'acentuadamente à direita',
+      straight: 'em frente',
+      uturn: 'em inversão de marcha'
+    };
+
+    const instrucoes = [];
+    rotaDados.routes[0].legs.forEach((leg) => {
+      leg.steps.forEach((step) => {
+        const tipo = step.maneuver.type;
+        const mod = step.maneuver.modifier;
+        let texto = tipoTexto[tipo] || 'Siga';
+        if (mod && modificadorTexto[mod]) texto += ' ' + modificadorTexto[mod];
+        if (step.name) texto += ` para ${step.name}`;
+        const distStep = step.distance >= 1000
+          ? (step.distance / 1000).toFixed(1) + ' km'
+          : Math.round(step.distance) + ' m';
+        instrucoes.push({ texto, distancia: distStep });
+      });
+    });
+
     res.json({
       ok: true,
       distanciaKm: Math.round(distanciaKm * 10) / 10,
@@ -63,7 +103,8 @@ router.post('/simulador', async (req, res) => {
       preco: Math.round(preco * 100) / 100,
       origem: origemCoords,
       destino: destinoCoords,
-      rota: rotaCoords
+      rota: rotaCoords,
+      instrucoes
     });
   } catch (err) {
     console.error('Erro no simulador de preço:', err);

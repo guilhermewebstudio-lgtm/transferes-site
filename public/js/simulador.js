@@ -3,9 +3,10 @@ let simMap, simRouteLine, simOrigemMarker, simDestinoMarker;
 function initSimMapBase() {
   if (simMap) return;
   simMap = L.map('sim-map', { zoomControl: true }).setView([38.7223, -9.1393], 11);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    maxZoom: 19
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19,
+    className: 'sim-map-tiles-dark'
   }).addTo(simMap);
 }
 
@@ -52,6 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('sim-duracao').textContent = data.duracaoMin + ' min';
       document.getElementById('sim-preco').textContent = data.preco.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' });
       resultadoEl.style.display = 'block';
+
+      // Instruções de trajeto passo a passo
+      const instrucoesEl = document.getElementById('sim-instrucoes');
+      const instrucoesLista = document.getElementById('sim-instrucoes-lista');
+      if (data.instrucoes && data.instrucoes.length) {
+        instrucoesLista.innerHTML = data.instrucoes.map((inst) =>
+          `<li><span>${inst.texto}</span><em>${inst.distancia}</em></li>`
+        ).join('');
+        instrucoesEl.style.display = 'block';
+      } else {
+        instrucoesEl.style.display = 'none';
+      }
 
       // Desenhar a rota no mapa
       if (simRouteLine) simMap.removeLayer(simRouteLine);
