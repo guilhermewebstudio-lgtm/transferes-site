@@ -18,7 +18,7 @@
   <% } else { %>
     <div style="display:flex; flex-direction:column; gap:16px;">
       <% reservas.forEach(r => { %>
-        <div style="background:var(--surface); border:1px solid rgba(185,196,214,0.1); border-radius:14px; padding:20px 22px;">
+        <div style="background:var(--surface); border:1px solid rgba(201,161,106,0.1); border-radius:14px; padding:20px 22px;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
             <div>
               <strong style="font-size:1rem;"><%= r.origem %> → <%= r.destino %></strong>
@@ -27,13 +27,13 @@
               </p>
             </div>
             <span style="padding:5px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;
-              background: <%= r.estado === 'confirmada' ? 'rgba(107,227,163,0.15)' : r.estado === 'cancelada' ? 'rgba(255,138,138,0.15)' : r.estado === 'concluida' ? 'rgba(201,161,106,0.15)' : 'rgba(185,196,214,0.12)' %>;
+              background: <%= r.estado === 'confirmada' ? 'rgba(107,227,163,0.15)' : r.estado === 'cancelada' ? 'rgba(255,138,138,0.15)' : r.estado === 'concluida' ? 'rgba(201,161,106,0.15)' : 'rgba(201,161,106,0.12)' %>;
               color: <%= r.estado === 'confirmada' ? '#6be3a3' : r.estado === 'cancelada' ? '#ff8a8a' : r.estado === 'concluida' ? 'var(--blue)' : 'var(--silver)' %>;">
               <%= r.estado.charAt(0).toUpperCase() + r.estado.slice(1) %>
             </span>
           </div>
 
-          <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(185,196,214,0.08);">
+          <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(201,161,106,0.08);">
             <% if (r.respondida) { %>
               <p style="margin:0; color:#6be3a3; font-size:0.9rem;">
                 ✓ Já respondemos ao teu pedido — vai ao teu email para veres os detalhes<%= r.respondida_em ? ' (enviado a ' + new Date(r.respondida_em).toLocaleDateString('pt-PT', { timeZone: 'Europe/Lisbon' }) + ')' : '' %>.

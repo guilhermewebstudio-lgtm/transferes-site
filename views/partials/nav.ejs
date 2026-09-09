@@ -10,14 +10,24 @@
       <a href="/precos-horarios" data-nav>Preços</a>
       <a href="/simulador" data-nav>Simulador</a>
       <a href="/sobre" data-nav><%= t('nav.sobre') %></a>
+
       <% if (typeof user !== 'undefined' && user) { %>
-        <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
-        <a href="/minhas-reservas" data-nav>Reservas</a>
-        <a href="/suporte" data-nav>Suporte</a>
-        <a href="/conta" data-nav><%= t('nav.conta') %></a>
+        <div class="account-menu">
+          <button type="button" class="account-menu-toggle">
+            <%= user.nome ? user.nome.split(' ')[0] : t('nav.conta') %>
+            <svg viewBox="0 0 12 8" width="10" height="7" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="account-menu-dropdown">
+            <% if (user.is_admin) { %><a href="/admin" data-nav><%= t('nav.admin') %></a><% } %>
+            <a href="/minhas-reservas" data-nav>Reservas</a>
+            <a href="/suporte" data-nav>Suporte</a>
+            <a href="/conta" data-nav><%= t('nav.conta') %></a>
+          </div>
+        </div>
       <% } else { %>
         <a href="/login" data-nav><%= t('nav.entrar') %></a>
       <% } %>
+
       <div class="lang-switch" role="group" aria-label="Idioma">
         <a href="/lang/pt" class="lang-btn <%= lang === 'pt' ? 'active' : '' %>">PT</a>
         <a href="/lang/en" class="lang-btn <%= lang === 'en' ? 'active' : '' %>">EN</a>

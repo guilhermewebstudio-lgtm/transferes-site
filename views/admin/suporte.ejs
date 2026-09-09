@@ -18,13 +18,13 @@
     <div style="display:flex; flex-direction:column; gap:14px;">
       <% tickets.forEach(t => { %>
         <a href="/suporte/<%= t.id %>" data-nav style="text-decoration:none;">
-          <div style="background:var(--surface); border:1px solid rgba(185,196,214,0.1); border-radius:14px; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="background:var(--surface); border:1px solid rgba(201,161,106,0.1); border-radius:14px; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
             <div>
               <strong style="color:var(--text); font-size:0.98rem;"><%= t.assunto %></strong>
               <p style="margin:4px 0 0; color:var(--muted); font-size:0.85rem;"><%= t.user_nome %> · <%= t.user_email %></p>
             </div>
             <span style="padding:5px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;
-              background: <%= t.estado === 'fechado' ? 'rgba(185,196,214,0.12)' : 'rgba(201,161,106,0.15)' %>;
+              background: <%= t.estado === 'fechado' ? 'rgba(201,161,106,0.12)' : 'rgba(201,161,106,0.15)' %>;
               color: <%= t.estado === 'fechado' ? 'var(--silver)' : 'var(--blue)' %>;">
               <%= t.estado === 'fechado' ? 'Fechado' : 'Aberto' %>
             </span>

@@ -9,7 +9,7 @@
           <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,161,106,0.15)" stroke-width="1.5"/>
           <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#c9a16a" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <img class="preloader-car" src="/img/logo-transparent.png" alt="" width="40" height="40">
+        <img class="preloader-car" src="/img/logo-transparent.png" alt="" width="56" height="56">
       </div>
       <div class="preloader-word">Sr Transferes</div>
     `;
@@ -21,7 +21,7 @@
         pre.classList.add('fade-out');
         document.documentElement.classList.remove('preloading');
         setTimeout(() => pre.remove(), 600);
-      }, 1100);
+      }, 1350);
     });
 
     sessionStorage.setItem('site_entered', '1');
@@ -34,6 +34,34 @@
       const isOpen = header.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+  }
+
+  // Menu suspenso da conta
+  const accountMenu = document.querySelector('.account-menu');
+  if (accountMenu) {
+    const toggleBtn = accountMenu.querySelector('.account-menu-toggle');
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      accountMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!accountMenu.contains(e.target)) accountMenu.classList.remove('open');
+    });
+  }
+
+  // Animação de revelação ao fazer scroll
+  const revealTargets = document.querySelectorAll('.strip-card, .fleet-card, .service-row, .value-item, .admin-stat-card');
+  if (revealTargets.length && 'IntersectionObserver' in window) {
+    revealTargets.forEach((el) => el.classList.add('reveal-on-scroll'));
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach((el) => revealObserver.observe(el));
   }
 
   // Olho para mostrar/esconder password
