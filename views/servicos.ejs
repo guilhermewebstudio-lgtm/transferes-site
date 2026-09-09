@@ -15,12 +15,12 @@
 <section class="services-detail">
   <article class="service-row">
     <div class="service-text">
-      <h2>Transfer de aeroporto</h2>
-      <p>Acompanhamos o seu voo em tempo real — atrasos ou chegadas antecipadas não alteram o ponto de encontro. Espera incluída, ajuda com bagagem e um condutor com o seu nome à saída do terminal.</p>
+      <h2><%= t('servicos.aeroporto.title') %></h2>
+      <p><%= t('servicos.aeroporto.desc') %></p>
       <ul class="service-list">
-        <li>Monitorização de voo em tempo real</li>
-        <li>60 minutos de espera incluídos</li>
-        <li>Receção com placa personalizada</li>
+        <li><%= t('servicos.aeroporto.li1') %></li>
+        <li><%= t('servicos.aeroporto.li2') %></li>
+        <li><%= t('servicos.aeroporto.li3') %></li>
       </ul>
     </div>
     <div class="service-visual" aria-hidden="true">
@@ -30,12 +30,12 @@
 
   <article class="service-row reverse">
     <div class="service-text">
-      <h2>Transfer executivo</h2>
-      <p>Reuniões, roadshows ou deslocações entre cidades — sempre com discrição, wi-fi a bordo e um condutor que conhece as melhores rotas em cada horário.</p>
+      <h2><%= t('servicos.executivo.title') %></h2>
+      <p><%= t('servicos.executivo.desc') %></p>
       <ul class="service-list">
-        <li>Viaturas de gama alta e recentes</li>
-        <li>Confidencialidade garantida</li>
-        <li>Faturação simplificada para empresas</li>
+        <li><%= t('servicos.executivo.li1') %></li>
+        <li><%= t('servicos.executivo.li2') %></li>
+        <li><%= t('servicos.executivo.li3') %></li>
       </ul>
     </div>
     <div class="service-visual" aria-hidden="true">
@@ -45,12 +45,12 @@
 
   <article class="service-row">
     <div class="service-text">
-      <h2>Eventos privados</h2>
-      <p>Casamentos, jantares e celebrações onde o transporte também merece cuidado. Coordenamos horários com a organização do evento para que nada falhe.</p>
+      <h2><%= t('servicos.eventos.title') %></h2>
+      <p><%= t('servicos.eventos.desc') %></p>
       <ul class="service-list">
-        <li>Coordenação direta com a organização</li>
-        <li>Viaturas decoradas a pedido</li>
-        <li>Pacotes para grupos e convidados</li>
+        <li><%= t('servicos.eventos.li1') %></li>
+        <li><%= t('servicos.eventos.li2') %></li>
+        <li><%= t('servicos.eventos.li3') %></li>
       </ul>
     </div>
     <div class="service-visual" aria-hidden="true">
@@ -61,8 +61,8 @@
 
 <section class="cta-band">
   <div class="cta-inner">
-    <h2>Qual destes serviços procura?</h2>
-    <a href="/contacto" class="btn btn-primary" data-nav>Pedir orçamento</a>
+    <h2><%= t('cta.servicos.title') %></h2>
+    <a href="/contacto" class="btn btn-primary" data-nav><%= t('cta.servicos.btn') %></a>
   </div>
 </section>
 

@@ -46,5 +46,60 @@
 
   "page.contacto.eyebrow": "Book now",
   "page.contacto.title": "Tell us where you're headed",
-  "page.contacto.lede": "Fill in your trip details and we'll get in touch to confirm everything."
+  "page.contacto.lede": "Fill in your trip details and we'll get in touch to confirm everything.",
+
+  "servicos.aeroporto.title": "Airport transfer",
+  "servicos.aeroporto.desc": "We track your flight in real time — delays or early arrivals won't change the pickup point. Waiting time included, luggage help, and a driver holding your name at the terminal exit.",
+  "servicos.aeroporto.li1": "Real-time flight monitoring",
+  "servicos.aeroporto.li2": "60 minutes of waiting time included",
+  "servicos.aeroporto.li3": "Pickup with a personalized name sign",
+
+  "servicos.executivo.title": "Executive transfer",
+  "servicos.executivo.desc": "Meetings, roadshows, or intercity travel — always with discretion, on-board wi-fi, and a driver who knows the best routes at any time of day.",
+  "servicos.executivo.li1": "Recent, high-end vehicles",
+  "servicos.executivo.li2": "Guaranteed confidentiality",
+  "servicos.executivo.li3": "Simplified invoicing for businesses",
+
+  "servicos.eventos.title": "Private events",
+  "servicos.eventos.desc": "Weddings, dinners, and celebrations where transport also deserves care. We coordinate timing with the event organizers so nothing goes wrong.",
+  "servicos.eventos.li1": "Direct coordination with organizers",
+  "servicos.eventos.li2": "Vehicles decorated on request",
+  "servicos.eventos.li3": "Packages for groups and guests",
+
+  "cta.servicos.title": "Which of these services fits your trip?",
+  "cta.servicos.btn": "Request a quote",
+
+  "frota.sedan.title": "Executive Sedan",
+  "frota.sedan.desc": "Ideal for 1 to 3 passengers. Discreet comfort for business travel.",
+  "frota.suv.title": "Premium SUV",
+  "frota.suv.desc": "More luggage space and up to 4 passengers, without giving up comfort.",
+  "frota.van.title": "Group Van",
+  "frota.van.desc": "Up to 8 passengers with luggage, perfect for families or small groups.",
+  "cta.frota.title": "Which vehicle suits your trip?",
+  "cta.frota.btn": "Book now",
+
+  "sobre.p1": "Our driver team is chosen for the same reason: professionalism without fuss. They know the routes, anticipate traffic, and treat every passenger with the discretion an executive transfer requires.",
+  "sobre.p2": "We work with companies, travel agencies, and individuals who need transport they can trust without a second thought.",
+  "sobre.valor1.title": "Punctuality",
+  "sobre.valor1.desc": "We arrive before you — always.",
+  "sobre.valor2.title": "Discretion",
+  "sobre.valor2.desc": "What happens on the trip, stays on the trip.",
+  "sobre.valor3.title": "Care",
+  "sobre.valor3.desc": "Vehicles inspected and cleaned before every trip.",
+  "cta.sobre.title": "Let's take care of your next trip",
+
+  "form.nome": "Name",
+  "form.email": "Email",
+  "form.telefone": "Phone",
+  "form.tipo_servico": "Service type",
+  "form.origem": "Pickup",
+  "form.destino": "Drop-off",
+  "form.data_hora": "Date and time",
+  "form.passageiros": "Passengers",
+  "form.notas": "Additional notes",
+  "form.notas_placeholder": "Extra luggage, baby seat, etc.",
+  "form.enviar": "Request booking",
+  "form.opt_aeroporto": "Airport",
+  "form.opt_executivo": "Executive",
+  "form.opt_evento": "Private event"
 }

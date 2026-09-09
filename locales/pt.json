@@ -46,5 +46,60 @@
 
   "page.contacto.eyebrow": "Reservar",
   "page.contacto.title": "Diga-nos para onde vai",
-  "page.contacto.lede": "Preencha os dados da viagem e entramos em contacto para confirmar tudo."
+  "page.contacto.lede": "Preencha os dados da viagem e entramos em contacto para confirmar tudo.",
+
+  "servicos.aeroporto.title": "Transfer de aeroporto",
+  "servicos.aeroporto.desc": "Acompanhamos o seu voo em tempo real — atrasos ou chegadas antecipadas não alteram o ponto de encontro. Espera incluída, ajuda com bagagem e um condutor com o seu nome à saída do terminal.",
+  "servicos.aeroporto.li1": "Monitorização de voo em tempo real",
+  "servicos.aeroporto.li2": "60 minutos de espera incluídos",
+  "servicos.aeroporto.li3": "Receção com placa personalizada",
+
+  "servicos.executivo.title": "Transfer executivo",
+  "servicos.executivo.desc": "Reuniões, roadshows ou deslocações entre cidades — sempre com discrição, wi-fi a bordo e um condutor que conhece as melhores rotas em cada horário.",
+  "servicos.executivo.li1": "Viaturas de gama alta e recentes",
+  "servicos.executivo.li2": "Confidencialidade garantida",
+  "servicos.executivo.li3": "Faturação simplificada para empresas",
+
+  "servicos.eventos.title": "Eventos privados",
+  "servicos.eventos.desc": "Casamentos, jantares e celebrações onde o transporte também merece cuidado. Coordenamos horários com a organização do evento para que nada falhe.",
+  "servicos.eventos.li1": "Coordenação direta com a organização",
+  "servicos.eventos.li2": "Viaturas decoradas a pedido",
+  "servicos.eventos.li3": "Pacotes para grupos e convidados",
+
+  "cta.servicos.title": "Qual destes serviços procura?",
+  "cta.servicos.btn": "Pedir orçamento",
+
+  "frota.sedan.title": "Sedan Executivo",
+  "frota.sedan.desc": "Ideal para 1 a 3 passageiros. Conforto discreto para deslocações profissionais.",
+  "frota.suv.title": "SUV Premium",
+  "frota.suv.desc": "Mais espaço para bagagem e até 4 passageiros, sem abdicar do conforto.",
+  "frota.van.title": "Van de Grupo",
+  "frota.van.desc": "Até 8 passageiros com bagagem, perfeita para famílias ou pequenos grupos.",
+  "cta.frota.title": "Qual viatura se adapta à sua viagem?",
+  "cta.frota.btn": "Reservar agora",
+
+  "sobre.p1": "A nossa equipa de condutores é escolhida pela mesma razão: profissionalismo sem alarido. Conhecem as rotas, antecipam o trânsito e tratam cada passageiro com a discrição que um transfer executivo exige.",
+  "sobre.p2": "Trabalhamos com empresas, agências de viagens e particulares que precisam de um transporte em quem podem confiar sem pensar duas vezes.",
+  "sobre.valor1.title": "Pontualidade",
+  "sobre.valor1.desc": "Chegamos antes de si — sempre.",
+  "sobre.valor2.title": "Discrição",
+  "sobre.valor2.desc": "O que se passa na viagem, fica na viagem.",
+  "sobre.valor3.title": "Cuidado",
+  "sobre.valor3.desc": "Viaturas revistas e limpas antes de cada serviço.",
+  "cta.sobre.title": "Vamos tratar do seu próximo trajeto",
+
+  "form.nome": "Nome",
+  "form.email": "Email",
+  "form.telefone": "Telefone",
+  "form.tipo_servico": "Tipo de serviço",
+  "form.origem": "Origem",
+  "form.destino": "Destino",
+  "form.data_hora": "Data e hora",
+  "form.passageiros": "Passageiros",
+  "form.notas": "Notas adicionais",
+  "form.notas_placeholder": "Bagagem extra, cadeira de bebé, etc.",
+  "form.enviar": "Pedir reserva",
+  "form.opt_aeroporto": "Aeroporto",
+  "form.opt_executivo": "Executivo",
+  "form.opt_evento": "Evento privado"
 }

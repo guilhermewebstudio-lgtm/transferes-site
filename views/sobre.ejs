@@ -14,29 +14,29 @@
 
 <section class="about-content">
   <div class="about-text">
-    <p>A nossa equipa de condutores é escolhida pela mesma razão: profissionalismo sem alarido. Conhecem as rotas, antecipam o trânsito e tratam cada passageiro com a discrição que um transfer executivo exige.</p>
-    <p>Trabalhamos com empresas, agências de viagens e particulares que precisam de um transporte em quem podem confiar sem pensar duas vezes.</p>
+    <p><%= t('sobre.p1') %></p>
+    <p><%= t('sobre.p2') %></p>
   </div>
   <div class="about-values">
     <div class="value-item">
-      <h3>Pontualidade</h3>
-      <p>Chegamos antes de si — sempre.</p>
+      <h3><%= t('sobre.valor1.title') %></h3>
+      <p><%= t('sobre.valor1.desc') %></p>
     </div>
     <div class="value-item">
-      <h3>Discrição</h3>
-      <p>O que se passa na viagem, fica na viagem.</p>
+      <h3><%= t('sobre.valor2.title') %></h3>
+      <p><%= t('sobre.valor2.desc') %></p>
     </div>
     <div class="value-item">
-      <h3>Cuidado</h3>
-      <p>Viaturas revistas e limpas antes de cada serviço.</p>
+      <h3><%= t('sobre.valor3.title') %></h3>
+      <p><%= t('sobre.valor3.desc') %></p>
     </div>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="cta-inner">
-    <h2>Vamos tratar do seu próximo trajeto</h2>
-    <a href="/contacto" class="btn btn-primary" data-nav>Reservar transfer</a>
+    <h2><%= t('cta.sobre.title') %></h2>
+    <a href="/contacto" class="btn btn-primary" data-nav><%= t('hero.cta.reservar') %></a>
   </div>
 </section>
 
