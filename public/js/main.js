@@ -5,13 +5,8 @@
     pre.className = 'site-preloader';
     pre.innerHTML = `
       <div class="preloader-mark">
-        <svg class="preloader-ring" viewBox="0 0 120 120" width="88" height="88">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,161,106,0.15)" stroke-width="1.5"/>
-          <circle class="preloader-ring-progress" cx="60" cy="60" r="52" fill="none" stroke="#c9a16a" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <img class="preloader-car" src="/img/logo-icon-transparent.png" alt="" style="max-height:44px; max-width:70px; width:auto; height:auto; object-fit:contain;">
+        <img class="preloader-plate" src="/img/logo-plate.png" alt="Sr Transferes">
       </div>
-      <div class="preloader-word">Sr Transferes</div>
     `;
     document.documentElement.classList.add('preloading');
     document.body.prepend(pre);
