@@ -18,12 +18,17 @@ router.get('/', requireAdmin, async (req, res) => {
   });
 });
 
+const DIAS_SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+
 router.get('/conteudo', requireAdmin, async (req, res) => {
   const precoEconomico = await getSetting('preco_economico', '0.90');
   const precoConforto = await getSetting('preco_conforto', '1.20');
   const precoLuxo = await getSetting('preco_luxo', '1.60');
   const precoVan = await getSetting('preco_van', '1.30');
-  const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
+  const horarios = {};
+  for (const dia of DIAS_SEMANA) {
+    horarios[dia] = await getSetting(`horario_${dia}`, '24 horas');
+  }
   res.render('admin/conteudo', {
     title: 'Conteúdo do site | Admin | SR Transferes',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
@@ -32,12 +37,19 @@ router.get('/conteudo', requireAdmin, async (req, res) => {
 });
 
 router.post('/conteudo', requireAdmin, async (req, res) => {
-  const { precoEconomico, precoConforto, precoLuxo, precoVan, horarios } = req.body;
+  const { precoEconomico, precoConforto, precoLuxo, precoVan } = req.body;
   await setSetting('preco_economico', precoEconomico || '0.90');
   await setSetting('preco_conforto', precoConforto || '1.20');
   await setSetting('preco_luxo', precoLuxo || '1.60');
   await setSetting('preco_van', precoVan || '1.30');
-  await setSetting('horarios_texto', horarios || '');
+
+  const horarios = {};
+  for (const dia of DIAS_SEMANA) {
+    const valor = req.body[`horario_${dia}`] || '24 horas';
+    await setSetting(`horario_${dia}`, valor);
+    horarios[dia] = valor;
+  }
+
   res.render('admin/conteudo', {
     title: 'Conteúdo do site | Admin | SR Transferes',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios,

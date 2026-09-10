@@ -36,13 +36,35 @@
 </section>
 
 <section class="hours-section">
-  <div class="hours-card">
-    <div class="hours-icon">
-      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <h2 class="hours-section-title">Horários</h2>
+  <div class="hours-grid">
+    <div class="hour-day">
+      <span class="hour-day-name">Segunda</span>
+      <span class="hour-day-value"><%= horarios.seg %></span>
     </div>
-    <div>
-      <h3>Horários</h3>
-      <p><%= horarios %></p>
+    <div class="hour-day">
+      <span class="hour-day-name">Terça</span>
+      <span class="hour-day-value"><%= horarios.ter %></span>
+    </div>
+    <div class="hour-day">
+      <span class="hour-day-name">Quarta</span>
+      <span class="hour-day-value"><%= horarios.qua %></span>
+    </div>
+    <div class="hour-day">
+      <span class="hour-day-name">Quinta</span>
+      <span class="hour-day-value"><%= horarios.qui %></span>
+    </div>
+    <div class="hour-day">
+      <span class="hour-day-name">Sexta</span>
+      <span class="hour-day-value"><%= horarios.sex %></span>
+    </div>
+    <div class="hour-day">
+      <span class="hour-day-name">Sábado</span>
+      <span class="hour-day-value"><%= horarios.sab %></span>
+    </div>
+    <div class="hour-day">
+      <span class="hour-day-name">Domingo</span>
+      <span class="hour-day-value"><%= horarios.dom %></span>
     </div>
   </div>
 </section>

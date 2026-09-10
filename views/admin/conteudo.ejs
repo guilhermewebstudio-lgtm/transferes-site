@@ -8,14 +8,15 @@
 <section class="page-hero" style="padding-bottom:0;">
   <p class="hero-eyebrow">Admin · <a href="/admin" data-nav style="color:var(--blue);">voltar ao painel</a></p>
   <h1>Conteúdo do site</h1>
-  <p class="page-lede">Edita os preços por categoria e os horários apresentados em <a href="/precos-horarios" data-nav style="color:var(--blue);">/precos-horarios</a>.</p>
+  <p class="page-lede">Edita os preços por categoria e os horários de cada dia da semana, apresentados em <a href="/precos-horarios" data-nav style="color:var(--blue);">/precos-horarios</a>.</p>
 </section>
 
-<section class="booking-section" style="max-width:640px;">
+<section class="booking-section" style="max-width:700px;">
   <% if (sucesso) { %>
     <p class="form-feedback success" style="margin-bottom:20px;">Conteúdo atualizado com sucesso.</p>
   <% } %>
   <form method="POST" action="/admin/conteudo" class="booking-form">
+    <h3 style="font-family:var(--font-display); font-size:1.05rem; margin:0;">Preços por km</h3>
     <div class="form-row">
       <label>Económico (€/km)
         <input type="number" step="0.01" min="0" name="precoEconomico" value="<%= precoEconomico %>">
@@ -32,14 +33,41 @@
         <input type="number" step="0.01" min="0" name="precoVan" value="<%= precoVan %>">
       </label>
     </div>
-    <label>Texto de horários
-      <textarea name="horarios" rows="4"><%= horarios %></textarea>
-    </label>
-    <button type="submit" class="btn btn-primary">Guardar alterações</button>
+
+    <h3 style="font-family:var(--font-display); font-size:1.05rem; margin:20px 0 0;">Horários por dia</h3>
+    <p style="color:var(--muted); font-size:0.85rem; margin:0 0 6px;">Escreve livremente, ex: "24 horas", "09:00 - 18:00", "Fechado".</p>
+    <div class="form-row">
+      <label>Segunda
+        <input type="text" name="horario_seg" value="<%= horarios.seg %>">
+      </label>
+      <label>Terça
+        <input type="text" name="horario_ter" value="<%= horarios.ter %>">
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Quarta
+        <input type="text" name="horario_qua" value="<%= horarios.qua %>">
+      </label>
+      <label>Quinta
+        <input type="text" name="horario_qui" value="<%= horarios.qui %>">
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Sexta
+        <input type="text" name="horario_sex" value="<%= horarios.sex %>">
+      </label>
+      <label>Sábado
+        <input type="text" name="horario_sab" value="<%= horarios.sab %>">
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Domingo
+        <input type="text" name="horario_dom" value="<%= horarios.dom %>">
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="margin-top:10px;">Guardar alterações</button>
   </form>
-  <p style="margin-top:20px; color:var(--muted); font-size:0.85rem;">
-    Nota: estes valores são só para a página de Preços & Horários. Para mudares os valores usados no cálculo do Simulador, diz-me e eu ligo os dois.
-  </p>
 </section>
 
 <%- include('../partials/footer') %>
