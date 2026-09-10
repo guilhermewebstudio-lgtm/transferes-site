@@ -19,16 +19,30 @@ router.get('/', requireAdmin, async (req, res) => {
 });
 
 router.get('/conteudo', requireAdmin, async (req, res) => {
-  const precos = await getSetting('precos_texto', 'O valor de cada viagem depende da origem, do destino e do tipo de serviço escolhido. Peça já o seu orçamento sem compromisso através do formulário de reserva.');
+  const precoEconomico = await getSetting('preco_economico', '0.90');
+  const precoConforto = await getSetting('preco_conforto', '1.20');
+  const precoLuxo = await getSetting('preco_luxo', '1.60');
+  const precoVan = await getSetting('preco_van', '1.30');
   const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
-  res.render('admin/conteudo', { title: 'Conteúdo do site | Admin | Sr Transferes', precos, horarios, sucesso: false });
+  res.render('admin/conteudo', {
+    title: 'Conteúdo do site | Admin | Sr Transferes',
+    precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
+    sucesso: false
+  });
 });
 
 router.post('/conteudo', requireAdmin, async (req, res) => {
-  const { precos, horarios } = req.body;
-  await setSetting('precos_texto', precos || '');
+  const { precoEconomico, precoConforto, precoLuxo, precoVan, horarios } = req.body;
+  await setSetting('preco_economico', precoEconomico || '0.90');
+  await setSetting('preco_conforto', precoConforto || '1.20');
+  await setSetting('preco_luxo', precoLuxo || '1.60');
+  await setSetting('preco_van', precoVan || '1.30');
   await setSetting('horarios_texto', horarios || '');
-  res.render('admin/conteudo', { title: 'Conteúdo do site | Admin | Sr Transferes', precos, horarios, sucesso: true });
+  res.render('admin/conteudo', {
+    title: 'Conteúdo do site | Admin | Sr Transferes',
+    precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
+    sucesso: true
+  });
 });
 
 router.get('/suporte', requireAdmin, async (req, res) => {

@@ -1,21 +1,27 @@
 // Envio de email via Brevo (HTTPS API) — Render free tier bloqueia SMTP,
 // por isso usamos sempre a API HTTPS da Brevo, nunca nodemailer/SMTP direto.
 
+function getSiteUrl() {
+  return process.env.SITE_URL || 'https://transferes-site.onrender.com';
+}
+
 function brandedEmailTemplate({ title, bodyHtml }) {
+  const logoUrl = `${getSiteUrl()}/img/logo-v2-icon.png`;
   return `
-  <div style="background:#060a12; padding:32px 16px; font-family: Arial, Helvetica, sans-serif;">
-    <div style="max-width:520px; margin:0 auto; background:#0b1220; border-radius:16px; overflow:hidden; border:1px solid #1c2740;">
-      <div style="background:#0d1526; padding:24px 28px; border-bottom:1px solid #1c2740;">
-        <span style="font-size:20px; font-weight:800; color:#eef2f8; letter-spacing:0.02em;">Sr Transferes</span>
+  <div style="background:#0d0b08; padding:36px 16px; font-family: Arial, Helvetica, sans-serif;">
+    <div style="max-width:520px; margin:0 auto; background:#17130f; border-radius:16px; overflow:hidden; border:1px solid rgba(201,161,106,0.25);">
+      <div style="background:#0d0b08; padding:26px 28px; border-bottom:1px solid rgba(201,161,106,0.2); text-align:center;">
+        <img src="${logoUrl}" alt="Sr Transferes" width="44" height="44" style="display:block; margin:0 auto 10px;">
+        <span style="font-size:19px; font-weight:800; color:#f3ede1; letter-spacing:0.03em; text-transform:uppercase;">Sr Transferes</span>
       </div>
-      <div style="padding:28px; color:#eef2f8;">
-        <h2 style="margin:0 0 16px; font-size:20px; color:#eef2f8;">${title}</h2>
-        <div style="font-size:15px; line-height:1.6; color:#c7d2e0;">
+      <div style="padding:30px 28px; color:#f3ede1;">
+        <h2 style="margin:0 0 16px; font-size:20px; color:#f3ede1;">${title}</h2>
+        <div style="font-size:15px; line-height:1.65; color:#cabfae;">
           ${bodyHtml}
         </div>
       </div>
-      <div style="padding:18px 28px; background:#080e18; border-top:1px solid #1c2740; color:#7c8aa3; font-size:12px;">
-        Sr Transferes — transfers executivos e de aeroporto em Lisboa.
+      <div style="padding:18px 28px; background:#0d0b08; border-top:1px solid rgba(201,161,106,0.15); color:#948676; font-size:12px; text-align:center;">
+        Sr Transferes — Chauffeur Excellence · Transfers executivos e de aeroporto em Lisboa.
       </div>
     </div>
   </div>`;

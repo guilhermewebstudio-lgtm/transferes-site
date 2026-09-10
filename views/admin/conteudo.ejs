@@ -8,7 +8,7 @@
 <section class="page-hero" style="padding-bottom:0;">
   <p class="hero-eyebrow">Admin · <a href="/admin" data-nav style="color:var(--blue);">voltar ao painel</a></p>
   <h1>Conteúdo do site</h1>
-  <p class="page-lede">Edita o texto da página pública <a href="/precos-horarios" data-nav style="color:var(--blue);">/precos-horarios</a>.</p>
+  <p class="page-lede">Edita os preços por categoria e os horários apresentados em <a href="/precos-horarios" data-nav style="color:var(--blue);">/precos-horarios</a>.</p>
 </section>
 
 <section class="booking-section" style="max-width:640px;">
@@ -16,14 +16,30 @@
     <p class="form-feedback success" style="margin-bottom:20px;">Conteúdo atualizado com sucesso.</p>
   <% } %>
   <form method="POST" action="/admin/conteudo" class="booking-form">
-    <label>Texto de preços
-      <textarea name="precos" rows="6"><%= precos %></textarea>
-    </label>
+    <div class="form-row">
+      <label>Económico (€/km)
+        <input type="number" step="0.01" min="0" name="precoEconomico" value="<%= precoEconomico %>">
+      </label>
+      <label>Conforto (€/km)
+        <input type="number" step="0.01" min="0" name="precoConforto" value="<%= precoConforto %>">
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Luxo (€/km)
+        <input type="number" step="0.01" min="0" name="precoLuxo" value="<%= precoLuxo %>">
+      </label>
+      <label>Van de Grupo (€/km)
+        <input type="number" step="0.01" min="0" name="precoVan" value="<%= precoVan %>">
+      </label>
+    </div>
     <label>Texto de horários
       <textarea name="horarios" rows="4"><%= horarios %></textarea>
     </label>
     <button type="submit" class="btn btn-primary">Guardar alterações</button>
   </form>
+  <p style="margin-top:20px; color:var(--muted); font-size:0.85rem;">
+    Nota: estes valores são só para a página de Preços & Horários. Para mudares os valores usados no cálculo do Simulador, diz-me e eu ligo os dois.
+  </p>
 </section>
 
 <%- include('../partials/footer') %>

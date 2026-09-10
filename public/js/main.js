@@ -5,7 +5,7 @@
     pre.className = 'site-preloader';
     pre.innerHTML = `
       <div class="preloader-mark">
-        <img class="preloader-plate" src="/img/logo-v2-full.png" alt="Sr Transferes">
+        <img class="preloader-plate" src="/img/logo-v2-full.png?v=2" alt="Sr Transferes">
       </div>
     `;
     document.documentElement.classList.add('preloading');

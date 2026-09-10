@@ -12,20 +12,39 @@
   <p class="page-lede">Tudo o que precisas de saber antes de reservar.</p>
 </section>
 
-<section class="services-detail" style="gap:50px;">
-  <article class="service-row">
-    <div class="service-text" style="flex:1 1 100%;">
-      <h2>Preços</h2>
-      <p style="white-space:pre-wrap;"><%= precos %></p>
-    </div>
-  </article>
+<section class="pricing-grid">
+  <div class="pricing-card">
+    <span class="pricing-card-label">Económico</span>
+    <div class="pricing-card-value"><%= precoEconomico %>€<span>/km</span></div>
+    <p class="pricing-card-desc">Sedan compacto, ideal para trajetos ponto a ponto.</p>
+  </div>
+  <div class="pricing-card pricing-card-highlight">
+    <span class="pricing-card-label">Conforto</span>
+    <div class="pricing-card-value"><%= precoConforto %>€<span>/km</span></div>
+    <p class="pricing-card-desc">A escolha mais popular para transfers executivos.</p>
+  </div>
+  <div class="pricing-card">
+    <span class="pricing-card-label">Luxo</span>
+    <div class="pricing-card-value"><%= precoLuxo %>€<span>/km</span></div>
+    <p class="pricing-card-desc">Viaturas premium para uma experiência superior.</p>
+  </div>
+  <div class="pricing-card">
+    <span class="pricing-card-label">Van de Grupo</span>
+    <div class="pricing-card-value"><%= precoVan %>€<span>/km</span></div>
+    <p class="pricing-card-desc">Até 8 passageiros com bagagem, ideal para grupos.</p>
+  </div>
+</section>
 
-  <article class="service-row">
-    <div class="service-text" style="flex:1 1 100%;">
-      <h2>Horários</h2>
-      <p style="white-space:pre-wrap;"><%= horarios %></p>
+<section class="hours-section">
+  <div class="hours-card">
+    <div class="hours-icon">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-  </article>
+    <div>
+      <h3>Horários</h3>
+      <p><%= horarios %></p>
+    </div>
+  </div>
 </section>
 
 <section class="cta-band">

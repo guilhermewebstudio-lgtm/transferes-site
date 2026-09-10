@@ -23,9 +23,15 @@ router.get('/contacto', (req, res) => {
 });
 
 router.get('/precos-horarios', async (req, res) => {
-  const precos = await getSetting('precos_texto', 'O valor de cada viagem depende da origem, do destino e do tipo de serviço escolhido. Peça já o seu orçamento sem compromisso através do formulário de reserva.');
+  const precoEconomico = await getSetting('preco_economico', '0.90');
+  const precoConforto = await getSetting('preco_conforto', '1.20');
+  const precoLuxo = await getSetting('preco_luxo', '1.60');
+  const precoVan = await getSetting('preco_van', '1.30');
   const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
-  res.render('precos-horarios', { title: 'Preços & Horários | Sr Transferes', precos, horarios });
+  res.render('precos-horarios', {
+    title: 'Preços & Horários | Sr Transferes',
+    precoEconomico, precoConforto, precoLuxo, precoVan, horarios
+  });
 });
 
 router.get('/simulador', (req, res) => {
