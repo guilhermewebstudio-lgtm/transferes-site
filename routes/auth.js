@@ -6,14 +6,14 @@ const { sendEmail, brandedEmailTemplate } = require('../utils/email');
 
 router.get('/registo', (req, res) => {
   if (req.session.user) return res.redirect('/conta');
-  res.render('auth/registo', { title: 'Criar conta | Sr Transferes', erro: null });
+  res.render('auth/registo', { title: 'Criar conta | SR Transferes', erro: null });
 });
 
 router.post('/registo', async (req, res) => {
   const { nome, email, password } = req.body;
   if (!nome || !email || !password || password.length < 6) {
     return res.render('auth/registo', {
-      title: 'Criar conta | Sr Transferes',
+      title: 'Criar conta | SR Transferes',
       erro: 'Preenche todos os campos. A password precisa de pelo menos 6 caracteres.'
     });
   }
@@ -21,7 +21,7 @@ router.post('/registo', async (req, res) => {
     const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email.toLowerCase()]);
     if (existing.rows.length > 0) {
       return res.render('auth/registo', {
-        title: 'Criar conta | Sr Transferes',
+        title: 'Criar conta | SR Transferes',
         erro: 'Já existe uma conta com este email.'
       });
     }
@@ -37,7 +37,7 @@ router.post('/registo', async (req, res) => {
 
     sendEmail({
       to: user.email,
-      subject: 'Bem-vindo à Sr Transferes',
+      subject: 'Bem-vindo à SR Transferes',
       html: brandedEmailTemplate({
         title: `Bem-vindo, ${user.nome}`,
         bodyHtml: `<p style="margin:0;">A tua conta foi criada com sucesso. Já podes reservar transfers e acompanhar o histórico das tuas viagens.</p>`
@@ -47,13 +47,13 @@ router.post('/registo', async (req, res) => {
     res.redirect('/conta');
   } catch (err) {
     console.error('Erro no registo:', err);
-    res.render('auth/registo', { title: 'Criar conta | Sr Transferes', erro: 'Erro inesperado. Tenta novamente.' });
+    res.render('auth/registo', { title: 'Criar conta | SR Transferes', erro: 'Erro inesperado. Tenta novamente.' });
   }
 });
 
 router.get('/login', (req, res) => {
   if (req.session.user) return res.redirect('/conta');
-  res.render('auth/login', { title: 'Entrar | Sr Transferes', erro: null, next: req.query.next || '/conta' });
+  res.render('auth/login', { title: 'Entrar | SR Transferes', erro: null, next: req.query.next || '/conta' });
 });
 
 router.post('/login', async (req, res) => {
@@ -63,17 +63,17 @@ router.post('/login', async (req, res) => {
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [(email || '').toLowerCase()]);
     const user = result.rows[0];
     if (!user) {
-      return res.render('auth/login', { title: 'Entrar | Sr Transferes', erro: 'Credenciais inválidas.', next });
+      return res.render('auth/login', { title: 'Entrar | SR Transferes', erro: 'Credenciais inválidas.', next });
     }
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
-      return res.render('auth/login', { title: 'Entrar | Sr Transferes', erro: 'Credenciais inválidas.', next });
+      return res.render('auth/login', { title: 'Entrar | SR Transferes', erro: 'Credenciais inválidas.', next });
     }
     req.session.user = { id: user.id, nome: user.nome, email: user.email, is_admin: user.is_admin };
     res.redirect(user.is_admin ? '/admin' : next);
   } catch (err) {
     console.error('Erro no login:', err);
-    res.render('auth/login', { title: 'Entrar | Sr Transferes', erro: 'Erro inesperado. Tenta novamente.', next });
+    res.render('auth/login', { title: 'Entrar | SR Transferes', erro: 'Erro inesperado. Tenta novamente.', next });
   }
 });
 
@@ -82,7 +82,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/esqueci-password', (req, res) => {
-  res.render('auth/esqueci-password', { title: 'Recuperar password | Sr Transferes', erro: null, sucesso: null });
+  res.render('auth/esqueci-password', { title: 'Recuperar password | SR Transferes', erro: null, sucesso: null });
 });
 
 router.post('/esqueci-password', async (req, res) => {
@@ -105,12 +105,12 @@ router.post('/esqueci-password', async (req, res) => {
 
       sendEmail({
         to: user.email,
-        subject: 'Redefinir a tua password — Sr Transferes',
+        subject: 'Redefinir a tua password — SR Transferes',
         html: brandedEmailTemplate({
           title: 'Redefinir password',
           bodyHtml: `
             <p style="margin:0 0 12px;">Olá ${user.nome},</p>
-            <p style="margin:0 0 20px;">Recebemos um pedido para redefinir a password da tua conta Sr Transferes. Clica no botão abaixo para escolher uma nova password. Este link expira dentro de 1 hora.</p>
+            <p style="margin:0 0 20px;">Recebemos um pedido para redefinir a password da tua conta SR Transferes. Clica no botão abaixo para escolher uma nova password. Este link expira dentro de 1 hora.</p>
             <p style="text-align:center; margin: 28px 0;">
               <a href="${resetLink}" style="background:#3d7dfb; color:#050810; padding:14px 32px; border-radius:999px; text-decoration:none; font-weight:bold; display:inline-block;">Redefinir password</a>
             </p>
@@ -120,10 +120,10 @@ router.post('/esqueci-password', async (req, res) => {
       }).catch(() => {});
     }
 
-    res.render('auth/esqueci-password', { title: 'Recuperar password | Sr Transferes', erro: null, sucesso: genericSuccess });
+    res.render('auth/esqueci-password', { title: 'Recuperar password | SR Transferes', erro: null, sucesso: genericSuccess });
   } catch (err) {
     console.error('Erro em esqueci-password:', err);
-    res.render('auth/esqueci-password', { title: 'Recuperar password | Sr Transferes', erro: 'Erro inesperado. Tenta novamente.', sucesso: null });
+    res.render('auth/esqueci-password', { title: 'Recuperar password | SR Transferes', erro: 'Erro inesperado. Tenta novamente.', sucesso: null });
   }
 });
 
@@ -134,12 +134,12 @@ router.get('/redefinir-password/:token', async (req, res) => {
       [req.params.token]
     );
     if (result.rows.length === 0) {
-      return res.render('auth/redefinir-password', { title: 'Link inválido | Sr Transferes', token: null, erro: 'Este link é inválido ou já expirou. Pede um novo.' });
+      return res.render('auth/redefinir-password', { title: 'Link inválido | SR Transferes', token: null, erro: 'Este link é inválido ou já expirou. Pede um novo.' });
     }
-    res.render('auth/redefinir-password', { title: 'Nova password | Sr Transferes', token: req.params.token, erro: null });
+    res.render('auth/redefinir-password', { title: 'Nova password | SR Transferes', token: req.params.token, erro: null });
   } catch (err) {
     console.error('Erro ao verificar token:', err);
-    res.render('auth/redefinir-password', { title: 'Erro | Sr Transferes', token: null, erro: 'Erro inesperado. Tenta novamente.' });
+    res.render('auth/redefinir-password', { title: 'Erro | SR Transferes', token: null, erro: 'Erro inesperado. Tenta novamente.' });
   }
 });
 
@@ -148,21 +148,21 @@ router.post('/redefinir-password/:token', async (req, res) => {
   const token = req.params.token;
   try {
     if (!password || password.length < 6) {
-      return res.render('auth/redefinir-password', { title: 'Nova password | Sr Transferes', token, erro: 'A password precisa de pelo menos 6 caracteres.' });
+      return res.render('auth/redefinir-password', { title: 'Nova password | SR Transferes', token, erro: 'A password precisa de pelo menos 6 caracteres.' });
     }
     const result = await pool.query(
       'SELECT id FROM users WHERE reset_token = $1 AND reset_token_expires > NOW()',
       [token]
     );
     if (result.rows.length === 0) {
-      return res.render('auth/redefinir-password', { title: 'Link inválido | Sr Transferes', token: null, erro: 'Este link é inválido ou já expirou. Pede um novo.' });
+      return res.render('auth/redefinir-password', { title: 'Link inválido | SR Transferes', token: null, erro: 'Este link é inválido ou já expirou. Pede um novo.' });
     }
     const hash = await bcrypt.hash(password, 10);
     await pool.query('UPDATE users SET password_hash = $1, reset_token = NULL, reset_token_expires = NULL WHERE id = $2', [hash, result.rows[0].id]);
     res.redirect('/login');
   } catch (err) {
     console.error('Erro ao redefinir password:', err);
-    res.render('auth/redefinir-password', { title: 'Erro | Sr Transferes', token, erro: 'Erro inesperado. Tenta novamente.' });
+    res.render('auth/redefinir-password', { title: 'Erro | SR Transferes', token, erro: 'Erro inesperado. Tenta novamente.' });
   }
 });
 

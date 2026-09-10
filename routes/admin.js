@@ -10,7 +10,7 @@ router.get('/', requireAdmin, async (req, res) => {
   const ticketsAbertos = await pool.query("SELECT COUNT(*) FROM tickets WHERE estado = 'aberto'");
   const reservasPendentes = await pool.query("SELECT COUNT(*) FROM reservas WHERE estado = 'pendente'");
   res.render('admin/dashboard', {
-    title: 'Admin | Sr Transferes',
+    title: 'Admin | SR Transferes',
     reservas: reservas.rows,
     totalUsers: totalUsers.rows[0].count,
     ticketsAbertos: ticketsAbertos.rows[0].count,
@@ -25,7 +25,7 @@ router.get('/conteudo', requireAdmin, async (req, res) => {
   const precoVan = await getSetting('preco_van', '1.30');
   const horarios = await getSetting('horarios_texto', 'Estamos disponíveis 24 horas por dia, todos os dias da semana, incluindo feriados.');
   res.render('admin/conteudo', {
-    title: 'Conteúdo do site | Admin | Sr Transferes',
+    title: 'Conteúdo do site | Admin | SR Transferes',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
     sucesso: false
   });
@@ -39,7 +39,7 @@ router.post('/conteudo', requireAdmin, async (req, res) => {
   await setSetting('preco_van', precoVan || '1.30');
   await setSetting('horarios_texto', horarios || '');
   res.render('admin/conteudo', {
-    title: 'Conteúdo do site | Admin | Sr Transferes',
+    title: 'Conteúdo do site | Admin | SR Transferes',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
     sucesso: true
   });
@@ -52,7 +52,7 @@ router.get('/suporte', requireAdmin, async (req, res) => {
     JOIN users u ON u.id = t.user_id
     ORDER BY t.atualizado_em DESC
   `);
-  res.render('admin/suporte', { title: 'Suporte | Admin | Sr Transferes', tickets: result.rows });
+  res.render('admin/suporte', { title: 'Suporte | Admin | SR Transferes', tickets: result.rows });
 });
 
 router.post('/reservas/:id/estado', requireAdmin, async (req, res) => {
@@ -84,10 +84,10 @@ Confirmamos a disponibilidade para esta viagem. Abaixo encontras o valor total.
 Qualquer dúvida, estamos disponíveis para ajudar.
 
 Cumprimentos,
-Equipa Sr Transferes`;
+Equipa SR Transferes`;
 
   res.render('admin/responder', {
-    title: 'Responder à reserva | Sr Transferes',
+    title: 'Responder à reserva | SR Transferes',
     reserva,
     assunto: `A tua reserva de transfer — ${reserva.origem} → ${reserva.destino}`,
     mensagem: mensagemDefault,
@@ -118,7 +118,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
       : '';
 
     const html = brandedEmailTemplate({
-      title: 'A tua reserva Sr Transferes',
+      title: 'A tua reserva SR Transferes',
       bodyHtml: mensagemHtml + precoHtml
     });
 
@@ -126,7 +126,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
     await pool.query('UPDATE reservas SET respondida = true, respondida_em = NOW() WHERE id = $1', [reserva.id]);
 
     res.render('admin/responder', {
-      title: 'Responder à reserva | Sr Transferes',
+      title: 'Responder à reserva | SR Transferes',
       reserva,
       assunto,
       mensagem,
@@ -137,7 +137,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
   } catch (err) {
     console.error('Erro ao enviar resposta de reserva:', err);
     res.render('admin/responder', {
-      title: 'Responder à reserva | Sr Transferes',
+      title: 'Responder à reserva | SR Transferes',
       reserva,
       assunto,
       mensagem,

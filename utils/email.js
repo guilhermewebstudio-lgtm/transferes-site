@@ -11,8 +11,8 @@ function brandedEmailTemplate({ title, bodyHtml }) {
   <div style="background:#0d0b08; padding:36px 16px; font-family: Arial, Helvetica, sans-serif;">
     <div style="max-width:520px; margin:0 auto; background:#17130f; border-radius:16px; overflow:hidden; border:1px solid rgba(201,161,106,0.25);">
       <div style="background:#0d0b08; padding:26px 28px; border-bottom:1px solid rgba(201,161,106,0.2); text-align:center;">
-        <img src="${logoUrl}" alt="Sr Transferes" width="44" height="44" style="display:block; margin:0 auto 10px;">
-        <span style="font-size:19px; font-weight:800; color:#f3ede1; letter-spacing:0.03em; text-transform:uppercase;">Sr Transferes</span>
+        <img src="${logoUrl}" alt="SR Transferes" width="44" height="44" style="display:block; margin:0 auto 10px;">
+        <span style="font-size:19px; font-weight:800; color:#f3ede1; letter-spacing:0.03em; text-transform:uppercase;">SR Transferes</span>
       </div>
       <div style="padding:30px 28px; color:#f3ede1;">
         <h2 style="margin:0 0 16px; font-size:20px; color:#f3ede1;">${title}</h2>
@@ -21,7 +21,7 @@ function brandedEmailTemplate({ title, bodyHtml }) {
         </div>
       </div>
       <div style="padding:18px 28px; background:#0d0b08; border-top:1px solid rgba(201,161,106,0.15); color:#948676; font-size:12px; text-align:center;">
-        Sr Transferes — Chauffeur Excellence · Transfers executivos e de aeroporto em Lisboa.
+        SR Transferes — Chauffeur Excellence · Transfers executivos e de aeroporto em Lisboa.
       </div>
     </div>
   </div>`;
@@ -45,7 +45,7 @@ async function sendEmail({ to, subject, html, replyTo }) {
         Accept: 'application/json'
       },
       body: JSON.stringify({
-        sender: { email: sender, name: 'Sr Transferes' },
+        sender: { email: sender, name: 'SR Transferes' },
         to: [{ email: to }],
         subject,
         htmlContent: html,
