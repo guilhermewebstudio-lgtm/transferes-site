@@ -113,7 +113,7 @@ router.post('/simulador', async (req, res) => {
 });
 
 router.post('/reserva', async (req, res) => {
-  const { nome, email, telefone, tipo_servico, origem, destino, data_hora, passageiros, notas } = req.body;
+  const { nome, email, telefone, tipo_servico, tipo_frota, origem, destino, data_hora, passageiros, notas } = req.body;
 
   if (!nome || !email || !origem || !destino) {
     return res.status(400).json({ ok: false, erro: 'Preenche pelo menos nome, email, origem e destino.' });
@@ -122,9 +122,9 @@ router.post('/reserva', async (req, res) => {
   try {
     const userId = (req.session.user && req.session.user.id) || null;
     await pool.query(
-      `INSERT INTO reservas (user_id, nome, email, telefone, tipo_servico, origem, destino, data_hora, passageiros, notas)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
-      [userId, nome, email, telefone, tipo_servico, origem, destino, data_hora || null, passageiros || 1, notas]
+      `INSERT INTO reservas (user_id, nome, email, telefone, tipo_servico, tipo_frota, origem, destino, data_hora, passageiros, notas)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+      [userId, nome, email, telefone, tipo_servico, tipo_frota, origem, destino, data_hora || null, passageiros || 1, notas]
     );
 
     sendEmail({
@@ -134,7 +134,7 @@ router.post('/reserva', async (req, res) => {
         title: 'Reserva recebida',
         bodyHtml: `
           <p style="margin:0 0 12px;">Olá ${nome},</p>
-          <p style="margin:0 0 12px;">Recebemos o teu pedido de transfer de <strong style="color:#eef2f8;">${origem}</strong> para <strong style="color:#eef2f8;">${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>
+          <p style="margin:0 0 12px;">Recebemos o teu pedido de transfer de <strong style="color:#f3ede1;">${origem}</strong> para <strong style="color:#f3ede1;">${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>
         `
       })
     }).catch(() => {});
@@ -146,14 +146,15 @@ router.post('/reserva', async (req, res) => {
         html: brandedEmailTemplate({
           title: 'Nova reserva recebida',
           bodyHtml: `
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Nome:</strong> ${nome}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Email:</strong> ${email}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Telefone:</strong> ${telefone || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Serviço:</strong> ${tipo_servico || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Trajeto:</strong> ${origem} → ${destino}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Data:</strong> ${data_hora || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#eef2f8;">Passageiros:</strong> ${passageiros || 1}</p>
-            <p style="margin:0;"><strong style="color:#eef2f8;">Notas:</strong> ${notas || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Nome:</strong> ${nome}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Email:</strong> ${email}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Telefone:</strong> ${telefone || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Serviço:</strong> ${tipo_servico || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Frota:</strong> ${tipo_frota || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Trajeto:</strong> ${origem} → ${destino}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Data:</strong> ${data_hora || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Passageiros:</strong> ${passageiros || 1}</p>
+            <p style="margin:0;"><strong style="color:#f3ede1;">Notas:</strong> ${notas || '-'}</p>
           `
         }),
         replyTo: email

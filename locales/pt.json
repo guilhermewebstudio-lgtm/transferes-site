@@ -99,8 +99,12 @@
   "form.notas": "Notas adicionais",
   "form.notas_placeholder": "Bagagem extra, cadeira de bebé, etc.",
   "form.enviar": "Pedir reserva",
-  "form.opt_aeroporto": "Económico",
-  "form.opt_executivo": "Conforto",
-  "form.opt_evento": "Luxo",
-  "form.opt_van": "Van de Grupo"
+  "form.opt_aeroporto": "Aeroporto",
+  "form.opt_executivo": "Executivo",
+  "form.opt_evento": "Evento privado",
+  "form.tipo_frota": "Tipo de frota",
+  "form.frota_economico": "Económico",
+  "form.frota_conforto": "Conforto",
+  "form.frota_luxo": "Luxo",
+  "form.frota_van": "Van de Grupo"
 }

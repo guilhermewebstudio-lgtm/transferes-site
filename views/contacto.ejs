@@ -28,11 +28,23 @@
       </label>
       <label><%= t('form.tipo_servico') %>
         <select name="tipo_servico">
-          <option value="economico"><%= t('form.opt_aeroporto') %></option>
-          <option value="conforto"><%= t('form.opt_executivo') %></option>
-          <option value="luxo"><%= t('form.opt_evento') %></option>
-          <option value="van"><%= t('form.opt_van') %></option>
+          <option value="aeroporto"><%= t('form.opt_aeroporto') %></option>
+          <option value="executivo"><%= t('form.opt_executivo') %></option>
+          <option value="evento"><%= t('form.opt_evento') %></option>
         </select>
+      </label>
+    </div>
+    <div class="form-row">
+      <label><%= t('form.tipo_frota') %>
+        <select name="tipo_frota">
+          <option value="economico"><%= t('form.frota_economico') %></option>
+          <option value="conforto" selected><%= t('form.frota_conforto') %></option>
+          <option value="luxo"><%= t('form.frota_luxo') %></option>
+          <option value="van"><%= t('form.frota_van') %></option>
+        </select>
+      </label>
+      <label><%= t('form.passageiros') %>
+        <input type="number" name="passageiros" min="1" max="8" value="1">
       </label>
     </div>
     <div class="form-row">
@@ -46,9 +58,6 @@
     <div class="form-row">
       <label><%= t('form.data_hora') %>
         <input type="datetime-local" name="data_hora">
-      </label>
-      <label><%= t('form.passageiros') %>
-        <input type="number" name="passageiros" min="1" max="8" value="1">
       </label>
     </div>
     <label class="full"><%= t('form.notas') %>

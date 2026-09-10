@@ -33,6 +33,7 @@ async function initDb() {
       email VARCHAR(150) NOT NULL,
       telefone VARCHAR(50),
       tipo_servico VARCHAR(50),
+      tipo_frota VARCHAR(50),
       origem VARCHAR(255),
       destino VARCHAR(255),
       data_hora TIMESTAMP,
@@ -47,6 +48,7 @@ async function initDb() {
   `);
   await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS respondida BOOLEAN DEFAULT FALSE;`);
   await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS respondida_em TIMESTAMP;`);
+  await pool.query(`ALTER TABLE reservas ADD COLUMN IF NOT EXISTS tipo_frota VARCHAR(50);`);
 
   await ensureDefaultAdmin();
 

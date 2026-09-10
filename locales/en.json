@@ -99,8 +99,12 @@
   "form.notas": "Additional notes",
   "form.notas_placeholder": "Extra luggage, baby seat, etc.",
   "form.enviar": "Request booking",
-  "form.opt_aeroporto": "Economy",
-  "form.opt_executivo": "Comfort",
-  "form.opt_evento": "Luxury",
-  "form.opt_van": "Group Van"
+  "form.opt_aeroporto": "Airport",
+  "form.opt_executivo": "Executive",
+  "form.opt_evento": "Private event",
+  "form.tipo_frota": "Fleet type",
+  "form.frota_economico": "Economy",
+  "form.frota_conforto": "Comfort",
+  "form.frota_luxo": "Luxury",
+  "form.frota_van": "Group Van"
 }
