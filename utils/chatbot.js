@@ -173,6 +173,46 @@ const INTENTS = [
     }
   },
   {
+    id: 'bagagem',
+    keywords: ['bagagem', 'malas', 'mala', 'luggage', 'bags', 'suitcase'],
+    responses: {
+      pt: 'Podes indicar bagagem extra no campo "Notas adicionais" do formulário de <a href="/contacto">Reserva</a>. Se tiveres muita bagagem, a categoria <strong>Van de Grupo</strong> ou <strong>SUV/Conforto</strong> costuma ter mais espaço — di-lo na reserva para garantirmos o veículo certo.',
+      en: 'You can mention extra luggage in the "Additional notes" field on the <a href="/contacto">Booking</a> form. If you have a lot of luggage, the <strong>Group Van</strong> or <strong>Comfort</strong> category usually has more space — mention it when booking so we can assign the right vehicle.'
+    }
+  },
+  {
+    id: 'criancas',
+    keywords: ['cadeira de bebe', 'crianca', 'criancas', 'bebe', 'child seat', 'baby seat', 'children', 'kids'],
+    responses: {
+      pt: 'Sim, podes pedir cadeira de bebé/criança — basta indicares isso no campo "Notas adicionais" ao fazeres a reserva, para a equipa preparar tudo antecipadamente.',
+      en: 'Yes, you can request a child/baby seat — just mention it in the "Additional notes" field when booking, so our team can prepare it in advance.'
+    }
+  },
+  {
+    id: 'capacidade',
+    keywords: ['quantas pessoas', 'quantos passageiros', 'capacidade', 'lugares', 'how many people', 'how many passengers', 'seats', 'capacity'],
+    responses: {
+      pt: 'Depende da categoria: <strong>Económico</strong> e <strong>Conforto</strong> levam confortavelmente até 3-4 passageiros, <strong>Luxo</strong> é pensado para viagens mais exclusivas com o mesmo número, e a <strong>Van de Grupo</strong> leva até 8 passageiros com bagagem. Vê mais em <a href="/frota">Frota</a>.',
+      en: 'It depends on the category: <strong>Economy</strong> and <strong>Comfort</strong> comfortably fit up to 3-4 passengers, <strong>Luxury</strong> is designed for more exclusive trips with the same capacity, and the <strong>Group Van</strong> fits up to 8 passengers with luggage. See more on the <a href="/frota">Fleet</a> page.'
+    }
+  },
+  {
+    id: 'condutores',
+    keywords: ['condutor', 'condutores', 'motorista', 'motoristas', 'quem conduz', 'driver', 'drivers', 'chauffeur'],
+    responses: {
+      pt: 'Os nossos condutores são escolhidos pelo profissionalismo: conhecem bem as rotas, antecipam o trânsito e mantêm sempre a discrição que um transfer executivo exige. É um dos nossos valores centrais — vê mais em <a href="/sobre">Sobre</a>.',
+      en: 'Our drivers are chosen for their professionalism: they know the routes well, anticipate traffic, and always maintain the discretion an executive transfer requires. It\'s one of our core values — see more on the <a href="/sobre">About</a> page.'
+    }
+  },
+  {
+    id: 'animais',
+    keywords: ['animal', 'animais', 'cao', 'cachorro', 'gato', 'pet', 'pets', 'dog', 'cat'],
+    responses: {
+      pt: 'Não temos uma política fixa publicada sobre animais de estimação — a forma mais segura é indicares isso nas notas da tua reserva ou contactares-nos diretamente, para confirmarmos com antecedência.',
+      en: "We don't have a fixed published policy on pets — the safest way is to mention it in your booking notes or contact us directly, so we can confirm in advance."
+    }
+  },
+  {
     id: 'agradecimento',
     keywords: ['obrigado', 'obrigada', 'valeu', 'thanks', 'thank you'],
     responses: {

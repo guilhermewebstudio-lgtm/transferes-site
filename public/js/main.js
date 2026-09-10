@@ -5,8 +5,14 @@
     pre.className = 'site-preloader';
     pre.innerHTML = `
       <div class="preloader-mark">
-        <img class="preloader-plate" src="/img/logo-v2-full.png?v=2" alt="SR Transferes">
+        <svg class="preloader-plate" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="27" fill="none" stroke="#c9a16a" stroke-width="1.6"/>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#c9a16a" stroke-width="0.6" opacity="0.5"/>
+          <path d="M32 2v8M32 54v8M2 32h8M54 32h8" stroke="#c9a16a" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="32" y="40" font-family="'Unbounded', sans-serif" font-size="19" font-weight="600" fill="#c9a16a" text-anchor="middle">SR</text>
+        </svg>
       </div>
+      <div class="preloader-word">SR Transferes</div>
     `;
     document.documentElement.classList.add('preloading');
     document.body.prepend(pre);
