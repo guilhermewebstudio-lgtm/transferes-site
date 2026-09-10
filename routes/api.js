@@ -129,12 +129,12 @@ router.post('/reserva', async (req, res) => {
 
     sendEmail({
       to: email,
-      subject: 'Recebemos o teu pedido de reserva — SR Transferes',
+      subject: 'Recebemos o teu pedido de reserva — SR Ride',
       html: brandedEmailTemplate({
         title: 'Reserva recebida',
         bodyHtml: `
           <p style="margin:0 0 12px;">Olá ${nome},</p>
-          <p style="margin:0 0 12px;">Recebemos o teu pedido de transfer de <strong style="color:#f3ede1;">${origem}</strong> para <strong style="color:#f3ede1;">${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>
+          <p style="margin:0 0 12px;">Recebemos o teu pedido de transfer de <strong style="color:#f2f3f4;">${origem}</strong> para <strong style="color:#f2f3f4;">${destino}</strong>. Vamos confirmar os detalhes e entrar em contacto brevemente.</p>
         `
       })
     }).catch(() => {});
@@ -146,15 +146,15 @@ router.post('/reserva', async (req, res) => {
         html: brandedEmailTemplate({
           title: 'Nova reserva recebida',
           bodyHtml: `
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Nome:</strong> ${nome}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Email:</strong> ${email}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Telefone:</strong> ${telefone || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Serviço:</strong> ${tipo_servico || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Frota:</strong> ${tipo_frota || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Trajeto:</strong> ${origem} → ${destino}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Data:</strong> ${data_hora || '-'}</p>
-            <p style="margin:0 0 6px;"><strong style="color:#f3ede1;">Passageiros:</strong> ${passageiros || 1}</p>
-            <p style="margin:0;"><strong style="color:#f3ede1;">Notas:</strong> ${notas || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Nome:</strong> ${nome}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Email:</strong> ${email}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Telefone:</strong> ${telefone || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Serviço:</strong> ${tipo_servico || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Frota:</strong> ${tipo_frota || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Trajeto:</strong> ${origem} → ${destino}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Data:</strong> ${data_hora || '-'}</p>
+            <p style="margin:0 0 6px;"><strong style="color:#f2f3f4;">Passageiros:</strong> ${passageiros || 1}</p>
+            <p style="margin:0;"><strong style="color:#f2f3f4;">Notas:</strong> ${notas || '-'}</p>
           `
         }),
         replyTo: email

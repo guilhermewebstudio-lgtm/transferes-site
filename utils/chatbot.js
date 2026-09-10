@@ -56,16 +56,16 @@ const INTENTS = [
     id: 'saudacao',
     keywords: ['ola', 'oi', 'boa tarde', 'bom dia', 'boa noite', 'hello', 'hi', 'hey', 'good morning', 'good afternoon', 'tudo bem'],
     responses: {
-      pt: 'Olá! Sou o assistente da SR Transferes. Posso ajudar com dúvidas sobre serviços, frota, preços, reservas, a tua conta ou o funcionamento do site. O que precisas de saber?',
-      en: "Hi there! I'm the SR Transferes assistant. I can help with questions about services, fleet, pricing, bookings, your account, or how the site works. What would you like to know?"
+      pt: 'Olá! Sou o assistente da SR Ride. Posso ajudar com dúvidas sobre serviços, frota, preços, reservas, a tua conta ou o funcionamento do site. O que precisas de saber?',
+      en: "Hi there! I'm the SR Ride assistant. I can help with questions about services, fleet, pricing, bookings, your account, or how the site works. What would you like to know?"
     }
   },
   {
     id: 'empresa',
-    keywords: ['quem sao', 'quem e a sr transferes', 'sobre a empresa', 'que empresa', 'historia da empresa', 'who are you', 'about the company', 'what is sr transferes', 'company history'],
+    keywords: ['quem sao', 'quem e a sr ride', 'sobre a empresa', 'que empresa', 'historia da empresa', 'who are you', 'about the company', 'what is sr ride', 'company history'],
     responses: {
-      pt: 'A SR Transferes é uma empresa de transfers executivos e de aeroporto sediada em Lisboa, com mais de 8 anos de experiência e 100% de pontualidade. Os nossos valores centrais são Pontualidade, Discrição e Cuidado — trabalhamos com empresas, agências de viagens e particulares. Sabes mais na página <a href="/sobre">Sobre</a>.',
-      en: 'SR Transferes is an executive and airport transfer company based in Lisbon, with over 8 years of experience and a 100% on-time record. Our core values are Punctuality, Discretion, and Care — we work with companies, travel agencies, and individuals. Learn more on the <a href="/sobre">About</a> page.'
+      pt: 'A SR Ride é uma empresa de transfers executivos e de aeroporto sediada em Lisboa, com mais de 8 anos de experiência e 100% de pontualidade. Os nossos valores centrais são Pontualidade, Discrição e Cuidado — trabalhamos com empresas, agências de viagens e particulares. Sabes mais na página <a href="/sobre">Sobre</a>.',
+      en: 'SR Ride is an executive and airport transfer company based in Lisbon, with over 8 years of experience and a 100% on-time record. Our core values are Punctuality, Discretion, and Care — we work with companies, travel agencies, and individuals. Learn more on the <a href="/sobre">About</a> page.'
     }
   },
   {
@@ -224,8 +224,8 @@ const INTENTS = [
     id: 'despedida',
     keywords: ['adeus', 'ate logo', 'tchau', 'bye', 'goodbye', 'see you'],
     responses: {
-      pt: 'Até já! Boa viagem com a SR Transferes. 👋',
-      en: 'See you soon! Have a great trip with SR Transferes. 👋'
+      pt: 'Até já! Boa viagem com a SR Ride. 👋',
+      en: 'See you soon! Have a great trip with SR Ride. 👋'
     }
   }
 ];

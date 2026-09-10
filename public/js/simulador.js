@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (simOrigemMarker) simMap.removeLayer(simOrigemMarker);
       if (simDestinoMarker) simMap.removeLayer(simDestinoMarker);
 
-      simRouteLine = L.polyline(data.rota, { color: '#c9a16a', weight: 5, opacity: 0.9 }).addTo(simMap);
+      simRouteLine = L.polyline(data.rota, { color: '#c7cbd1', weight: 5, opacity: 0.9 }).addTo(simMap);
 
       const goldIcon = L.divIcon({
         className: 'sim-marker',
-        html: '<div style="width:14px;height:14px;border-radius:50%;background:#c9a16a;border:2px solid #0d0b08;"></div>',
+        html: '<div style="width:14px;height:14px;border-radius:50%;background:#c7cbd1;border:2px solid #0d0b08;"></div>',
         iconSize: [14, 14],
         iconAnchor: [7, 7]
       });

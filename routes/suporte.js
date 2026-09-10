@@ -10,17 +10,17 @@ router.get('/suporte', requireAuth, async (req, res) => {
     'SELECT * FROM tickets WHERE user_id = $1 ORDER BY atualizado_em DESC',
     [req.session.user.id]
   );
-  res.render('suporte/lista', { title: 'Suporte | SR Transferes', tickets: result.rows });
+  res.render('suporte/lista', { title: 'Suporte | SR Ride', tickets: result.rows });
 });
 
 router.get('/suporte/novo', requireAuth, (req, res) => {
-  res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Transferes', erro: null });
+  res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Ride', erro: null });
 });
 
 router.post('/suporte/novo', requireAuth, async (req, res) => {
   const { assunto, mensagem } = req.body;
   if (!assunto || !mensagem) {
-    return res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Transferes', erro: 'Preenche o assunto e a mensagem.' });
+    return res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Ride', erro: 'Preenche o assunto e a mensagem.' });
   }
   try {
     const ticketResult = await pool.query(
@@ -39,8 +39,8 @@ router.post('/suporte/novo', requireAuth, async (req, res) => {
         subject: `Novo ticket de suporte: ${assunto}`,
         html: brandedEmailTemplate({
           title: 'Novo pedido de suporte',
-          bodyHtml: `<p style="margin:0 0 10px;"><strong style="color:#eef2f8;">De:</strong> ${req.session.user.nome} (${req.session.user.email})</p>
-                     <p style="margin:0 0 10px;"><strong style="color:#eef2f8;">Assunto:</strong> ${assunto}</p>
+          bodyHtml: `<p style="margin:0 0 10px;"><strong style="color:#f2f3f4;">De:</strong> ${req.session.user.nome} (${req.session.user.email})</p>
+                     <p style="margin:0 0 10px;"><strong style="color:#f2f3f4;">Assunto:</strong> ${assunto}</p>
                      <p style="margin:0;">${mensagem}</p>`
         })
       }).catch(() => {});
@@ -49,7 +49,7 @@ router.post('/suporte/novo', requireAuth, async (req, res) => {
     res.redirect(`/suporte/${ticketId}`);
   } catch (err) {
     console.error('Erro ao criar ticket:', err);
-    res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Transferes', erro: 'Erro inesperado. Tenta novamente.' });
+    res.render('suporte/novo', { title: 'Novo pedido de suporte | SR Ride', erro: 'Erro inesperado. Tenta novamente.' });
   }
 });
 
@@ -68,7 +68,7 @@ router.get('/suporte/:id', requireAuth, async (req, res) => {
   );
 
   res.render('suporte/ticket', {
-    title: `Ticket #${ticket.id} | SR Transferes`,
+    title: `Ticket #${ticket.id} | SR Ride`,
     ticket,
     mensagens: mensagens.rows,
     voltarLink: isAdmin && !isOwner ? '/admin/suporte' : '/suporte'
@@ -103,7 +103,7 @@ router.post('/suporte/:id/responder', requireAuth, async (req, res) => {
           subject: `Nova resposta no teu ticket: ${ticket.assunto}`,
           html: brandedEmailTemplate({
             title: 'Nova resposta da equipa',
-            bodyHtml: `<p style="margin:0 0 10px;">Respondemos ao teu ticket "<strong style="color:#eef2f8;">${ticket.assunto}</strong>":</p><p style="margin:0;">${mensagem}</p>`
+            bodyHtml: `<p style="margin:0 0 10px;">Respondemos ao teu ticket "<strong style="color:#f2f3f4;">${ticket.assunto}</strong>":</p><p style="margin:0;">${mensagem}</p>`
           })
         }).catch(() => {});
       }
@@ -113,7 +113,7 @@ router.post('/suporte/:id/responder', requireAuth, async (req, res) => {
         subject: `Nova resposta do cliente no ticket #${ticket.id}`,
         html: brandedEmailTemplate({
           title: 'Nova resposta do cliente',
-          bodyHtml: `<p style="margin:0 0 10px;"><strong style="color:#eef2f8;">Assunto:</strong> ${ticket.assunto}</p><p style="margin:0;">${mensagem}</p>`
+          bodyHtml: `<p style="margin:0 0 10px;"><strong style="color:#f2f3f4;">Assunto:</strong> ${ticket.assunto}</p><p style="margin:0;">${mensagem}</p>`
         })
       }).catch(() => {});
     }
