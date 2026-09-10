@@ -386,18 +386,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ---------- Services detail ---------- */
-.services-detail { max-width: 1100px; margin: 0 auto; padding: 20px 32px 100px; display: flex; flex-direction: column; gap: 90px; }
-.service-row { display: flex; align-items: center; gap: 60px; }
-.service-row.reverse { flex-direction: row-reverse; }
-.service-text { flex: 1; }
-.service-text h2 { font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 16px; }
-.service-text p { color: var(--silver); margin: 0 0 20px; }
+.services-detail { max-width: 1100px; margin: 0 auto; padding: 20px 32px 100px; display: flex; flex-direction: column; gap: 24px; }
+.service-card {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid rgba(201,161,106,0.1);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.service-card:hover { transform: translateY(-4px); border-color: rgba(201,161,106,0.3); }
+.service-card-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(201,161,106,0.1);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-card-text h2 { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 14px; }
+.service-card-text p { color: var(--silver); margin: 0 0 18px; }
 .service-list li { position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--muted); }
 .service-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
-.service-visual { flex: 1; border-radius: var(--radius); overflow: hidden; }
+
+@media (max-width: 640px) {
+  .service-card { flex-direction: column; gap: 18px; }
+}
 
 @media (max-width: 800px) {
-  .service-row, .service-row.reverse { flex-direction: column; }
+  .services-detail { gap: 20px; }
 }
 
 /* ---------- Fleet ---------- */
@@ -407,7 +429,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .fleet-card { background: var(--surface); border-radius: var(--radius); padding: 24px; border: 1px solid rgba(201,161,106,0.08); transition: transform 0.3s ease, border-color 0.3s ease; }
 .fleet-card:hover { transform: translateY(-4px); border-color: rgba(201,161,106,0.3); }
-.fleet-visual { border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+.fleet-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(201,161,106,0.1);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .fleet-card h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 10px; }
 .fleet-card p { color: var(--muted); margin: 0; font-size: 0.94rem; }
 
@@ -532,7 +564,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .page-hero { padding: 130px 24px 50px; }
   .services-strip { padding: 60px 20px; }
   .cta-band { padding: 60px 20px; }
-  .services-detail { padding: 10px 20px 70px; gap: 60px; }
+  .services-detail { padding: 10px 20px 70px; gap: 20px; }
   .fleet-grid { padding: 0 20px 70px; }
   .about-content { padding: 0 20px 70px; gap: 40px; }
   .booking-section { padding: 0 20px 80px; }
