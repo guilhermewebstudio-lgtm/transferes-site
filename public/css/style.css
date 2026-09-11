@@ -691,7 +691,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 /* ---------- Chat widget ---------- */
 .social-fab-group {
   position: fixed;
-  bottom: 114px;
+  bottom: 98px;
   right: 26px;
   z-index: 499;
   display: flex;
@@ -700,6 +700,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   gap: 14px;
 }
 .social-fab {
+  position: relative;
   width: 58px;
   height: 58px;
   border-radius: 50%;
@@ -710,9 +711,42 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  animation: fabPulse 3.4s ease-in-out infinite;
 }
-.social-fab:hover { transform: translateY(-3px); border-color: var(--blue); }
+.social-fab:nth-child(2) { animation-delay: 0.4s; }
+.social-fab::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(from 0deg, transparent, rgba(199,203,209,0.5), transparent 30%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: fabSpin 3.4s linear infinite;
+  transition: opacity 0.3s ease;
+}
+.social-fab:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: var(--blue);
+  color: var(--text);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.5), 0 0 18px rgba(199,203,209,0.35);
+}
+.social-fab:hover::before { opacity: 1; }
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 0 rgba(199,203,209,0); }
+  50% { box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 14px rgba(199,203,209,0.22); }
+}
+@keyframes fabSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-fab, .social-fab::before { animation: none !important; }
+}
 
 .chat-widget {
   position: fixed;
@@ -806,7 +840,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 
 @media (max-width: 480px) {
   .chat-widget { right: 16px; bottom: 16px; }
-  .social-fab-group { right: 16px; bottom: 90px; }
+  .social-fab-group { right: 16px; bottom: 88px; }
   .chat-panel { width: calc(100vw - 32px); height: 60vh; }
 }
 
