@@ -168,8 +168,8 @@ const INTENTS = [
     id: 'contacto',
     keywords: ['contacto', 'contactar', 'telefone', 'email da empresa', 'falar convosco', 'contact us', 'phone number', 'reach you', 'call you'],
     responses: {
-      pt: 'Podes contactar-nos por telefone (+351 900 000 000) ou email (reservas@transferes.pt), ou preencher o formulário em <a href="/contacto">Reservar</a> — é a forma mais rápida de recebermos um pedido completo.',
-      en: 'You can reach us by phone (+351 900 000 000) or email (reservas@transferes.pt), or fill out the form on the <a href="/contacto">Booking</a> page — that\'s the fastest way for us to get a complete request.'
+      pt: 'Podes contactar-nos por telefone (+351 900 000 000) ou email (reservas@srride.pt), ou preencher o formulário em <a href="/contacto">Reservar</a> — é a forma mais rápida de recebermos um pedido completo.',
+      en: 'You can reach us by phone (+351 900 000 000) or email (reservas@srride.pt), or fill out the form on the <a href="/contacto">Booking</a> page — that\'s the fastest way for us to get a complete request.'
     }
   },
   {

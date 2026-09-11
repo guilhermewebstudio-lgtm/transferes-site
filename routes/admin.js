@@ -123,8 +123,8 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
       .join('');
 
     const precoHtml = preco
-      ? `<div style="margin-top:20px; padding:16px 20px; background:#101a2b; border:1px solid #3d7dfb; border-radius:12px;">
-          <span style="color:#7c8aa3; font-size:13px;">Valor total</span><br>
+      ? `<div style="margin-top:20px; padding:16px 20px; background:#1b1b1c; border:1px solid #c7cbd1; border-radius:12px;">
+          <span style="color:#85888d; font-size:13px;">Valor total</span><br>
           <span style="color:#f2f3f4; font-size:22px; font-weight:800;">${preco}</span>
         </div>`
       : '';

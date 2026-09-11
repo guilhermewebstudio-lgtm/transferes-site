@@ -10,11 +10,11 @@ function brandedEmailTemplate({ title, bodyHtml }) {
   return `
   <div style="background:#0a0a0a; padding:36px 16px; font-family: Arial, Helvetica, sans-serif;">
     <div style="max-width:520px; margin:0 auto; background:#131313; border-radius:16px; overflow:hidden; border:1px solid rgba(199,203,209,0.25);">
-      <div style="background:#0a0a0a; padding:26px 28px; border-bottom:1px solid rgba(199,203,209,0.2); text-align:center;">
-        <img src="${logoUrl}" alt="SR Ride" width="44" height="44" style="display:block; margin:0 auto 10px;">
-        <span style="font-size:19px; font-weight:800; color:#f2f3f4; letter-spacing:0.03em; text-transform:uppercase;">SR Ride</span>
+      <div style="background:#0a0a0a; padding:30px 28px 24px; border-bottom:1px solid rgba(199,203,209,0.2); text-align:center;">
+        <img src="${logoUrl}" alt="SR Ride" width="120" height="58" style="display:block; margin:0 auto 12px; width:120px; height:58px; object-fit:contain;">
+        <span style="font-size:13px; font-weight:700; color:#85888d; letter-spacing:0.14em; text-transform:uppercase;">Chauffeur Excellence</span>
       </div>
-      <div style="padding:30px 28px; color:#f2f3f4;">
+      <div style="padding:32px 28px; color:#f2f3f4;">
         <h2 style="margin:0 0 16px; font-size:20px; color:#f2f3f4;">${title}</h2>
         <div style="font-size:15px; line-height:1.65; color:#c7cbd1;">
           ${bodyHtml}

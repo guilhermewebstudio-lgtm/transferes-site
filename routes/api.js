@@ -29,7 +29,7 @@ router.post('/simulador', async (req, res) => {
   try {
     const geocode = async (endereco) => {
       const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(endereco)}`;
-      const resposta = await fetch(url, { headers: { 'User-Agent': 'SrTransferes-Site/1.0' } });
+      const resposta = await fetch(url, { headers: { 'User-Agent': 'SRRide-Site/1.0' } });
       const dados = await resposta.json();
       if (!dados || dados.length === 0) return null;
       return { lat: parseFloat(dados[0].lat), lon: parseFloat(dados[0].lon) };
