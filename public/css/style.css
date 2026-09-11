@@ -582,12 +582,12 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 .footer-cols a, .footer-cols span { display: block; color: var(--silver); margin-bottom: 10px; font-size: 0.94rem; }
 .footer-bottom { max-width: 1240px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(199,203,209,0.08); color: var(--muted); font-size: 0.82rem; }
 
-/* ---------- Page transition overlay (fade + logótipo animado + brilho) ---------- */
+/* ---------- Page transition overlay: autoestrada com carro a passar + logótipo ---------- */
 html.route-leaving body {
-  animation: pageLeave 0.5s ease forwards;
+  animation: pageLeave 0.3s ease forwards;
 }
 @keyframes pageLeave {
-  to { transform: scale(0.98); filter: blur(3px); opacity: 0.5; }
+  to { opacity: 0.4; }
 }
 .route-transition {
   position: fixed;
@@ -595,80 +595,92 @@ html.route-leaving body {
   z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  background: var(--bg);
-  transition: opacity 0.4s ease;
+  background: #060606;
+  transition: opacity 0.25s ease;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .route-transition.active { opacity: 1; }
-.route-transition::after {
-  content: '';
+
+.route-road {
   position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(199,203,209,0.16), transparent 70%);
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 130px;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, #1a1a1c 0%, #101011 100%);
+  border-top: 2px solid rgba(255,255,255,0.12);
+  border-bottom: 2px solid rgba(255,255,255,0.12);
+}
+.route-road-lane {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 200%;
+  height: 6px;
+  transform: translateY(-50%);
+  background-image: repeating-linear-gradient(90deg, #d8dadd 0, #d8dadd 60px, transparent 60px, transparent 120px);
   opacity: 0;
 }
-.route-transition.active::after {
-  animation: routeGlow 1.15s ease-in-out;
+.route-transition.active .route-road-lane {
+  opacity: 0.8;
+  animation: routeLaneMove 1s linear forwards;
 }
-@keyframes routeGlow {
-  0% { opacity: 0; transform: scale(0.6); }
-  45% { opacity: 1; transform: scale(1.1); }
-  100% { opacity: 0; transform: scale(1.3); }
+@keyframes routeLaneMove {
+  from { transform: translate(0, -50%); }
+  to { transform: translate(-50%, -50%); }
 }
-.route-transition::before {
-  content: '';
+
+.route-car {
   position: absolute;
-  top: 0;
-  left: -35%;
-  width: 35%;
-  height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(199,203,209,0.3), transparent);
-  transform: skewX(-15deg);
-}
-.route-transition.active::before {
-  animation: routeSweep 1.15s ease-in-out;
-}
-@keyframes routeSweep {
-  0% { left: -35%; }
-  100% { left: 135%; }
-}
-.route-transition-logo {
-  position: relative;
-  z-index: 2;
-  width: 120px;
+  top: 50%;
+  left: -260px;
+  width: 220px;
   height: auto;
+  transform: translateY(calc(-50% + 6px));
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+}
+.route-transition.active .route-car {
+  animation: routeCarPass 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes routeCarPass {
+  0% { left: -260px; }
+  100% { left: 110%; }
+}
+
+.route-transition-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 130px;
+  height: auto;
+  transform: translate(-50%, -50%) scale(0.7);
   opacity: 0;
-  transform: scale(0.5) rotate(-10deg);
-  filter: drop-shadow(0 0 24px rgba(199,203,209,0.55));
+  filter: drop-shadow(0 0 26px rgba(0,0,0,0.85)) drop-shadow(0 0 14px rgba(199,203,209,0.4));
 }
 .route-transition.active .route-transition-logo {
-  animation: routeLogoPop 1.15s cubic-bezier(0.22, 0.9, 0.3, 1) forwards;
+  animation: routeLogoIn 1s ease-out forwards;
 }
-@keyframes routeLogoPop {
-  0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
-  30% { opacity: 1; transform: scale(1.1) rotate(3deg); }
-  50% { transform: scale(0.97) rotate(-1deg); }
-  75% { opacity: 1; transform: scale(1.02) rotate(0deg); }
-  100% { opacity: 0; transform: scale(1.18) rotate(0deg); }
+@keyframes routeLogoIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
 }
 
 @media (max-width: 600px) {
-  .route-transition-logo { width: 90px; }
-  .route-transition::after { width: 300px; height: 300px; }
+  .route-road { height: 90px; }
+  .route-car { width: 150px; }
+  .route-transition-logo { width: 96px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.route-leaving body { animation: none !important; }
-  .route-transition.active::before, .route-transition.active::after, .route-transition.active .route-transition-logo { animation: none !important; }
-  .post, .scene-car, .scene-car .beam, .route-transition.active .transition-car, .route-transition.active .dash-line {
-    animation: none !important;
-  }
+  .route-transition.active .route-road-lane,
+  .route-transition.active .route-car,
+  .route-transition.active .route-transition-logo { animation: none !important; }
 }
 
 /* ---------- Responsividade geral: tablet e telemóvel ---------- */
