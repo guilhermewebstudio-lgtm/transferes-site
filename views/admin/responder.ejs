@@ -26,14 +26,23 @@
     <label>Mensagem
       <textarea name="mensagem" rows="10" required><%= mensagem %></textarea>
     </label>
-    <label>Valor total (opcional, ex: 45€)
+    <label>Valor total (calculado automaticamente — podes ajustar)
       <input type="text" name="preco" value="<%= preco %>" placeholder="45€">
     </label>
+    <% if (calculoInfo) { %>
+      <p style="margin:-8px 0 0; color:var(--muted); font-size:0.82rem;">
+        Calculado com base em <%= calculoInfo.distanciaKm %> km × <%= calculoInfo.taxa.toFixed(2) %>€/km (categoria: <%= reserva.tipo_frota || 'conforto' %>).
+      </p>
+    <% } else if (!preco) { %>
+      <p style="margin:-8px 0 0; color:var(--muted); font-size:0.82rem;">
+        Não foi possível calcular automaticamente (origem/destino pouco específicos) — preenche manualmente.
+      </p>
+    <% } %>
     <button type="submit" class="btn btn-primary">Enviar email</button>
   </form>
 
   <p style="margin-top:24px; color:var(--muted); font-size:0.85rem;">
-    O email é enviado com o design do site (fundo escuro, logótipo SR Ride). Se preencheres "Valor total", aparece destacado no email.
+    O email é enviado com o design do site (fundo escuro, logótipo SR Ride). O valor total é calculado automaticamente com base na distância real entre a origem e o destino e na categoria de frota escolhida — mas podes sempre editá-lo antes de enviar.
   </p>
 </section>
 

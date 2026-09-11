@@ -3,6 +3,7 @@ const router = express.Router();
 const { pool, getSetting, setSetting } = require('../config/db');
 const { requireAdmin } = require('../middleware/auth');
 const { sendEmail, brandedEmailTemplate } = require('../utils/email');
+const { calcularDistancia } = require('../utils/distancia');
 
 router.get('/', requireAdmin, async (req, res) => {
   const reservas = await pool.query('SELECT * FROM reservas ORDER BY criado_em DESC LIMIT 100');
@@ -98,12 +99,38 @@ Qualquer dúvida, estamos disponíveis para ajudar.
 Cumprimentos,
 Equipa SR Ride`;
 
+  // Cálculo automático do preço com base na distância real e na taxa da categoria de frota da reserva
+  let precoCalculado = '';
+  let calculoInfo = null;
+  try {
+    const taxasPorFrota = {
+      economico: parseFloat(await getSetting('preco_economico', '0.90')),
+      conforto: parseFloat(await getSetting('preco_conforto', '1.20')),
+      luxo: parseFloat(await getSetting('preco_luxo', '1.60')),
+      van: parseFloat(await getSetting('preco_van', '1.30'))
+    };
+    const taxa = taxasPorFrota[reserva.tipo_frota] || taxasPorFrota.conforto;
+
+    const resultadoDistancia = await calcularDistancia(reserva.origem, reserva.destino);
+    if (resultadoDistancia) {
+      const valor = resultadoDistancia.distanciaKm * taxa;
+      precoCalculado = valor.toFixed(2) + '€';
+      calculoInfo = {
+        distanciaKm: Math.round(resultadoDistancia.distanciaKm * 10) / 10,
+        taxa
+      };
+    }
+  } catch (err) {
+    console.error('Erro ao calcular preço automático:', err);
+  }
+
   res.render('admin/responder', {
     title: 'Responder à reserva | SR Ride',
     reserva,
     assunto: `A tua reserva de transfer — ${reserva.origem} → ${reserva.destino}`,
     mensagem: mensagemDefault,
-    preco: '',
+    preco: precoCalculado,
+    calculoInfo,
     enviado: false,
     erro: null
   });
@@ -143,6 +170,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
       assunto,
       mensagem,
       preco,
+      calculoInfo: null,
       enviado: true,
       erro: null
     });
@@ -154,6 +182,7 @@ router.post('/reservas/:id/responder', requireAdmin, async (req, res) => {
       assunto,
       mensagem,
       preco,
+      calculoInfo: null,
       enviado: false,
       erro: 'Não foi possível enviar o email. Tenta novamente.'
     });

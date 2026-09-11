@@ -3,6 +3,7 @@ const router = express.Router();
 const { pool } = require('../config/db');
 const { sendEmail, brandedEmailTemplate } = require('../utils/email');
 const { getBotReply } = require('../utils/chatbot');
+const { calcularDistancia } = require('../utils/distancia');
 
 router.post('/chat', (req, res) => {
   const { message } = req.body;
@@ -27,34 +28,14 @@ router.post('/simulador', async (req, res) => {
   }
 
   try {
-    const geocode = async (endereco) => {
-      const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(endereco)}`;
-      const resposta = await fetch(url, { headers: { 'User-Agent': 'SRRide-Site/1.0' } });
-      const dados = await resposta.json();
-      if (!dados || dados.length === 0) return null;
-      return { lat: parseFloat(dados[0].lat), lon: parseFloat(dados[0].lon) };
-    };
+    const resultado = await calcularDistancia(origem, destino, { comRota: true });
 
-    const [origemCoords, destinoCoords] = await Promise.all([geocode(origem), geocode(destino)]);
-
-    if (!origemCoords || !destinoCoords) {
-      return res.status(422).json({ ok: false, erro: 'Não conseguimos localizar um dos endereços indicados. Tenta ser mais específico (ex: incluir a cidade).' });
+    if (!resultado) {
+      return res.status(422).json({ ok: false, erro: 'Não conseguimos calcular a rota entre estes dois locais. Tenta ser mais específico (ex: incluir a cidade).' });
     }
 
-    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origemCoords.lon},${origemCoords.lat};${destinoCoords.lon},${destinoCoords.lat}?overview=full&geometries=geojson&steps=true`;
-    const rotaResposta = await fetch(osrmUrl);
-    const rotaDados = await rotaResposta.json();
-
-    if (!rotaDados.routes || rotaDados.routes.length === 0) {
-      return res.status(422).json({ ok: false, erro: 'Não foi possível calcular uma rota de carro entre estes dois locais.' });
-    }
-
-    const distanciaKm = rotaDados.routes[0].distance / 1000;
-    const duracaoMin = Math.round(rotaDados.routes[0].duration / 60);
+    const { distanciaKm, duracaoMin, origemCoords, destinoCoords, rotaCoords, steps } = resultado;
     const preco = distanciaKm * taxa;
-
-    // GeoJSON vem em [lon, lat]; convertemos para [lat, lon] (formato Leaflet)
-    const rotaCoords = rotaDados.routes[0].geometry.coordinates.map(([lon, lat]) => [lat, lon]);
 
     // Construir lista de instruções passo a passo a partir dos "steps" do OSRM
     const tipoTexto = {
@@ -81,19 +62,16 @@ router.post('/simulador', async (req, res) => {
       uturn: 'em inversão de marcha'
     };
 
-    const instrucoes = [];
-    rotaDados.routes[0].legs.forEach((leg) => {
-      leg.steps.forEach((step) => {
-        const tipo = step.maneuver.type;
-        const mod = step.maneuver.modifier;
-        let texto = tipoTexto[tipo] || 'Siga';
-        if (mod && modificadorTexto[mod]) texto += ' ' + modificadorTexto[mod];
-        if (step.name) texto += ` para ${step.name}`;
-        const distStep = step.distance >= 1000
-          ? (step.distance / 1000).toFixed(1) + ' km'
-          : Math.round(step.distance) + ' m';
-        instrucoes.push({ texto, distancia: distStep });
-      });
+    const instrucoes = steps.map((step) => {
+      const tipo = step.maneuver.type;
+      const mod = step.maneuver.modifier;
+      let texto = tipoTexto[tipo] || 'Siga';
+      if (mod && modificadorTexto[mod]) texto += ' ' + modificadorTexto[mod];
+      if (step.name) texto += ` para ${step.name}`;
+      const distStep = step.distance >= 1000
+        ? (step.distance / 1000).toFixed(1) + ' km'
+        : Math.round(step.distance) + ' m';
+      return { texto, distancia: distStep };
     });
 
     res.json({
@@ -111,6 +89,7 @@ router.post('/simulador', async (req, res) => {
     res.status(500).json({ ok: false, erro: 'Erro inesperado ao calcular. Tenta novamente.' });
   }
 });
+
 
 router.post('/reserva', async (req, res) => {
   const { nome, email, telefone, tipo_servico, tipo_frota, origem, destino, data_hora, passageiros, notas } = req.body;
