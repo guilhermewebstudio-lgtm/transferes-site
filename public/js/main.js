@@ -16,7 +16,7 @@
         pre.classList.add('fade-out');
         document.documentElement.classList.remove('preloading');
         setTimeout(() => pre.remove(), 600);
-      }, 1350);
+      }, 2000);
     });
   }
 
@@ -90,7 +90,7 @@
       document.documentElement.classList.add('route-leaving');
       setTimeout(() => {
         window.location.href = href;
-      }, 380);
+      }, 780);
     });
   });
 })();
