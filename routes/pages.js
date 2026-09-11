@@ -23,15 +23,17 @@ router.get('/contacto', (req, res) => {
 });
 
 router.get('/precos-horarios', async (req, res) => {
-  const precoEconomico = await getSetting('preco_economico', '0.90');
-  const precoConforto = await getSetting('preco_conforto', '1.20');
-  const precoLuxo = await getSetting('preco_luxo', '1.60');
-  const precoVan = await getSetting('preco_van', '1.30');
   const dias = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+  const [precoEconomico, precoConforto, precoLuxo, precoVan, ...valoresDias] = await Promise.all([
+    getSetting('preco_economico', '0.90'),
+    getSetting('preco_conforto', '1.20'),
+    getSetting('preco_luxo', '1.60'),
+    getSetting('preco_van', '1.30'),
+    ...dias.map((dia) => getSetting(`horario_${dia}`, '24 horas'))
+  ]);
   const horarios = {};
-  for (const dia of dias) {
-    horarios[dia] = await getSetting(`horario_${dia}`, '24 horas');
-  }
+  dias.forEach((dia, i) => { horarios[dia] = valoresDias[i]; });
+
   res.render('precos-horarios', {
     title: 'Preços & Horários | SR Ride',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios

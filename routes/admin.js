@@ -22,14 +22,16 @@ router.get('/', requireAdmin, async (req, res) => {
 const DIAS_SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
 
 router.get('/conteudo', requireAdmin, async (req, res) => {
-  const precoEconomico = await getSetting('preco_economico', '0.90');
-  const precoConforto = await getSetting('preco_conforto', '1.20');
-  const precoLuxo = await getSetting('preco_luxo', '1.60');
-  const precoVan = await getSetting('preco_van', '1.30');
+  const [precoEconomico, precoConforto, precoLuxo, precoVan, ...valoresDias] = await Promise.all([
+    getSetting('preco_economico', '0.90'),
+    getSetting('preco_conforto', '1.20'),
+    getSetting('preco_luxo', '1.60'),
+    getSetting('preco_van', '1.30'),
+    ...DIAS_SEMANA.map((dia) => getSetting(`horario_${dia}`, '24 horas'))
+  ]);
   const horarios = {};
-  for (const dia of DIAS_SEMANA) {
-    horarios[dia] = await getSetting(`horario_${dia}`, '24 horas');
-  }
+  DIAS_SEMANA.forEach((dia, i) => { horarios[dia] = valoresDias[i]; });
+
   res.render('admin/conteudo', {
     title: 'Conteúdo do site | Admin | SR Ride',
     precoEconomico, precoConforto, precoLuxo, precoVan, horarios,
@@ -39,17 +41,16 @@ router.get('/conteudo', requireAdmin, async (req, res) => {
 
 router.post('/conteudo', requireAdmin, async (req, res) => {
   const { precoEconomico, precoConforto, precoLuxo, precoVan } = req.body;
-  await setSetting('preco_economico', precoEconomico || '0.90');
-  await setSetting('preco_conforto', precoConforto || '1.20');
-  await setSetting('preco_luxo', precoLuxo || '1.60');
-  await setSetting('preco_van', precoVan || '1.30');
-
   const horarios = {};
-  for (const dia of DIAS_SEMANA) {
-    const valor = req.body[`horario_${dia}`] || '24 horas';
-    await setSetting(`horario_${dia}`, valor);
-    horarios[dia] = valor;
-  }
+  DIAS_SEMANA.forEach((dia) => { horarios[dia] = req.body[`horario_${dia}`] || '24 horas'; });
+
+  await Promise.all([
+    setSetting('preco_economico', precoEconomico || '0.90'),
+    setSetting('preco_conforto', precoConforto || '1.20'),
+    setSetting('preco_luxo', precoLuxo || '1.60'),
+    setSetting('preco_van', precoVan || '1.30'),
+    ...DIAS_SEMANA.map((dia) => setSetting(`horario_${dia}`, horarios[dia]))
+  ]);
 
   res.render('admin/conteudo', {
     title: 'Conteúdo do site | Admin | SR Ride',
