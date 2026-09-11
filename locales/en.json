@@ -6,6 +6,10 @@
   "nav.conta": "Account",
   "nav.admin": "Admin",
   "nav.reservar": "Book now",
+  "nav.precos": "Pricing",
+  "nav.simulador": "Simulator",
+
+  "hero.stat.anos": "+8 years",
 
   "hero.eyebrow": "Executive & airport transfers",
   "hero.title1": "Arrive on time.",
@@ -107,5 +111,19 @@
   "form.frota_economico": "Economy",
   "form.frota_conforto": "Comfort",
   "form.frota_luxo": "Luxury",
-  "form.frota_van": "Group Van"
+  "form.frota_van": "Group Van",
+
+  "sim.eyebrow": "Simulator",
+  "sim.title": "Calculate your trip price",
+  "sim.lede": "Enter the pickup, drop-off, and vehicle category — we'll show the distance, estimated price, and route on the map.",
+  "sim.origem": "Pickup",
+  "sim.destino": "Drop-off",
+  "sim.categoria": "Category",
+  "sim.calcular": "Calculate price",
+  "sim.distancia": "Distance",
+  "sim.duracao": "Estimated duration",
+  "sim.preco": "Estimated price",
+  "sim.disclaimer": "This value is an estimate based on distance. The final price is confirmed after booking.",
+  "sim.reservar_viagem": "Book this trip",
+  "sim.instrucoes": "Route assistance"
 }

@@ -6,6 +6,10 @@
   "nav.conta": "Conta",
   "nav.admin": "Admin",
   "nav.reservar": "Reservar",
+  "nav.precos": "Preços",
+  "nav.simulador": "Simulador",
+
+  "hero.stat.anos": "+8 anos",
 
   "hero.eyebrow": "Transfers executivos & aeroporto",
   "hero.title1": "Chega a horas.",
@@ -107,5 +111,19 @@
   "form.frota_economico": "Económico",
   "form.frota_conforto": "Conforto",
   "form.frota_luxo": "Luxo",
-  "form.frota_van": "Van de Grupo"
+  "form.frota_van": "Van de Grupo",
+
+  "sim.eyebrow": "Simulador",
+  "sim.title": "Calcula o preço da tua viagem",
+  "sim.lede": "Indica a origem, o destino e a categoria de viatura — mostramos a distância, o preço estimado e o trajeto no mapa.",
+  "sim.origem": "Origem",
+  "sim.destino": "Destino",
+  "sim.categoria": "Categoria",
+  "sim.calcular": "Calcular preço",
+  "sim.distancia": "Distância",
+  "sim.duracao": "Duração estimada",
+  "sim.preco": "Preço estimado",
+  "sim.disclaimer": "Este valor é uma estimativa baseada na distância. O preço final é confirmado após a reserva.",
+  "sim.reservar_viagem": "Reservar esta viagem",
+  "sim.instrucoes": "Assistência de trajeto"
 }
