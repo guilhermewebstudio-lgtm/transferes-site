@@ -624,7 +624,7 @@ html.route-leaving body {
 }
 .route-transition.active .route-road-lane {
   opacity: 0.8;
-  animation: routeLaneMove 1s linear forwards;
+  animation: routeLaneMove 1.5s linear forwards;
 }
 @keyframes routeLaneMove {
   from { transform: translate(0, -50%); }
@@ -641,7 +641,7 @@ html.route-leaving body {
   filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
 }
 .route-transition.active .route-car {
-  animation: routeCarPass 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: routeCarPass 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 @keyframes routeCarPass {
   0% { left: -260px; }
@@ -660,7 +660,7 @@ html.route-leaving body {
   filter: drop-shadow(0 0 26px rgba(0,0,0,0.85)) drop-shadow(0 0 14px rgba(199,203,209,0.4));
 }
 .route-transition.active .route-transition-logo {
-  animation: routeLogoIn 1s ease-out forwards;
+  animation: routeLogoIn 1.5s ease-out forwards;
 }
 @keyframes routeLogoIn {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }

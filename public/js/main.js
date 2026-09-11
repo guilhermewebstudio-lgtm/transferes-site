@@ -81,7 +81,9 @@
 
       e.preventDefault();
 
-      if (prefersReducedMotion || !overlay) {
+      const vaiParaHome = href === '/' || href === '';
+
+      if (prefersReducedMotion || !overlay || vaiParaHome) {
         window.location.href = href;
         return;
       }
@@ -90,7 +92,7 @@
       document.documentElement.classList.add('route-leaving');
       setTimeout(() => {
         window.location.href = href;
-      }, 950);
+      }, 1400);
     });
   });
 })();
