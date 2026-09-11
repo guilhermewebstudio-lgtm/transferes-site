@@ -125,5 +125,26 @@
   "sim.preco": "Preço estimado",
   "sim.disclaimer": "Este valor é uma estimativa baseada na distância. O preço final é confirmado após a reserva.",
   "sim.reservar_viagem": "Reservar esta viagem",
-  "sim.instrucoes": "Assistência de trajeto"
+  "sim.instrucoes": "Assistência de trajeto",
+
+  "precos.eyebrow": "Informação prática",
+  "precos.title": "Preços & Horários",
+  "precos.lede": "Tudo o que precisas de saber antes de reservar.",
+  "precos.economico.desc": "Sedan compacto, ideal para trajetos ponto a ponto.",
+  "precos.conforto.desc": "A escolha mais popular para transfers executivos.",
+  "precos.luxo.desc": "Viaturas premium para uma experiência superior.",
+  "precos.van.desc": "Até 8 passageiros com bagagem, ideal para grupos.",
+  "precos.horarios_titulo": "Horários",
+  "precos.cta_titulo": "Pronto para reservar o teu transfer?",
+  "precos.cta_btn": "Pedir orçamento",
+
+  "dias.seg": "Segunda",
+  "dias.ter": "Terça",
+  "dias.qua": "Quarta",
+  "dias.qui": "Quinta",
+  "dias.sex": "Sexta",
+  "dias.sab": "Sábado",
+  "dias.dom": "Domingo",
+  "precos.valor_24h": "24 horas",
+  "precos.valor_fechado": "Fechado"
 }

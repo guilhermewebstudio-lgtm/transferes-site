@@ -125,5 +125,26 @@
   "sim.preco": "Estimated price",
   "sim.disclaimer": "This value is an estimate based on distance. The final price is confirmed after booking.",
   "sim.reservar_viagem": "Book this trip",
-  "sim.instrucoes": "Route assistance"
+  "sim.instrucoes": "Route assistance",
+
+  "precos.eyebrow": "Practical information",
+  "precos.title": "Pricing & Hours",
+  "precos.lede": "Everything you need to know before booking.",
+  "precos.economico.desc": "Compact sedan, ideal for point-to-point trips.",
+  "precos.conforto.desc": "The most popular choice for executive transfers.",
+  "precos.luxo.desc": "Premium vehicles for a superior experience.",
+  "precos.van.desc": "Up to 8 passengers with luggage, ideal for groups.",
+  "precos.horarios_titulo": "Hours",
+  "precos.cta_titulo": "Ready to book your transfer?",
+  "precos.cta_btn": "Request a quote",
+
+  "dias.seg": "Monday",
+  "dias.ter": "Tuesday",
+  "dias.qua": "Wednesday",
+  "dias.qui": "Thursday",
+  "dias.sex": "Friday",
+  "dias.sab": "Saturday",
+  "dias.dom": "Sunday",
+  "precos.valor_24h": "24 hours",
+  "precos.valor_fechado": "Closed"
 }

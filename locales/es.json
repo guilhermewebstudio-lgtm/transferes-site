@@ -125,5 +125,26 @@
   "sim.preco": "Precio estimado",
   "sim.disclaimer": "Este valor es una estimación basada en la distancia. El precio final se confirma tras la reserva.",
   "sim.reservar_viagem": "Reservar este viaje",
-  "sim.instrucoes": "Asistencia de ruta"
+  "sim.instrucoes": "Asistencia de ruta",
+
+  "precos.eyebrow": "Información práctica",
+  "precos.title": "Precios & Horarios",
+  "precos.lede": "Todo lo que necesitas saber antes de reservar.",
+  "precos.economico.desc": "Sedán compacto, ideal para trayectos punto a punto.",
+  "precos.conforto.desc": "La opción más popular para traslados ejecutivos.",
+  "precos.luxo.desc": "Vehículos premium para una experiencia superior.",
+  "precos.van.desc": "Hasta 8 pasajeros con equipaje, ideal para grupos.",
+  "precos.horarios_titulo": "Horarios",
+  "precos.cta_titulo": "¿Listo para reservar tu traslado?",
+  "precos.cta_btn": "Pedir presupuesto",
+
+  "dias.seg": "Lunes",
+  "dias.ter": "Martes",
+  "dias.qua": "Miércoles",
+  "dias.qui": "Jueves",
+  "dias.sex": "Viernes",
+  "dias.sab": "Sábado",
+  "dias.dom": "Domingo",
+  "precos.valor_24h": "24 horas",
+  "precos.valor_fechado": "Cerrado"
 }

@@ -4,75 +4,82 @@
 <%- include('partials/head') %>
 </head>
 <body>
+<%
+  function traduzHorario(valor) {
+    if (valor === '24 horas') return t('precos.valor_24h');
+    if (valor === 'Fechado') return t('precos.valor_fechado');
+    return valor;
+  }
+%>
 <%- include('partials/nav') %>
 
 <section class="page-hero">
-  <p class="hero-eyebrow">Informação prática</p>
-  <h1>Preços & Horários</h1>
-  <p class="page-lede">Tudo o que precisas de saber antes de reservar.</p>
+  <p class="hero-eyebrow"><%= t('precos.eyebrow') %></p>
+  <h1><%= t('precos.title') %></h1>
+  <p class="page-lede"><%= t('precos.lede') %></p>
 </section>
 
 <section class="pricing-grid">
   <div class="pricing-card">
-    <span class="pricing-card-label">Económico</span>
+    <span class="pricing-card-label"><%= t('form.frota_economico') %></span>
     <div class="pricing-card-value"><%= precoEconomico %>€<span>/km</span></div>
-    <p class="pricing-card-desc">Sedan compacto, ideal para trajetos ponto a ponto.</p>
+    <p class="pricing-card-desc"><%= t('precos.economico.desc') %></p>
   </div>
   <div class="pricing-card pricing-card-highlight">
-    <span class="pricing-card-label">Conforto</span>
+    <span class="pricing-card-label"><%= t('form.frota_conforto') %></span>
     <div class="pricing-card-value"><%= precoConforto %>€<span>/km</span></div>
-    <p class="pricing-card-desc">A escolha mais popular para transfers executivos.</p>
+    <p class="pricing-card-desc"><%= t('precos.conforto.desc') %></p>
   </div>
   <div class="pricing-card">
-    <span class="pricing-card-label">Luxo</span>
+    <span class="pricing-card-label"><%= t('form.frota_luxo') %></span>
     <div class="pricing-card-value"><%= precoLuxo %>€<span>/km</span></div>
-    <p class="pricing-card-desc">Viaturas premium para uma experiência superior.</p>
+    <p class="pricing-card-desc"><%= t('precos.luxo.desc') %></p>
   </div>
   <div class="pricing-card">
-    <span class="pricing-card-label">Van de Grupo</span>
+    <span class="pricing-card-label"><%= t('form.frota_van') %></span>
     <div class="pricing-card-value"><%= precoVan %>€<span>/km</span></div>
-    <p class="pricing-card-desc">Até 8 passageiros com bagagem, ideal para grupos.</p>
+    <p class="pricing-card-desc"><%= t('precos.van.desc') %></p>
   </div>
 </section>
 
 <section class="hours-section">
-  <h2 class="hours-section-title">Horários</h2>
+  <h2 class="hours-section-title"><%= t('precos.horarios_titulo') %></h2>
   <div class="hours-grid">
     <div class="hour-day">
-      <span class="hour-day-name">Segunda</span>
-      <span class="hour-day-value"><%= horarios.seg %></span>
+      <span class="hour-day-name"><%= t('dias.seg') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.seg) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Terça</span>
-      <span class="hour-day-value"><%= horarios.ter %></span>
+      <span class="hour-day-name"><%= t('dias.ter') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.ter) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Quarta</span>
-      <span class="hour-day-value"><%= horarios.qua %></span>
+      <span class="hour-day-name"><%= t('dias.qua') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.qua) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Quinta</span>
-      <span class="hour-day-value"><%= horarios.qui %></span>
+      <span class="hour-day-name"><%= t('dias.qui') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.qui) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Sexta</span>
-      <span class="hour-day-value"><%= horarios.sex %></span>
+      <span class="hour-day-name"><%= t('dias.sex') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.sex) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Sábado</span>
-      <span class="hour-day-value"><%= horarios.sab %></span>
+      <span class="hour-day-name"><%= t('dias.sab') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.sab) %></span>
     </div>
     <div class="hour-day">
-      <span class="hour-day-name">Domingo</span>
-      <span class="hour-day-value"><%= horarios.dom %></span>
+      <span class="hour-day-name"><%= t('dias.dom') %></span>
+      <span class="hour-day-value"><%= traduzHorario(horarios.dom) %></span>
     </div>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="cta-inner">
-    <h2>Pronto para reservar o teu transfer?</h2>
-    <a href="/contacto" class="btn btn-primary" data-nav>Pedir orçamento</a>
+    <h2><%= t('precos.cta_titulo') %></h2>
+    <a href="/contacto" class="btn btn-primary" data-nav><%= t('precos.cta_btn') %></a>
   </div>
 </section>
 

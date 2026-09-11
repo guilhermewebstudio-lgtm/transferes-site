@@ -125,5 +125,26 @@
   "sim.preco": "Prix estimé",
   "sim.disclaimer": "Ce montant est une estimation basée sur la distance. Le prix final est confirmé après la réservation.",
   "sim.reservar_viagem": "Réserver ce trajet",
-  "sim.instrucoes": "Assistance d'itinéraire"
+  "sim.instrucoes": "Assistance d'itinéraire",
+
+  "precos.eyebrow": "Informations pratiques",
+  "precos.title": "Tarifs & Horaires",
+  "precos.lede": "Tout ce que vous devez savoir avant de réserver.",
+  "precos.economico.desc": "Berline compacte, idéale pour les trajets point à point.",
+  "precos.conforto.desc": "Le choix le plus populaire pour les transferts exécutifs.",
+  "precos.luxo.desc": "Véhicules premium pour une expérience supérieure.",
+  "precos.van.desc": "Jusqu'à 8 passagers avec bagages, idéal pour les groupes.",
+  "precos.horarios_titulo": "Horaires",
+  "precos.cta_titulo": "Prêt à réserver votre transfert ?",
+  "precos.cta_btn": "Demander un devis",
+
+  "dias.seg": "Lundi",
+  "dias.ter": "Mardi",
+  "dias.qua": "Mercredi",
+  "dias.qui": "Jeudi",
+  "dias.sex": "Vendredi",
+  "dias.sab": "Samedi",
+  "dias.dom": "Dimanche",
+  "precos.valor_24h": "24 heures",
+  "precos.valor_fechado": "Fermé"
 }
