@@ -92,7 +92,7 @@
       document.documentElement.classList.add('route-leaving');
       setTimeout(() => {
         window.location.href = href;
-      }, 1400);
+      }, 2000);
     });
   });
 })();
