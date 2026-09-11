@@ -126,8 +126,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   overflow: hidden;
 }
 .lang-btn {
-  padding: 6px 12px;
-  font-size: 0.78rem;
+  padding: 6px 9px;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--muted);
@@ -582,7 +582,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 .footer-cols a, .footer-cols span { display: block; color: var(--silver); margin-bottom: 10px; font-size: 0.94rem; }
 .footer-bottom { max-width: 1240px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(199,203,209,0.08); color: var(--muted); font-size: 0.82rem; }
 
-/* ---------- Page transition overlay (fade simples e discreto) ---------- */
+/* ---------- Page transition overlay (fade + brilho a atravessar + leve zoom na saída) ---------- */
+html.route-leaving body {
+  animation: pageLeave 0.38s ease forwards;
+}
+@keyframes pageLeave {
+  to { transform: scale(0.985); filter: blur(2px); opacity: 0.6; }
+}
 .route-transition {
   position: fixed;
   inset: 0;
@@ -591,11 +597,31 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   opacity: 0;
   background: var(--bg);
   transition: opacity 0.4s ease;
+  overflow: hidden;
 }
 .route-transition.active { opacity: 1; }
+.route-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(199,203,209,0.28), transparent);
+  transform: skewX(-15deg);
+}
+.route-transition.active::before {
+  animation: routeSweep 0.7s ease-in-out;
+}
+@keyframes routeSweep {
+  0% { left: -30%; }
+  100% { left: 130%; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  html.route-leaving body { animation: none !important; }
+  .route-transition.active::before { animation: none !important; }
   .post, .scene-car, .scene-car .beam, .route-transition.active .transition-car, .route-transition.active .dash-line {
     animation: none !important;
   }

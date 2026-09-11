@@ -87,6 +87,7 @@
       }
 
       overlay.classList.add('active');
+      document.documentElement.classList.add('route-leaving');
       setTimeout(() => {
         window.location.href = href;
       }, 380);

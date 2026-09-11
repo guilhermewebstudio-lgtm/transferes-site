@@ -60,7 +60,8 @@ app.get('/minhas-reservas', requireAuth, async (req, res) => {
 });
 
 app.get('/lang/:code', (req, res) => {
-  const code = req.params.code === 'en' ? 'en' : 'pt';
+  const { LINGUAS_SUPORTADAS } = require('./utils/i18n');
+  const code = LINGUAS_SUPORTADAS.includes(req.params.code) ? req.params.code : 'pt';
   res.cookie('lang', code, { maxAge: 1000 * 60 * 60 * 24 * 365, sameSite: 'lax' });
   const back = req.get('Referer') || '/';
   res.redirect(back);

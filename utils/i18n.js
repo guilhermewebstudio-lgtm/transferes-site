@@ -1,14 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
-const dictionaries = {
-  pt: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'locales', 'pt.json'), 'utf8')),
-  en: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'locales', 'en.json'), 'utf8'))
-};
+const LINGUAS_SUPORTADAS = ['pt', 'en', 'fr', 'es'];
+
+const dictionaries = {};
+LINGUAS_SUPORTADAS.forEach((lang) => {
+  dictionaries[lang] = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'locales', `${lang}.json`), 'utf8'));
+});
 
 function i18nMiddleware(req, res, next) {
   let lang = req.cookies && req.cookies.lang;
-  if (lang !== 'pt' && lang !== 'en') lang = 'pt';
+  if (!LINGUAS_SUPORTADAS.includes(lang)) lang = 'pt';
 
   req.lang = lang;
   res.locals.lang = lang;
@@ -16,4 +18,4 @@ function i18nMiddleware(req, res, next) {
   next();
 }
 
-module.exports = { i18nMiddleware, dictionaries };
+module.exports = { i18nMiddleware, dictionaries, LINGUAS_SUPORTADAS };
