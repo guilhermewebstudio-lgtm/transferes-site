@@ -1,18 +1,35 @@
-<%
-  const bandeiras = { pt: '🇵🇹', en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
-  const nomesIdioma = { pt: 'Português', en: 'English', fr: 'Français', es: 'Español' };
-%>
 <div class="lang-dropdown">
   <button type="button" class="lang-dropdown-toggle" aria-label="Idioma">
-    <span class="lang-flag"><%= bandeiras[lang] %></span>
+    <span class="lang-flag">
+      <% if (lang === 'pt') { %>
+        <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#ff0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="4" fill="#ffcc00" stroke="#000" stroke-width="0.3"/></svg>
+      <% } else if (lang === 'en') { %>
+        <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="3"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" stroke-width="1.2"/><path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="5"/><path d="M15,0 V20 M0,10 H30" stroke="#C8102E" stroke-width="2.2"/></svg>
+      <% } else if (lang === 'fr') { %>
+        <svg class="flag-icon" viewBox="0 0 30 20"><rect width="10" height="20" x="0" fill="#0055A4"/><rect width="10" height="20" x="10" fill="#fff"/><rect width="10" height="20" x="20" fill="#EF4135"/></svg>
+      <% } else { %>
+        <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect width="30" height="10" y="5" fill="#F1BF00"/></svg>
+      <% } %>
+    </span>
     <span class="lang-code"><%= lang.toUpperCase() %></span>
     <svg viewBox="0 0 12 8" width="9" height="6" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <div class="lang-dropdown-menu">
-    <% ['pt','en','fr','es'].forEach((codigo) => { %>
-      <a href="/lang/<%= codigo %>" class="lang-option <%= lang === codigo ? 'active' : '' %>">
-        <span class="lang-flag"><%= bandeiras[codigo] %></span> <%= nomesIdioma[codigo] %>
-      </a>
-    <% }) %>
+    <a href="/lang/pt" class="lang-option <%= lang === 'pt' ? 'active' : '' %>">
+      <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#ff0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="4" fill="#ffcc00" stroke="#000" stroke-width="0.3"/></svg>
+      Português
+    </a>
+    <a href="/lang/en" class="lang-option <%= lang === 'en' ? 'active' : '' %>">
+      <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="3"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" stroke-width="1.2"/><path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="5"/><path d="M15,0 V20 M0,10 H30" stroke="#C8102E" stroke-width="2.2"/></svg>
+      English
+    </a>
+    <a href="/lang/fr" class="lang-option <%= lang === 'fr' ? 'active' : '' %>">
+      <svg class="flag-icon" viewBox="0 0 30 20"><rect width="10" height="20" x="0" fill="#0055A4"/><rect width="10" height="20" x="10" fill="#fff"/><rect width="10" height="20" x="20" fill="#EF4135"/></svg>
+      Français
+    </a>
+    <a href="/lang/es" class="lang-option <%= lang === 'es' ? 'active' : '' %>">
+      <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect width="30" height="10" y="5" fill="#F1BF00"/></svg>
+      Español
+    </a>
   </div>
 </div>

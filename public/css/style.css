@@ -138,7 +138,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transition: border-color 0.2s ease;
 }
 .lang-dropdown-toggle:hover { border-color: var(--blue); }
-.lang-flag { font-size: 1rem; line-height: 1; }
+.lang-flag { font-size: 1rem; line-height: 1; display: flex; align-items: center; }
+.flag-icon { display: inline-block; width: 22px; height: 16px; border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+.lang-option .flag-icon { margin-right: 2px; }
 .lang-code { letter-spacing: 0.02em; }
 .lang-dropdown-menu {
   position: absolute;
