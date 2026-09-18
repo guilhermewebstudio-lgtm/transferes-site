@@ -6,15 +6,15 @@
 <body>
 <%- include('partials/nav') %>
 <section class="page-hero" style="padding-bottom:0;">
-  <p class="hero-eyebrow">Bem-vindo, <%= user.nome %></p>
-  <h1>A tua conta</h1>
+  <p class="hero-eyebrow"><%= t('conta.bemvindo') %> <%= user.nome %></p>
+  <h1><%= t('conta.titulo') %></h1>
 </section>
 <section class="booking-section">
-  <p style="color:var(--muted);margin-bottom:30px;">Email associado: <%= user.email %></p>
-  <a href="/minhas-reservas" class="btn btn-ghost" data-nav style="margin-bottom:16px; display:inline-flex;">Ver as minhas reservas</a>
+  <p style="color:var(--muted);margin-bottom:30px;"><%= t('conta.email_associado') %> <%= user.email %></p>
+  <a href="/minhas-reservas" class="btn btn-ghost" data-nav style="margin-bottom:16px; display:inline-flex;"><%= t('conta.ver_reservas') %></a>
   <br>
   <form method="POST" action="/logout" style="margin-top:16px;">
-    <button type="submit" class="btn btn-ghost">Terminar sessão</button>
+    <button type="submit" class="btn btn-ghost"><%= t('conta.terminar_sessao') %></button>
   </form>
 </section>
 <%- include('partials/footer') %>

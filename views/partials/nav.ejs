@@ -28,14 +28,14 @@
         <a href="/login" data-nav><%= t('nav.entrar') %></a>
       <% } %>
 
-      <div class="lang-switch" role="group" aria-label="Idioma">
-        <a href="/lang/pt" class="lang-btn <%= lang === 'pt' ? 'active' : '' %>">PT</a>
-        <a href="/lang/en" class="lang-btn <%= lang === 'en' ? 'active' : '' %>">EN</a>
-        <a href="/lang/fr" class="lang-btn <%= lang === 'fr' ? 'active' : '' %>">FR</a>
-        <a href="/lang/es" class="lang-btn <%= lang === 'es' ? 'active' : '' %>">ES</a>
-      </div>
+      <%- include('lang-dropdown') %>
       <a href="/contacto" class="nav-cta" data-nav><%= t('nav.reservar') %></a>
     </nav>
+
+    <div class="lang-dropdown-mobile-only">
+      <%- include('lang-dropdown') %>
+    </div>
+
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -55,11 +55,5 @@
       <a href="/login" data-nav><%= t('nav.entrar') %></a>
     <% } %>
     <a href="/contacto" data-nav><%= t('nav.reservar') %></a>
-    <div class="lang-switch" role="group" aria-label="Idioma">
-      <a href="/lang/pt" class="lang-btn <%= lang === 'pt' ? 'active' : '' %>">PT</a>
-      <a href="/lang/en" class="lang-btn <%= lang === 'en' ? 'active' : '' %>">EN</a>
-      <a href="/lang/fr" class="lang-btn <%= lang === 'fr' ? 'active' : '' %>">FR</a>
-      <a href="/lang/es" class="lang-btn <%= lang === 'es' ? 'active' : '' %>">ES</a>
-    </div>
   </div>
 </header>

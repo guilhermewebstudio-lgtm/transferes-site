@@ -9,15 +9,15 @@
 <section class="auth-section">
   <div class="auth-card">
     <img src="/img/srride-full.png" alt="SR Ride" class="auth-card-logo">
-    <p class="auth-card-eyebrow">Junta-te a nós</p>
-    <h1 class="auth-card-title">Criar a tua conta</h1>
+    <p class="auth-card-eyebrow"><%= t('auth.registo_eyebrow') %></p>
+    <h1 class="auth-card-title"><%= t('auth.registo_title') %></h1>
 
     <% if (erro) { %><p class="form-feedback error"><%= erro %></p><% } %>
 
     <form method="POST" action="/registo" class="booking-form">
-      <label>Nome<input type="text" name="nome" required autofocus></label>
+      <label><%= t('auth.nome') %><input type="text" name="nome" required autofocus></label>
       <label>Email<input type="email" name="email" required></label>
-      <label>Password
+      <label><%= t('auth.password') %>
         <div class="pw-field">
           <input type="password" name="password" minlength="6" class="pw-input" required>
           <button type="button" class="pw-toggle" aria-label="Mostrar password">
@@ -26,12 +26,12 @@
           </button>
         </div>
       </label>
-      <button type="submit" class="btn btn-primary auth-submit">Criar conta</button>
+      <button type="submit" class="btn btn-primary auth-submit"><%= t('auth.criar_conta_btn') %></button>
     </form>
 
-    <div class="auth-divider"><span>ou</span></div>
+    <div class="auth-divider"><span><%= t('auth.ou') %></span></div>
 
-    <p class="auth-switch">Já tens conta? <a href="/login" data-nav>Entrar</a></p>
+    <p class="auth-switch"><%= t('auth.tem_conta') %> <a href="/login" data-nav><%= t('auth.entrar_link') %></a></p>
   </div>
 </section>
 

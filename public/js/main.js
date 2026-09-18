@@ -42,6 +42,22 @@
     });
   }
 
+  // Menu(s) suspenso(s) de idioma — pode haver duas instâncias (desktop dentro do menu, mobile solta)
+  const langDropdowns = document.querySelectorAll('.lang-dropdown');
+  langDropdowns.forEach((dropdown) => {
+    const toggleBtn = dropdown.querySelector('.lang-dropdown-toggle');
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdowns.forEach((d) => { if (d !== dropdown) d.classList.remove('open'); });
+      dropdown.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    langDropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+    });
+  });
+
   // Animação de revelação ao fazer scroll
   const revealTargets = document.querySelectorAll('.strip-card, .fleet-card, .service-row, .value-item, .admin-stat-card');
   if (revealTargets.length && 'IntersectionObserver' in window) {

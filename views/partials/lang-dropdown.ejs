@@ -1,0 +1,18 @@
+<%
+  const bandeiras = { pt: '🇵🇹', en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
+  const nomesIdioma = { pt: 'Português', en: 'English', fr: 'Français', es: 'Español' };
+%>
+<div class="lang-dropdown">
+  <button type="button" class="lang-dropdown-toggle" aria-label="Idioma">
+    <span class="lang-flag"><%= bandeiras[lang] %></span>
+    <span class="lang-code"><%= lang.toUpperCase() %></span>
+    <svg viewBox="0 0 12 8" width="9" height="6" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lang-dropdown-menu">
+    <% ['pt','en','fr','es'].forEach((codigo) => { %>
+      <a href="/lang/<%= codigo %>" class="lang-option <%= lang === codigo ? 'active' : '' %>">
+        <span class="lang-flag"><%= bandeiras[codigo] %></span> <%= nomesIdioma[codigo] %>
+      </a>
+    <% }) %>
+  </div>
+</div>

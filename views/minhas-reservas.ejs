@@ -5,16 +5,20 @@
 </head>
 <body>
 <%- include('partials/nav') %>
+<%
+  const localeMap = { pt: 'pt-PT', en: 'en-GB', fr: 'fr-FR', es: 'es-ES' };
+  const dataLocale = localeMap[lang] || 'pt-PT';
+%>
 <section class="page-hero" style="padding-bottom:0;">
-  <p class="hero-eyebrow">A tua conta</p>
-  <h1>As minhas reservas</h1>
-  <p class="page-lede">Acompanha o estado de cada pedido de transfer que fizeste.</p>
+  <p class="hero-eyebrow"><%= t('auth.eyebrow_conta') %></p>
+  <h1><%= t('reservas.titulo') %></h1>
+  <p class="page-lede"><%= t('reservas.lede') %></p>
 </section>
 
 <section class="booking-section" style="max-width:760px;">
   <% if (reservas.length === 0) { %>
-    <p style="color:var(--muted);">Ainda não tens nenhuma reserva feita com esta conta.</p>
-    <a href="/contacto" class="btn btn-primary" data-nav style="margin-top:16px;">Fazer a primeira reserva</a>
+    <p style="color:var(--muted);"><%= t('reservas.vazio') %></p>
+    <a href="/contacto" class="btn btn-primary" data-nav style="margin-top:16px;"><%= t('reservas.primeira') %></a>
   <% } else { %>
     <div style="display:flex; flex-direction:column; gap:16px;">
       <% reservas.forEach(r => { %>
@@ -23,24 +27,24 @@
             <div>
               <strong style="font-size:1rem;"><%= r.origem %> → <%= r.destino %></strong>
               <p style="margin:4px 0 0; color:var(--muted); font-size:0.88rem;">
-                <%= r.tipo_servico %><%= r.tipo_frota ? ' · ' + r.tipo_frota : '' %> · <%= r.data_hora ? new Date(r.data_hora).toLocaleString('pt-PT', { timeZone: 'Europe/Lisbon' }) : 'data a combinar' %>
+                <%= r.tipo_servico %><%= r.tipo_frota ? ' · ' + r.tipo_frota : '' %> · <%= r.data_hora ? new Date(r.data_hora).toLocaleString(dataLocale, { timeZone: 'Europe/Lisbon' }) : t('reservas.data_combinar') %>
               </p>
             </div>
             <span style="padding:5px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;
               background: <%= r.estado === 'confirmada' ? 'rgba(107,227,163,0.15)' : r.estado === 'cancelada' ? 'rgba(255,138,138,0.15)' : r.estado === 'concluida' ? 'rgba(199,203,209,0.15)' : 'rgba(199,203,209,0.12)' %>;
               color: <%= r.estado === 'confirmada' ? '#6be3a3' : r.estado === 'cancelada' ? '#ff8a8a' : r.estado === 'concluida' ? 'var(--blue)' : 'var(--silver)' %>;">
-              <%= r.estado.charAt(0).toUpperCase() + r.estado.slice(1) %>
+              <%= t('estado.' + r.estado) %>
             </span>
           </div>
 
           <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(199,203,209,0.08);">
             <% if (r.respondida) { %>
               <p style="margin:0; color:#6be3a3; font-size:0.9rem;">
-                ✓ Já respondemos ao teu pedido — vai ao teu email para veres os detalhes<%= r.respondida_em ? ' (enviado a ' + new Date(r.respondida_em).toLocaleDateString('pt-PT', { timeZone: 'Europe/Lisbon' }) + ')' : '' %>.
+                <%= t('reservas.respondida_prefixo') %><%= r.respondida_em ? ' (' + t('reservas.respondida_enviado') + ' ' + new Date(r.respondida_em).toLocaleDateString(dataLocale, { timeZone: 'Europe/Lisbon' }) + ')' : '' %>.
               </p>
             <% } else { %>
               <p style="margin:0; color:var(--muted); font-size:0.9rem;">
-                Ainda estamos a tratar do teu pedido — assim que confirmarmos os detalhes, enviamos-te um email.
+                <%= t('reservas.pendente_texto') %>
               </p>
             <% } %>
           </div>

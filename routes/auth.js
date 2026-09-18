@@ -92,7 +92,7 @@ router.post('/esqueci-password', async (req, res) => {
     const user = result.rows[0];
 
     // Resposta genérica sempre igual, para não revelar se o email existe ou não
-    const genericSuccess = 'Se existir uma conta com esse email, vais receber um link para redefinir a password.';
+    const genericSuccess = res.locals.t('auth.link_enviado_generico');
 
     if (user) {
       const crypto = require('crypto');
