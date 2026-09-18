@@ -41,6 +41,16 @@ function detectLang(rawText) {
 
 const INTENTS = [
   {
+    id: 'capacidade_idioma',
+    keywords: ['fala em frances', 'fala em ingles', 'fala em espanhol', 'fala-me em frances', 'fala-me em ingles', 'fala-me em espanhol', 'fala me em frances', 'fala me em ingles', 'fala me em espanhol', 'falar em frances', 'falar em ingles', 'falar em espanhol', 'falas frances', 'falas ingles', 'falas espanhol', 'consegues falar', 'podes falar em', 'podes falar frances', 'sabes falar', 'speak french', 'speak spanish', 'speak portuguese', 'can you speak', 'do you speak', 'talk in french', 'talk in spanish', 'parlez francais', 'parlez anglais', 'parlez-vous', 'parles francais', 'pouvez-vous parler', 'hablas frances', 'hablas ingles', 'hablas portugues', 'puedes hablar', 'sabes hablar'],
+    responses: {
+      pt: 'Sim! Consigo comunicar em <strong>português, inglês, francês e espanhol</strong> — escreve à vontade na língua que preferires que respondo nessa mesma língua.',
+      en: 'Yes! I can communicate in <strong>Portuguese, English, French, and Spanish</strong> — feel free to write in whichever language you prefer and I\'ll reply in that language.',
+      fr: 'Oui ! Je peux communiquer en <strong>portugais, anglais, français et espagnol</strong> — écrivez dans la langue que vous préférez et je répondrai dans cette langue.',
+      es: '¡Sí! Puedo comunicarme en <strong>portugués, inglés, francés y español</strong> — escribe en el idioma que prefieras y te responderé en ese idioma.'
+    }
+  },
+  {
     id: 'ajuda_generica',
     keywords: ['ajuda-me', 'ajudame', 'ajuda', 'preciso de ajuda', 'pode ajudar', 'podes ajudar', 'help me', 'i need help', 'can you help', 'aide-moi', 'aide', 'j\'ai besoin d\'aide', 'pouvez-vous aider', 'ayudame', 'ayuda', 'necesito ayuda', 'puedes ayudar'],
     responses: {
@@ -363,10 +373,10 @@ const INTENTS = [
 ];
 
 const FALLBACK = {
-  pt: 'Não tenho a certeza sobre essa pergunta específica, mas sei tudo sobre os nossos serviços, frota, preços, o simulador, reservas, contas e suporte. Tenta perguntar de forma mais direta.',
-  en: 'I\'m not sure about that specific question, but I know everything about our services, fleet, pricing, the simulator, bookings, accounts, and support. Try asking more directly.',
-  fr: 'Je ne suis pas sûr de cette question précise, mais je connais tout sur nos services, notre flotte, nos tarifs, le simulateur, les réservations, les comptes et le support. Essayez de poser une question plus directe.',
-  es: 'No estoy seguro de esa pregunta específica, pero sé todo sobre nuestros servicios, flota, precios, el simulador, reservas, cuentas y soporte. Intenta preguntar de forma más directa.'
+  pt: 'Não tenho a certeza sobre essa pergunta específica, mas posso explicar em detalhe:<br>• Os nossos <strong>serviços</strong> (aeroporto, executivo, eventos)<br>• As categorias da <strong>frota</strong> (económico, conforto, luxo, van)<br>• <strong>Preços</strong> e como usar o <a href="/simulador">simulador</a><br>• Como <strong>reservar</strong>, pagamentos e cancelamentos<br>• A tua <strong>conta</strong>, password ou reservas<br>• O sistema de <strong>suporte</strong><br>Tenta perguntar de forma mais direta, por exemplo "explica-me o transfer executivo" ou "quanto custa a categoria luxo".',
+  en: 'I\'m not sure about that specific question, but I can explain in detail:<br>• Our <strong>services</strong> (airport, executive, events)<br>• The <strong>fleet</strong> categories (economy, comfort, luxury, van)<br>• <strong>Pricing</strong> and how to use the <a href="/simulador">simulator</a><br>• How to <strong>book</strong>, payments and cancellations<br>• Your <strong>account</strong>, password or bookings<br>• The <strong>support</strong> system<br>Try asking more directly, e.g. "explain the executive transfer" or "how much is the luxury category".',
+  fr: 'Je ne suis pas sûr de cette question précise, mais je peux expliquer en détail :<br>• Nos <strong>services</strong> (aéroport, exécutif, événements)<br>• Les catégories de <strong>flotte</strong> (économique, confort, luxe, van)<br>• Les <strong>tarifs</strong> et comment utiliser le <a href="/simulador">simulateur</a><br>• Comment <strong>réserver</strong>, paiements et annulations<br>• Votre <strong>compte</strong>, mot de passe ou réservations<br>• Le système de <strong>support</strong><br>Essayez de poser une question plus directe, par exemple "expliquez-moi le transfert exécutif" ou "combien coûte la catégorie luxe".',
+  es: 'No estoy seguro de esa pregunta específica, pero puedo explicar en detalle:<br>• Nuestros <strong>servicios</strong> (aeropuerto, ejecutivo, eventos)<br>• Las categorías de <strong>flota</strong> (económico, confort, lujo, furgoneta)<br>• <strong>Precios</strong> y cómo usar el <a href="/simulador">simulador</a><br>• Cómo <strong>reservar</strong>, pagos y cancelaciones<br>• Tu <strong>cuenta</strong>, contraseña o reservas<br>• El sistema de <strong>soporte</strong><br>Intenta preguntar de forma más directa, por ejemplo "explícame el traslado ejecutivo" o "cuánto cuesta la categoría lujo".'
 };
 
 function getBotReply(message) {
